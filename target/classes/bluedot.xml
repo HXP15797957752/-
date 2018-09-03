@@ -1,0 +1,39 @@
+<!-- 配置文件
+       <bo>   每个<bo>标签对应每个bo类 .classname属性表示bo类的名字  
+       <set>  <set>标签是<bo>标签的子标签。如果有一对多的关系用<set>标签包含<po>。如果没有不写<set>标签
+       <po>   每个po标签代表一个bo中所用的实体类。属性classname表示po类类名。tablename表示po物理表名
+                                    注：如果数据库表明与po对应的实体类名相同，则tablename可以不写
+       <id>   <id>标签表示po表的主键名（必写）。
+       <property>标签表示bo中需要用到的po字段（不包含主键）（禁止用基本类型。用类）
+              type属性表示java中的对象名（禁止用基本类型。用类）
+              attrname属性表示bo类中用的字段名称
+              columnname属性表示po类中相应的字段名
+ -->
+<bo classname="cn.bluedot.bigdatapig.framemarker.common.TestBo">
+    
+    <!-- 不是一个集合,必须写attrname -->
+    <po classname="cn.bluedot.bigdatapig.framemarker.common.User" tablename="user">
+         <id type="java.lang.Integer" attrname = "userid" columnname = "id"></id>
+         <property type="java.lang.String" attrname = "username" columnname = "name"></property>
+         <property type="java.lang.String" attrname = "sex" columnname = "sex"></property>
+    </po>
+    <!-- 如果写了name, property的attrname可以不写  : tablename.columnname-->
+    <po classname="cn.bluedot.bigdatapig.framemarker.common.Role" tablename="role" >
+        <id type="java.lang.Integer" attrname = "roleid" columnname = "id"></id>
+        <property type="java.lang.String" attrname = "roleName" columnname = "roleName"></property>   
+    </po>
+    <po classname="cn.bluedot.bigdatapig.framemarker.common.Book" tablename="book" listname = "bookes">
+        <id type="java.lang.Integer" columnname = "id"></id>
+        <property type="java.lang.String" columnname = "bookName"></property>   
+    </po>
+    <po classname="cn.bluedot.bigdatapig.framemarker.common.CLasses" tablename="classes">
+         <id type="java.lang.Integer" attrname = "classID" columnname = "id"></id>
+         <property type="java.lang.String" attrname = "className" columnname = "name"></property>
+    </po>
+    <!-- 写的是多对一的形式
+        //potablename
+     -->
+    <ref potablename="user" columnname="roleid" refpotablename="role"  refname="id" ></ref>
+    <ref potablename="user" columnname="classesid" refpotablename="classes"  refname="id"></ref>
+    <ref potablename="book" columnname="userid"  refpotablename="user" refname="id" ></ref>
+</bo>

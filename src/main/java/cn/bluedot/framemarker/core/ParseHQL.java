@@ -71,25 +71,13 @@ public class ParseHQL {
             
         }catch(Exception e) {
             e.printStackTrace();
-            throw new DaoException("HQL Error:" + hql);
+            throw new DaoException("HQL Exception:" + hql);
         }
-        // just test
-        System.out.println("simpleName:" + simpleName);
-        Set<String> keys = params.keySet();
-        for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
-            String key = (String) iterator.next();
-            System.out.println(key + ":" + params.get(key));
-        }
-        try {
-            return null;// ObjectParse.selectparsetoSQL(simpleName, params);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+       
         try {
             return op.selectparsetoSQL(simpleName, params);
         } catch (Exception e) {
-            System.out.println("Error in exe");
+            System.out.println("Exception in exe:" + e);
         }
         return null;
     }

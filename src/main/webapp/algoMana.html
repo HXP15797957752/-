@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<hmtl lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>算法管理</title>
+        <link rel="shortcut icon" href="resources/images/favicon.png">
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="resources/css/xenon-core.css">
+        <link rel="stylesheet" href="resources/css/xenon-forms.css">
+        <link rel="stylesheet" href="resources/css/xenon-components.css">
+        <link rel="stylesheet" href="resources/css/xenon-skins.css">
+
+        <!--字体-->
+        <link rel="stylesheet" href="resources/css/arimo.css">
+        <link rel="stylesheet" href="resources/css/linecons.css">
+        <link rel="stylesheet" href="resources/css/custom.css">
+        <link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.css">
+        <script src="resources/js/jquery-1.11.1.min.js"></script>
+        <!--让ie低版本等浏览器支持HTML5标签的解决方案-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <link rel="shortcut icon" href="http://www.bhcode.net/favicon.ico" type="image/x-icon" />
+        <link rel=”shortcut” href=”/favicon.ico” />
+
+        <!--文件夹所需js、css-->
+        <link rel="stylesheet" href="resources/css/folder.css">
+        <script src="resources/js/folder/folder.js"></script>
+        <script src="resources/js/folder/BootstrapMenu.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+    </head>
+    <div class="panel">
+        <!-- 工具栏 -->
+
+        <div class="row ">
+            <div class="col-sm-12 ">
+                <h2 style="float: left ;margin-top: -5px;">算法文件夹</h2>
+                <div class="fa-hover col-sm-2 " style="margin-left: 220px;" id="create">
+                    <a class="btn  btn-default"><i class="fa-cloud-upload"></i>新建文件夹</a>
+                </div>
+                <div class="fa-hover col-sm-1" id="delete">
+                    <a class="btn btn-default"><i class="fa-trash"></i>删除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--算法文件夹栏目-->
+    <div class="panel">
+        <!-- 收藏夹 -->
+        <section class="mailbox-env">
+            <!-- data-curFavoriteID表示当前显示的收藏夹的ID -->
+            <!-- data-userID表示当前用户ID -->
+            <div class="panel-body panel-border">
+                <table class="favoriteTable table table-hover" data-userID="3">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all" class="cbr"></th>
+                        <th class="col-sm-6">名称</th>
+                        <th class="col-sm-3"></th>
+                        <th class="col-sm-3">时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="favorite" data-favoriteID="2" style="cursor:pointer">
+                        <td>
+                            <input type="checkbox" class="cbr" name="favoriteID" value="2">
+                        </td>
+                        <td class="favoriteName" data-favoriteID="2">
+                            <i class="fa-folder-o"></i><a>&nbsp;&nbsp;分类-2</a>
+                        </td>
+                        <td class="favoriteTool">
+                            <ul class="album-options list-unstyled list-inline hover" style="display:none">
+                                <li>
+                                    <a class="rename" href="#">
+                                        <i class="fa-edit"></i>重命名
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="deleteFavorite" href="#">
+                                        <i class="fa-trash"></i>删除
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="favoriteCreateTime">2017-03-07 16:17:00</td>
+                    </tr>
+                    <tr class="favorite" data-favoriteID="4" style="cursor:pointer">
+                        <td>
+                            <input type="checkbox" class="cbr" name="favoriteID" value="4">
+                        </td>
+                        <td class="favoriteName" data-favoriteID="4">
+                            <i class="fa-folder-o"></i><a>&nbsp;&nbsp;分类-3</a>
+                        </td>
+                        <td class="favoriteTool">
+                            <ul class="album-options list-unstyled list-inline hover" style="display:none">
+                                <li>
+                                    <a class="rename" href="#">
+                                        <i class="fa-edit"></i>重命名
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="deleteFavorite" href="#">
+                                        <i class="fa-trash"></i>删除
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="favoriteCreateTime">2017-03-07 16:18:02</td>
+                    </tr>
+                    <tr class="favorite" data-favoriteID="7" style="cursor:pointer">
+                        <td>
+                            <input type="checkbox" class="cbr" name="favoriteID" value="7">
+                        </td>
+                        <td class="favoriteName" data-favoriteID="7">
+                            <i class="fa-folder-o"></i><a>&nbsp;&nbsp;sdgfds</a>
+                        </td>
+                        <td class="favoriteTool">
+                            <ul class="album-options list-unstyled list-inline hover" style="display:none">
+                                <li>
+                                    <a class="rename" href="#">
+                                        <i class="fa-edit"></i>重命名
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="deleteFavorite" href="#">
+                                        <i class="fa-trash"></i>删除
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="favoriteCreateTime">2017-07-13 15:44:04</td>
+                    </tr>
+                    <tr class="favorite" data-favoriteID="8" style="cursor:pointer">
+                        <td>
+                            <input type="checkbox" class="cbr" name="favoriteID" value="8">
+                        </td>
+                        <td class="favoriteName" data-favoriteID="8">
+                            <i class="fa-folder-o"></i><a>&nbsp;&nbsp;fdsgfd</a>
+                        </td>
+                        <td class="favoriteTool">
+                            <ul class="album-options list-unstyled list-inline hover" style="display:none">
+                                <li>
+                                    <a class="rename" href="#">
+                                        <i class="fa-edit"></i>重命名
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="deleteFavorite" href="#">
+                                        <i class="fa-trash"></i>删除
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="favoriteCreateTime">2017-07-13 15:44:07</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            //收藏夹跳转
+            $(document).on("click", ".favorite .favoriteName", function () {
+                $(location).prop("href", "algoFile.html");
+            });
+        })
+    </script>
+
+    <!--底栏注释-->
+    <footer class="main-footer sticky footer-type-1">
+        <div class="footer-inner">
+            <!-- Add your copyright text here -->
+            <div class="footer-text">
+                &copy; 2017-2018 <strong>蓝点工作室</strong> 江西农业大学
+                <a href="#" target="_blank">大数据智能猪舍</a>
+                - 开发团队:
+                <a href="#" target="_blank">蓝点工作室</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bottom Scripts -->
+    <script src="resources/js/bootstrap-datetimepicker.js"></script>
+    <script src="resources/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="resources/js/TweenMax.min.js"></script>
+    <script src="resources/js/resizeable.js"></script>
+    <script src="resources/js/joinable.js"></script>
+    <script src="resources/js/xenon-api.js"></script>
+    <script src="resources/js/xenon-toggles.js"></script>
+    <!-- Imported scripts on this page -->
+    <script src="resources/js/jquery-ui.min.js"></script>
+    <!-- JavaScripts initializations and stuff -->
+    <script src="resources/js/xenon-custom.js"></script>
+    <script src="resources/js/userFavorite.js"></script>
+
+</hmtl>
+</body>
+</html>

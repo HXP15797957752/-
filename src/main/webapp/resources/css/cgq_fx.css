@@ -1,0 +1,54 @@
+.main_page{
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.picture{
+    width: 70%;
+    float: left;
+}
+.selectsButton{
+    width: 39.7%;
+    float: left;
+    margin: 200px;
+}
+.chart_picture{
+    margin-top: 30px;
+}
+.fx_title{
+    text-align: center;
+}
+.fx{
+    margin: 10px;
+    border: lightgrey solid 1px;
+}
+.cl{
+    margin-left: 10px;
+    text-align: center;
+}
+.cl font{
+    margin-right: 20px;
+}
+.fx_buttongroup{
+    margin: 10px;
+}
+#control{
+    margin-top: 10px;
+
+}
+#caiji{
+    margin-top: 30px;
+
+}
+#message{
+    margin-top: 30px;
+
+}
+#x_fw{
+    margin-top: 30px;
+
+}
+#method{
+    margin-top: 30px;
+
+}

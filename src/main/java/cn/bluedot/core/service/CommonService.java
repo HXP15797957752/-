@@ -1,4 +1,4 @@
-package com.service;
+package cn.bluedot.core.service;
 
 import java.util.Map;
 

@@ -17,9 +17,9 @@ public class ParseHQL {
     }
     private final static ObjectParse op = new ObjectParse();
     /**
-     * HQL,参数数组-->SqlResult UserBO|username=?,id=<?,?>,tab.roleName=?|limit ?,? UserBO,
-     * username=object id=<,ss> roleName
-     * 
+     * HQL,
+	 * BOSimpleName|条件1=?[, 条件2=<?,?>][| limit ?,?]
+     * POSimpleName|条件1=?[, 条件2=<?,?>][| limit ?,?]
      * @param HQL
      * @return
      */
@@ -39,7 +39,7 @@ public class ParseHQL {
         Map<String, Object> params = new HashMap<>();
         int os_index = 0;
         try {
-            //得到simpleName 生猪健康养殖智能系统
+            //得到simpleName 
             simpleName = parts[0];
             
             for(int i = 1;i < parts.length;i++) {
@@ -73,25 +73,14 @@ public class ParseHQL {
             e.printStackTrace();
             throw new DaoException("HQL Error:" + hql);
         }
-        // just test
-        System.out.println("simpleName:" + simpleName);
-        Set<String> keys = params.keySet();
-        for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
-            String key = (String) iterator.next();
-            System.out.println(key + ":" + params.get(key));
-        }
+        
+        List<Object> lists = null;
         try {
-            return null;// ObjectParse.selectparsetoSQL(simpleName, params);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            return op.selectparsetoSQL(simpleName, params);
+            lists = op.selectparsetoSQL(simpleName, params);
         } catch (Exception e) {
             System.out.println("Error in exe");
         }
-        return null;
+        return lists;
     }
     /**
      * 区域分隔:|

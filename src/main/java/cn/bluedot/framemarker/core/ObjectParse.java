@@ -188,6 +188,18 @@ public class ObjectParse {
         StringBuilder sql = new StringBuilder("select ");
         List<Object> list = new ArrayList<>();
         
+        Object object = null;
+        
+        try {
+            object = clazz.newInstance();
+        } catch (InstantiationException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (IllegalAccessException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
         String className = getTableName(clazz);
     
         String content = "";
@@ -217,7 +229,17 @@ public class ObjectParse {
         
         limitString(obj, sql, list);
         
-        return null;
+        List<Object> result = null;
+        
+        System.out.println(sql + "," + list);
+        try {
+            result = bd.query(new SqlResult(sql.toString(), list, object));
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+         
+        return result;
     }
     
     /**
@@ -431,18 +453,10 @@ public class ObjectParse {
         //SqlResult sr = null;
         if(bc == null){
             clazz = Class.forName(Config.getpoclassName(simpleName));
-            queryparsetoSQL(clazz, params);
+            return queryparsetoSQL(clazz, params);
         }else{
             clazz = Class.forName(bc.getClassName());
-            selectparsetoSQL(clazz, params);
+            return selectparsetoSQL(clazz, params);
         }
-        try {
-            
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-       
-        return null;
     }
 }

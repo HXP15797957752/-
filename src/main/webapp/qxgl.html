@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/xenon-core.css">
+    <link rel="stylesheet" href="resources/css/xenon-forms.css">
+    <link rel="stylesheet" href="resources/css/xenon-components.css">
+    <link rel="stylesheet" href="resources/css/xenon-skins.css">
+    <link rel="stylesheet" href="resources/css/custom.css">
+    <!--fonts-->
+    <link rel="stylesheet" href="resources/fonts/arimo/css/arimo.css">
+    <link rel="stylesheet" href="resources/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="resources/fonts/fontawesome/css/font-awesome.min.css">
+    <link href="resources/css/admin.css" rel="stylesheet"/>
+    <script src="../assets/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="row">
+    <!-- Tabbed panel 2 -->
+    <div class="panel panel-default panel-tabs">
+        <!-- Add class "collapsed" to minimize the panel -->
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-left: 30px;">人员信息</h3>
+            <div class="panel-options">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-4" data-toggle="tab">待审核</a>
+                    </li>
+                    <li>
+                        <a href="#tab-5" data-toggle="tab">通过</a>
+                    </li>
+                    <li>
+                        <a href="#tab-6" data-toggle="tab">拒绝</a>
+                    </li>
+                    <li>
+                        <a href="#tab-7" data-toggle="tab">所有申请</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <!-- 待审核面板 -->
+                            <table class="table table-bordered table-striped" id="example-2">
+                                <thead>
+                                <tr>
+                                    <th class="no-sorting">
+                                        <input type="checkbox" class="cbr">
+                                    </th>
+                                    <th>角色名称</th>
+                                    <th>名字</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="middle-align">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left" data-toggle="modal" data-target="#check">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left" data-toggle="modal" data-target="#check">
+                                            拒绝分配
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>
+                                        <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            分配权限
+                                        </a>
+
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            拒绝分配
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab-5">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <!--- 通过面板 -->
+                            <table class="table table-bordered table-striped" id="example-2">
+                                <thead>
+                                <tr>
+                                    <th class="no-sorting">
+                                        <input type="checkbox" class="cbr">
+                                    </th>
+                                    <th>角色名称</th>
+                                    <th>名字</th>
+                                    <th>申请时间</th>
+                                    <th>审核员</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="middle-align">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left" data-toggle="modal" data-target="#read">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tab-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-striped" id="example-2">
+                                <thead>
+                                <tr>
+                                    <th class="no-sorting">
+                                        <input type="checkbox" class="cbr">
+                                    </th>
+                                    <th>角色名称</th>
+                                    <th>名字</th>
+                                    <th>申请时间</th>
+                                    <th>审核员</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="middle-align">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab-7">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <!---------所有申请面板-------------------------------------------------------------------------->
+                            <table class="table table-bordered table-striped" id="example-2">
+                                <thead>
+                                <tr>
+                                    <th class="no-sorting">
+                                        <input type="checkbox" class="cbr">
+                                    </th>
+                                    <th>角色名称</th>
+                                    <th>名字</th>
+                                    <th>申请时间</th>
+                                    <th>审核员</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="middle-align">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left" data-toggle="modal" data-target="#read">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="cbr">
+                                    </td>
+                                    <td>user@qq.com</td>
+                                    <td>Xxxxxxxxxxxxxxx</td>
+                                    <td>2017-5-4</td>
+                                    <td>0003</td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                            查看
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer class="main-footer sticky footer-type-1">
+    <div class="footer-inner">
+        <!-- Add your copyright text here -->
+        <div class="footer-text">
+            &copy; 2016 <strong>蓝点工作室</strong> 江西农业大学
+            <a href="#" target="_blank">大数据智能猪舍</a>
+            - 开发团队:
+            <a href="#" target="_blank">蓝点工作室</a>
+        </div>
+        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+        <div class="go-up">
+            <a href="#" rel="go-top">
+                <i class="fa-angle-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+<div class="page-loading-overlay">
+    <div class="loader-2"></div>
+</div>
+
+<div class="modal fade" id="check">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">分配权限</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">审核理由</label>
+                            <textarea class="form-control" id="field-1" rows="3" placeholder="请输入审核理由" required="required"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-white" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="read">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">查看审核</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">邮箱</label>
+                            <input type="text" class="form-control" id="field1" placeholder="user@qq.com" disabled/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">申请时间</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">申请解冻理由</label>
+                            <textarea class="form-control" id="field-3" rows="3"  disabled></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">审核理由</label>
+                            <textarea class="form-control" id="field-2" rows="3" placeholder="请输入审核理由" required="required"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-white" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="resources/plugins/jquery.1.12.4.min.js"></script>
+<link rel="stylesheet" href="resources/js/datatables/dataTables.bootstrap.css">
+<!-- Bottom Scripts -->
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/TweenMax.min.js"></script>
+<script src="resources/js/resizeable.js"></script>
+<script src="resources/js/joinable.js"></script>
+<script src="resources/js/xenon-api.js"></script>
+<script src="resources/js/xenon-toggles.js"></script>
+<!-- Imported scripts on this page -->
+<script src="resources/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="resources/js/datatables/dataTables.bootstrap.js"></script>
+<script src="resources/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+<!-- JavaScripts initializations and stuff -->
+<script src="resources/js/xenon-custom.js"></script>
+<!--Specific JS for this page-->
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("#example-2").dataTable({
+            aLengthMenu: [
+                [5, 10, 25, 50, 100, -1],
+                [5, 10, 25, 50, 100, "所有"]
+            ]
+        });
+        // Replace checkboxes when they appear
+        var $state = $("#example-2 thead input[type='checkbox']");
+
+        $("#example-2").on('draw.dt', function() {
+            cbr_replace();
+
+            $state.trigger('change');
+        });
+
+        // Script to select all checkboxes
+        $state.on('change', function(ev) {
+            var $chcks = $("#example-2 tbody input[type='checkbox']");
+
+            if($state.is(':checked')) {
+                $chcks.prop('checked', true).trigger('change');
+            } else {
+                $chcks.prop('checked', false).trigger('change');
+            }
+        });
+    });
+</script>
+</body>
+</html>

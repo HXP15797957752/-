@@ -2,8 +2,8 @@ package cn.bluedot.core.service;
 
 import java.util.Map;
 
-public interface AlgorithmSerivce {
-
+public class  AlgorithmServiceImpl implements Service {
+	
 	/**
 	 * 提交算法插件
 	 * 用例描述	系统管理员或管理员填写要提交算法的相应信息
@@ -16,8 +16,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String commitAlgorithmPlug(Map map);
-
+	public String commitAlgorithmPlug (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 算法组合
 	 * 用例描述	系统管理员或管理员填写要提交算法的相应信息
@@ -31,8 +33,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String algorithmCombination(Map map);
-
+	public String algorithmCombination (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 删除算法插件
 	 * 用例描述	系统管理员或管理员选择要删除的算法的相应信息
@@ -46,8 +50,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String deleteAlgorithmPlug(Map map);
-
+	public String deleteAlgorithmPlug (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 查看算法文件
 	 * 用例描述	系统管理员或管理员查看算法的相应信息
@@ -61,8 +67,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String viewAlgorithmfiles(Map map);
-
+	public String viewAlgorithmfiles (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 移动算法文件
 	 * 用例描述	系统管理员或管理员可以将算法文件移动到指定位置
@@ -76,8 +84,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String mobileAlgorithmfiles(Map map);
-
+	public String mobileAlgorithmfiles (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 公开算法
 	 * 用例描述	系统管理员选择要提交公开的算法
@@ -91,8 +101,10 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String publicAlgorithm(Map map);
-
+	public String publicAlgorithm (Map map) {
+		return null;
+	}
+	
 	/**
 	 * 下载算法
 	 * 用例描述	用户下载自己的算法到本地
@@ -104,6 +116,7 @@ public interface AlgorithmSerivce {
 	 * @param map
 	 * @return
 	 */
-	String downloadAlgorithm(Map map);
-
+	public String downloadAlgorithm (Map map) {
+		return null;
+	}
 }

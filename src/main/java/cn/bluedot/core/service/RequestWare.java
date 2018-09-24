@@ -3,9 +3,6 @@ package cn.bluedot.core.service;
 import javax.servlet.http.HttpServletRequest;
 
 public class RequestWare {
-    public void requestWare(HttpServletRequest request) {
-        this.request = request;  
-    }
     private HttpServletRequest request;
     public HttpServletRequest getRequest() {
         return request;

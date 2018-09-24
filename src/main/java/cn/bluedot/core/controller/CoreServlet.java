@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.bluedot.core.service.RequestWare;
 import cn.bluedot.core.service.Service;
 import cn.bluedot.core.util.Base64Util;
 
@@ -62,9 +63,9 @@ public class CoreServlet extends HttpServlet {
         try {
             // ??...
             Service service = (Service) serviceClass.newInstance();
-//          if (service instanceof RequestWare) {
-//              ((RequestWare)service).xxxx(req);
-//          }
+          if (service instanceof RequestWare) {
+              ((RequestWare)service).setRequest(request);
+          }
 
             future = CSConduit.getIntance().exeTask
                     (new ServiceWrap(service, method, map));

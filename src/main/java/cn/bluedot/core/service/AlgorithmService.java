@@ -2,7 +2,7 @@ package cn.bluedot.core.service;
 
 import java.util.Map;
 
-public class  AlgorithmServiceImpl implements Service {
+public class AlgorithmService implements Service {
 	
 	/**
 	 * 提交算法插件
@@ -42,7 +42,8 @@ public class  AlgorithmServiceImpl implements Service {
 	 * 用例描述	系统管理员或管理员选择要删除的算法的相应信息
 	 * 参与者	系统管理员或管理员
 	 * 前置条件	系统管理员或管理员进入算法管理并删除算法
-	 * 后置条件	系统对响应算法状态进行更改
+	 * 后置条件	系统对响应
+	 * 算法状态进行更改
 	 * 基本操作流程	
 	 * 	①系统管理员或管理员查询要删除的算法见表(2-1),选择要删除的算法（单分析算法、分析建议算法）
 	 * 	②操作有误，则系统进行相应提示；若无误，则算法的状态为“已废弃”

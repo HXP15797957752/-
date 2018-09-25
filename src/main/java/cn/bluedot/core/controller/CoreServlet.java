@@ -1,7 +1,11 @@
 package cn.bluedot.core.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -13,6 +17,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cn.bluedot.core.service.RequestWare;
 import cn.bluedot.core.service.Service;
@@ -32,7 +40,8 @@ public class CoreServlet extends HttpServlet {
         // 需要放入管道
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)res;
-        Map<String, String[]> map = request.getParameterMap();
+        Map<String, String[]> mapParams = request.getParameterMap();
+        Map<String, Object> req_rep = new HashMap<String, Object>();
         // .../api/类名!methodnmae
             
         String ID = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
@@ -63,12 +72,15 @@ public class CoreServlet extends HttpServlet {
         try {
             // ??...
             Service service = (Service) serviceClass.newInstance();
+            //需要用到req 和 rep的模块
           if (service instanceof RequestWare) {
-              ((RequestWare)service).setRequest(request);
+        	  req_rep.put("request", request);
+        	  req_rep.put("response", response);
+              ((RequestWare)service).setReq_rep(req_rep);
           }
 
             future = CSConduit.getIntance().exeTask
-                    (new ServiceWrap(service, method, map));
+                    (new ServiceWrap(service, method, mapParams));
         } catch (Exception e1) {
             e1.printStackTrace();
         } 
@@ -106,8 +118,7 @@ public class CoreServlet extends HttpServlet {
             }
         }
     }
-       
-	
+ 
 	
 
 }

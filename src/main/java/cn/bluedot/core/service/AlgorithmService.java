@@ -1,8 +1,19 @@
 package cn.bluedot.core.service;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+
+import cn.bluedot.core.domain.Algorithm;
+import cn.bluedot.core.util.MyBeanUtils;
+import cn.bluedot.core.util.ParseUpload;
 
 public class  AlgorithmService extends RequestWare implements Service  {
 	/**
@@ -18,8 +29,64 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String commitAlgorithmPlug (Map map) {
-	    this.getRequest();
-		return null;
+		// 因为是 multipart/form-data 所有map是空的
+		// 表单中普通字段的参数
+		Map<String,String> params = new HashMap<>();
+		// 取出request
+		HttpServletRequest request = (HttpServletRequest) req_rep.get("request");
+		
+		// 用通用工具栏解析 is是文件流 params解析后就是普通字段的参数
+		InputStream is = ParseUpload.parseUpload(request, params);
+		
+		Algorithm algorithm = MyBeanUtils.toBean(params, Algorithm.class);
+
+		File Folder= new File(request.getSession().getServletContext().
+				getRealPath("algorithm/"));
+		// 将上传的文件以自定义后缀 列如algo的形式保存在服务器,当需要使用时,
+		// 再根据数据库记录的类型处理
+		File file = new File(Folder,algorithm.getAlgorithmID()+".algo");
+		
+		try {
+			if(null!=is && 0!=is.available()){
+			    try(FileOutputStream fos = new FileOutputStream(file)){
+			        byte b[] = new byte[1024 * 1024];
+			        int length = 0;
+			        while (-1 != (length = is.read(b))) {
+			            fos.write(b, 0, length);
+			        }
+			        fos.flush();
+			    }
+			    catch(Exception e){
+			    	e.printStackTrace();
+			    }
+			}
+			/*
+		 	  ' ─ wow ──▌▒█───────────▄▀▒▌─── 
+		  	  ' ────────▌▒▒▀▄───────▄▀▒▒▒▐─── 
+		  	  ' ───────▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐─── 
+		  	  ' ─────▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐─── 
+		  	  ' ───▄▀▒▒▒▒▒▒有请P9操作一波DAO── 
+		  	  ' ──▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌── 
+		  	  ' ──▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐── 
+		  	  ' ─▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌─ 
+		  	  ' ─▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌─ 
+		  	  ' ─▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐─ 
+		  	  ' ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒实在不会DAO ▒▌ 
+		  	  ' ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐─ 
+		  	  ' ─▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌─ 
+		  	  ' ─▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐── 
+		  	  ' ──▀ amaze ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌── 
+		  	  ' ────▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀─── 
+		  	  ' ───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀───── 
+		  	  ' ──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀────────
+			*/
+							
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		
+		// 异步响应
+		return "a^算法插件上传成功";
 	}
 	
 	/**

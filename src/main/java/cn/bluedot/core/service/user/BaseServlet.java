@@ -29,7 +29,6 @@ public abstract class BaseServlet extends HttpServlet {
 	 * 请求参数中带有 键为method 的键值对, 值为业务方法调用名称
 	 */
 	protected static final String KEY = "method";   
-    
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 	  //处理乱码问题

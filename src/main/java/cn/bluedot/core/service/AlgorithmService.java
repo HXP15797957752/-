@@ -2,8 +2,9 @@ package cn.bluedot.core.service;
 
 import java.util.Map;
 
-public class AlgorithmService implements Service {
-	
+import javax.servlet.http.HttpServletRequest;
+
+public class  AlgorithmService extends RequestWare implements Service  {
 	/**
 	 * 提交算法插件
 	 * 用例描述	系统管理员或管理员填写要提交算法的相应信息
@@ -17,6 +18,7 @@ public class AlgorithmService implements Service {
 	 * @return
 	 */
 	public String commitAlgorithmPlug (Map map) {
+	    this.getRequest();
 		return null;
 	}
 	
@@ -103,6 +105,7 @@ public class AlgorithmService implements Service {
 	 * @return
 	 */
 	public String publicAlgorithm (Map map) {
+	    
 		return null;
 	}
 	
@@ -120,4 +123,5 @@ public class AlgorithmService implements Service {
 	public String downloadAlgorithm (Map map) {
 		return null;
 	}
+
 }

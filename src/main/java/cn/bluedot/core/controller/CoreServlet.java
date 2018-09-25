@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.bluedot.core.service.RequestWare;
 import cn.bluedot.core.service.Service;
 import cn.bluedot.core.util.Base64Util;
 
 /**
  * Servlet implementation class CoreServlet
  */
-@WebServlet("/api")
+@WebServlet("/api/*")
 public class CoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +33,9 @@ public class CoreServlet extends HttpServlet {
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)res;
         Map<String, String[]> map = request.getParameterMap();
-        String ID = request.getParameter("ID");
+        // .../api/类名!methodnmae
+            
+        String ID = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
         System.out.println(ID);
         /**
          * 1. 获取method参数，它是用户想调用的方法
@@ -54,18 +57,21 @@ public class CoreServlet extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException("您要调用的方法：" + actionName + "它不存在！", e);
         }
-        // 放入管道
+                // 放入管道
         Future<Object> future = null;
         System.out.println(Thread.currentThread().getName());
         try {
             // ??...
+            Service service = (Service) serviceClass.newInstance();
+          if (service instanceof RequestWare) {
+              ((RequestWare)service).setRequest(request);
+          }
+
             future = CSConduit.getIntance().exeTask
-                    (new ServiceWrap((Service) serviceClass.newInstance(), method, map));
-        } catch (InstantiationException e1) {
+                    (new ServiceWrap(service, method, map));
+        } catch (Exception e1) {
             e1.printStackTrace();
-        } catch (IllegalAccessException e1) {
-            e1.printStackTrace();
-        }
+        } 
         // 取出结果
         String result = null;
         try {

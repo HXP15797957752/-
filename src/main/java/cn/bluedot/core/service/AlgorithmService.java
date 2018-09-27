@@ -5,17 +5,25 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import cn.bluedot.core.domain.Algorithm;
+import cn.bluedot.core.domain.CombinatorialAlgorithm;
 import cn.bluedot.core.util.MyBeanUtils;
 import cn.bluedot.core.util.ParseUpload;
+import cn.bluedot.framemarker.common.BoSuper;
+import cn.bluedot.framemarker.dao.SuperDao;
+import net.sf.json.JSONArray;
 
 public class  AlgorithmService extends RequestWare implements Service  {
+	private SuperDao superDao = new SuperDao();
+	
 	/**
 	 * 提交算法插件
 	 * 用例描述	系统管理员或管理员填写要提交算法的相应信息
@@ -80,11 +88,14 @@ public class  AlgorithmService extends RequestWare implements Service  {
 		  	  ' ───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀───── 
 		  	  ' ──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀────────
 			*/
-							
+			// 大概dao的用法
+			superDao.save(algorithm);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
-		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		// 异步响应
 		return "a^算法插件上传成功";
 	}
@@ -103,7 +114,13 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String algorithmCombination (Map map) {
-		return null;
+		CombinatorialAlgorithm combinatorialAlgorithm = MyBeanUtils.toBean(map, CombinatorialAlgorithm.class);
+		try {
+			superDao.save(combinatorialAlgorithm);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "a^算法组合成功";
 	}
 	
 	/**
@@ -121,7 +138,13 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String deleteAlgorithmPlug (Map map) {
-		return null;
+		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		try {
+			superDao.delete(algorithm);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "a^算法删除成功";
 	}
 	
 	/**
@@ -138,7 +161,11 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String viewAlgorithmfiles (Map map) {
-		return null;
+		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		String hql = "Algorithm|algorithmID=?|limit 0,10";
+		List vo= superDao.HQLQuery(hql, algorithm.getAlgorithmID());
+		JSONArray View = JSONArray.fromObject(vo);
+		return View.toString();
 	}
 	
 	/**

@@ -163,7 +163,7 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	public String viewAlgorithmfiles (Map map) {
 		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
 		String hql = "Algorithm|algorithmID=?|limit 0,10";
-		List vo= superDao.HQLQuery(hql, algorithm.getAlgorithmID());
+		List vo = superDao.HQLQuery(hql, algorithm.getAlgorithmID());
 		JSONArray View = JSONArray.fromObject(vo);
 		return View.toString();
 	}
@@ -182,7 +182,9 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String mobileAlgorithmfiles (Map map) {
-		return null;
+		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		superDao.update(algorithm);
+		return "a^算法文件移动成功";
 	}
 	
 	/**
@@ -199,8 +201,9 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String publicAlgorithm (Map map) {
-	    
-		return null;
+		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		superDao.update(algorithm);
+		return "a^算法文件已公开成功";
 	}
 	
 	/**

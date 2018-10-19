@@ -1,6 +1,5 @@
 package cn.bluedot.core.service;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,14 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import cn.bluedot.core.domain.Algorithm;
 import cn.bluedot.core.domain.CombinatorialAlgorithm;
 import cn.bluedot.core.util.MyBeanUtils;
 import cn.bluedot.core.util.ParseUpload;
-import cn.bluedot.framemarker.common.BoSuper;
 import cn.bluedot.framemarker.dao.SuperDao;
 import net.sf.json.JSONArray;
 
@@ -25,7 +22,7 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	private SuperDao superDao = new SuperDao();
 	
 	/**
-	 * 提交算法插件
+	 * 提交算法插件 (上传文件示例)
 	 * 用例描述	系统管理员或管理员填写要提交算法的相应信息
 	 * 参与者	系统管理员或管理员
 	 * 前置条件	系统管理员或管理员进入算法管理并提交算法
@@ -38,16 +35,20 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 */
 	public String commitAlgorithmPlug (Map map) {
 		// 因为是 multipart/form-data 所有map是空的
+		
 		// 表单中普通字段的参数
 		Map<String,String> params = new HashMap<>();
+		
 		// 取出request
 		HttpServletRequest request = (HttpServletRequest) req_rep.get("request");
 		
 		// 用通用工具栏解析 is是文件流 params解析后就是普通字段的参数
 		InputStream is = ParseUpload.parseUpload(request, params);
 		
+		// 根据普通字段参数生成Algorithm对象
 		Algorithm algorithm = MyBeanUtils.toBean(params, Algorithm.class);
 
+		// 保存文件
 		File Folder= new File(request.getSession().getServletContext().
 				getRealPath("algorithm/"));
 		// 将上传的文件以自定义后缀 列如algo的形式保存在服务器,当需要使用时,
@@ -73,22 +74,23 @@ public class  AlgorithmService extends RequestWare implements Service  {
 		  	  ' ────────▌▒▒▀▄───────▄▀▒▒▒▐─── 
 		  	  ' ───────▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐─── 
 		  	  ' ─────▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐─── 
-		  	  ' ───▄▀▒▒▒▒▒▒有请P9操作一波DAO── 
+		  	  ' ───▄▀▒▒▒▒▒▒骚操作一波DAO▀▒▐── 
 		  	  ' ──▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌── 
 		  	  ' ──▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐── 
 		  	  ' ─▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌─ 
 		  	  ' ─▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌─ 
 		  	  ' ─▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐─ 
-		  	  ' ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒实在不会DAO ▒▌ 
+		  	  ' ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒疯狂操作DAO ▒▌ 
 		  	  ' ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐─ 
 		  	  ' ─▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌─ 
 		  	  ' ─▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐── 
-		  	  ' ──▀ amaze ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌── 
+		  	  ' ──▀ amazing▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌── 
 		  	  ' ────▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀─── 
 		  	  ' ───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀───── 
 		  	  ' ──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀────────
 			*/
-			// 大概dao的用法
+			
+			// dao增加
 			superDao.save(algorithm);
 			
 		} catch (IOException e) {
@@ -96,6 +98,7 @@ public class  AlgorithmService extends RequestWare implements Service  {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		// 异步响应
 		return "a^算法插件上传成功";
 	}
@@ -114,8 +117,12 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String algorithmCombination (Map map) {
+		
+		// 根据map字段参数生成CombinatorialAlgorithm对象
 		CombinatorialAlgorithm combinatorialAlgorithm = MyBeanUtils.toBean(map, CombinatorialAlgorithm.class);
 		try {
+			
+			// dao增加
 			superDao.save(combinatorialAlgorithm);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -138,9 +145,13 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String deleteAlgorithmPlug (Map map) {
+		// 根据map字段参数生成algorithm对象
 		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		
 		try {
+			// dao删除
 			superDao.delete(algorithm);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -161,10 +172,19 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String viewAlgorithmfiles (Map map) {
+		// 根据map字段参数生成Algorithm查询条件
 		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		
+		// hql语句
 		String hql = "Algorithm|algorithmID=?|limit 0,10";
+		
+		// 查询结果
 		List vo = superDao.HQLQuery(hql, algorithm.getAlgorithmID());
+		
+		// 转化为json
 		JSONArray View = JSONArray.fromObject(vo);
+		
+		// 以字符串形式返回给控制层
 		return View.toString();
 	}
 	
@@ -182,8 +202,12 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String mobileAlgorithmfiles (Map map) {
+		// 根据map字段参数生成Algorithm更新条件
 		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		
+		// dao更新
 		superDao.update(algorithm);
+		
 		return "a^算法文件移动成功";
 	}
 	
@@ -201,7 +225,10 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @return
 	 */
 	public String publicAlgorithm (Map map) {
+		// 根据map字段参数生成Algorithm更新条件
 		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		
+		// dao更新
 		superDao.update(algorithm);
 		return "a^算法文件已公开成功";
 	}

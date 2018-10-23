@@ -19,6 +19,8 @@
     <link href="resources/css/zui-theme.css" rel="stylesheet"/>
     <link href="resources/css/common.css" rel="stylesheet"/>
     <link href="resources/css/jk_control.css" rel="stylesheet"/>
+    <link href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 
 
     <script src="resources/plugins/jquery.1.12.4.min.js"></script>
@@ -40,15 +42,33 @@
 
 <div class="jk_main">
     <div class="main" style="width: 97%;margin-left: 20px;height: 90%">
-        <table id="table" style="text-align: center;"></table>
+        <table id="table" style="text-align: center;height: 80%"></table>
     </div>
-<ul >
-    <li style="float: left;display: inline"><div id="container1" style="width: 210px;height: 300px;" class="wenduyibiaopan"></div></li>
-    <li style="float: left;display: inline"><div id="container2" style="width: 210px;height: 300px;" class="wenduyibiaopan"></div></li>
-    <li style="float: left;display: inline"><div id="container3" style="width: 210px;height: 300px;" class="wenduyibiaopan"></div></li>
-    <li style="float: left;display: inline"><div id="container4" style="width: 210px;height: 300px;" class="wenduyibiaopan"></div></li>
-    <li style="float: left;display: inline"><div id="container5" style="width: 210px;height: 300px;" class="wenduyibiaopan"></div></li>
+<ul class="visualization" style="display: inline">
+    <li style="float: left;display: inline"><div id="container1" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container2" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container3" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container4" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container5" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
 </ul>
+    <div class="modal fade" id="cons" tabindex="－1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="z-index: 9999;width: 80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">可视化</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pie" id="pie" style="width: 900px;height: 500px;"></div>
+                    <div class="bar" id="bar" style="width: 900px;height: 600px;"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </div>
 <!--数据曲线图可视化-->
 <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -80,7 +100,7 @@
      */
     var actionFormatterList = {
         // equiMana
-        "equiOperCont": "OnlyRemove",
+        "equiOperCont": "OperRemove",//设备控制
         "sensMana": "OnlyRemove",
         "enviContEquiMana": "OnlyRemove",
         "deviExceInfoChec": "OnlyRemove",
@@ -104,29 +124,40 @@
         // user
         "userAudiActiDiag": "OK_Remove",
         "userCanc": "OnlyRemove",
+        "consSett" :"OnlyRemove"
     }
     //不同 jsonUrl 表格操作不同
     function actionFormatter(value, row, index) {
-        var actionFormatterUrl = jsonUrl.substring(jsonUrl.lastIndexOf("/")+1,jsonUrl.lastIndexOf("."))
-        var renturnActionFormatterStr = actionFormatterList[actionFormatterUrl];
-        var renturnActionFormatter = [];
-        if (renturnActionFormatterStr.trim() === "OK_Remove")
+        var actionFormatterUrl = jsonUrl.substring(jsonUrl.lastIndexOf("/")+1,jsonUrl.lastIndexOf("."));
+        var returnActionFormatterStr = actionFormatterList[actionFormatterUrl];
+        var returnActionFormatter = [];
+        if (returnActionFormatterStr.trim() === "OK_Remove")
         {
-            renturnActionFormatter =
+            returnActionFormatter =
                 [//OK_Remove
                 '<a class="like" href="javascript:void(0)" data-toggle="tooltip" title="OK"><i class="glyphicon glyphicon-ok"></i></a>　',
-                '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'];
+                '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                ]
         }
-        else if (renturnActionFormatterStr.trim() === "Out_In")
+        else if (returnActionFormatterStr.trim() === "OperRemove")
         {
-            renturnActionFormatter =
+            returnActionFormatter =
+                [
+                    //operate_remove
+                    '<a class="operate" href="javascript:void(0)" data-toggle="tooltip" title="是否自动处理异常"><i class="fa fa-circle-o"></i></a>　',
+                    '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                ]
+        }
+        else if (returnActionFormatterStr.trim() === "Out_In")
+        {
+            returnActionFormatter =
                 [//Out_In
                     '<a class="like" href="javascript:void(0)" data-toggle="tooltip" title="OK"><i class="glyphicon glyphicon-log-out"></i></a>　',
                     '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-log-in"></i></a>']
         }
-        else if (renturnActionFormatterStr.trim() === "OnlyRemove")
+        else if (returnActionFormatterStr.trim() === "OnlyRemove")
         {
-            renturnActionFormatter =
+            returnActionFormatter =
                 [
                     //OnlyRemove
                     '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
@@ -134,11 +165,11 @@
         }
         else if (actionFormatterUrl.trim() === "Nothing" ||actionFormatterUrl.trim() === "UnwKnow")
         {
-            renturnActionFormatter =
+            returnActionFormatter =
                 [
                 ]
         }
-        return renturnActionFormatter.join('');
+        return returnActionFormatter.join('');
     }
 
     // 操作click 事件
@@ -150,6 +181,15 @@
         'click .remove': function (e, value, row, index) {
             alert('You click remove icon, row: ' + JSON.stringify(row));
             console.log(value, row, index);
+        },
+        'click .operate':function (e, value, row, index) {
+            var r = confirm("是否自动调控");
+            if (r == true){
+                    alert("进入自动调控");
+            }
+            else if(r == false){
+                    alert("取消自动调控");
+            }
         }
     };
 //生成表格
@@ -159,7 +199,7 @@
         columnsArray.push({field: "cloumn_state", checkbox: true});
         //columnsArray.push({halign: "center"});
         //console.log(json[1][0])
-        //console.log(Object.keys(json[0][0]))
+        // console.log(Object.keys(json[1]))
         for (var i = 0; i < (Object.keys(json[0][0])).length; i++) {//Object.keys(obj) 获取key名称
             var property = (Object.keys(json[0][0]))[i];// 数据表名
             var CN_property = (json[0][0][property]);// 标题
@@ -203,7 +243,7 @@
             idField: 'systemId',
             maintainSelected: true,
             toolbar: '#toolbar',
-            columns: columnsArray
+            columns: columnsArray,
         });
     }
 //录入
@@ -234,15 +274,6 @@
         }
         $('#createsettingDialog',parent.document).html(createsettingDialogInHtml);
     }
-// // 高级搜索
-//     function dynamicGeneratedAdvacedSearch(json) {
-//         $('#add').click(function (e) {
-//
-//             console.log(e);
-//             $('.plus_input').append('<input type="text" class="form-control p_input" id="p_input" placeholder="设备ID">')
-//             // alert("ggg");
-//         });
-//     }
 
 
     var jsonUrl=window.parent.document.getElementById("jsonUrl").value;
@@ -261,8 +292,6 @@
                     dynamicGeneratedMessageInput(json);
                     //  动态生成信息设置
                     dynamicGeneratedMessageSetting(json);
-                    //高级搜索
-                    dynamicGeneratedAdvacedSearch(json);
                 },
                 error: function () {
                     alert("请求数据失败,请检查网络状况");
@@ -270,6 +299,22 @@
             });
         }
     });
+
+    if(jsonUrl == "resources/data/equiOperCont.json" || jsonUrl == "resources/data/userCanc.json"
+    || jsonUrl == "resources/data/userAudiActiDiag.json" || jsonUrl == "formColl1.json" ||jsonUrl == "formColl2.json"
+        || jsonUrl == "formColl3.json" || jsonUrl == "stanSett.json" || jsonUrl == "equiOperCont.json" ||
+        jsonUrl == "feedMana.json" || jsonUrl == "formColl.json"|| jsonUrl == "feedRegu.json"
+        || jsonUrl == "feedStat.json"|| jsonUrl == "pigInfoMana.json"|| jsonUrl == "pigSafeMana.json"||
+        jsonUrl == "vaccSett.json" || jsonUrl == "vaccMana.json"|| jsonUrl == "diseMana.json"|| jsonUrl == "destMana.json" ||
+    jsonUrl == "suspIllnStat.json" || jsonUrl == "pigElimMana.json"|| jsonUrl == "migrMana.json"|| jsonUrl == "entrMana.json"||
+        jsonUrl == "coluMana.json"|| jsonUrl == "hurdMana.json"|| jsonUrl == "sowBree.json"|| jsonUrl == "weanCont.json"|| jsonUrl == "sowsDeli.json") {
+        $('.visualization').attr("style", "display:none;");
+        $('.fixed-table-body').attr("style", "height:500px");
+    }else if (jsonUrl == "resources/data/consSett.json"){
+        $('.jk_main').prepend("<button class='btn btn-primary btn-lg btn-watch' style='border-radius: 5px; border: none; box-shadow: 3px 3px 2px #b1b1b1; margin-left: 20px;margin-top: 10px;background-color:rgba(41,161,118,0.74);' data-toggle='modal' data-target='#cons'>点击查看可视化</button>");
+        $('.visualization').attr("style", "display:none;");
+        $('.fixed-table-body').attr("style", "height:500px");
+    }
 </script>
 <script>
     // 仪表盘数据demo
@@ -285,7 +330,7 @@
                 fontWeight: 'bolder',
                 fontSize: 12,
                 fontcolor:"#d7fcf7",
-                offsetCenter: [0, '-120%']
+                offsetCenter: [0, '120%']
             },
             axisTickLabel:{
                 fontSize:8
@@ -304,7 +349,7 @@
                 fontWeight: 'bolder',
                 fontSize: 12,
                 fontcolor:"#d7fcf7",
-                offsetCenter: [0, '-120%']
+                offsetCenter: [0, '120%']
             },
             axisTickLabel:{
                 fontSize:8
@@ -323,7 +368,7 @@
                 fontWeight: 'bolder',
                 fontSize: 12,
                 fontcolor:"#d7fcf7",
-                offsetCenter: [0, '-120%']
+                offsetCenter: [0, '120%']
             },
             axisTickLabel:{
                 fontSize:8
@@ -342,7 +387,7 @@
                 fontWeight: 'bolder',
                 fontSize: 12,
                 fontcolor:"#d7fcf7",
-                offsetCenter: [0, '-120%']
+                offsetCenter: [0, '120%']
             },
             axisTickLabel:{
                 fontSize:8
@@ -362,7 +407,7 @@
                 fontWeight: 'bolder',
                 fontSize: 12,
                 fontcolor:"#d7fcf7",
-                offsetCenter: [0, '-120%']
+                offsetCenter: [0, '120%']
             },
             axisTickLabel:{
                 fontSize:8
@@ -515,17 +560,161 @@
         myChart.setOption(option);
     }
 </script>
+
+
+<!--pie图-->
 <script>
+    // 基于准备好的dom，初始化echarts实例
+    var mypie = echarts.init(document.getElementById('pie'));
+    pieoption = {
+        title : {
+            text: '详情',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient : 'vertical',
+            x : 'left',
+            data:[ '购买药', '疫苗', '饲料', '设备', '猪种', '员工工资', '水电费用',"投资"]
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'left',
+                            max: 1548
+                        }
+                    }
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:335, name:'购买药'},
+                    {value:310, name:'疫苗'},
+                    {value:234, name:'饲料'},
+                    {value:135, name:'设备'},
+                    {value:1548, name:'猪种'},
+                    {value:135, name:'员工工资'},
+                    {value:1548, name:'水电费用'},
+                    {value:1548, name:'投资'},
 
-    $(function () {
-            $('.add').click(function () {
+                ]
+            }
+        ]
+    };
 
-                $('.plus_input').append('<input type="text" class="form-control p_input" id="p_input" placeholder="设备ID">')
-                // alert("ggg");
-            });
-        }
 
-    );
+    mypie.setOption(pieoption);
+</script>
+
+<!--柱状图-->
+<script>
+    var mybar = echarts.init(document.getElementById('bar'));
+    baroption = {
+        title : {
+            text: '一个季度支出的情况'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['支付宝','微信','现金']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'支付宝',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'现金',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'微信',
+                type:'bar',
+                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                markPoint : {
+                    data : [
+                        {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                        {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+
+    mybar.setOption(baroption);
 </script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+var count = 0;
+var this_url = "";
+var data = "";
 var click = device.mobile() ? 'touchstart' : 'click';
 $(function () {
     // 侧边栏操作按钮
@@ -91,7 +94,6 @@ var Tab = {
             $('.content_tab>ul').animate({scrollLeft: document.getElementById('tabs').scrollWidth - document.getElementById('tabs').clientWidth}, 200, function () {
                 initScrollState();
             });
-
         }
         // 关闭侧边栏
         $('#guide').trigger(click);
@@ -114,51 +116,68 @@ var Tab = {
 
 // 添加标签背景色
 function add_bacColor(jsonUrl) {
+    this_url = jsonUrl;
     var index = jsonUrl.lastIndexOf('\/');
     var item = jsonUrl.substring(index+1,jsonUrl.length-5);
     var use_item = document.getElementById(item).style.backgroundColor = "#27986f";
     var use_item = document.getElementById(item).style.opacity = "0.8";
     var use_item = document.getElementById(item).style.color = "black";
     var $item = $('.main-menu .waves-effect');
-    var data = "";
+
     $item.not($(document.getElementById(item))).css('background','white');
     // color: #989898;
     $item.not($(document.getElementById(item))).css('color','#989898');
-
-    $('.add').click(function () {
-
-        //usage:
-        readTextFile(jsonUrl, function(text){
-            data = JSON.parse(text);
-        });
-        for (var i=0; i<data.length; i++){
-
-        }
-        $('.plus_input').append('<input type="text" class="form-control p_input" id="p_input" placeholder="设备ID">');
+    //usage:
+    readTextFile(this_url, function(text){
+        data = JSON.parse(text);
+        console.log(data);
     });
 
+    // 出现冒泡事件，先要取消冒泡，防止click执行两次
+    $('.add').off('click').on('click',function () {
+            if(count < (Object.keys(data[0][0])).length) {
+                // console.log(count+"  "+this_url);
+                // console.log(data[0][0]);
+                var property = (Object.keys(data[0][0]))[count];// 数据表名
+                var CN_property = (data[0][0][property]);// 标题
+                $('.plus_input').append('<input type="text" class="form-control p_input p_add" id="p_input_'+count+'" placeholder="'+CN_property+'">');
+
+            }else {
+                    alert("已经没有查询的条件！")
+            }
+            count ++;
+
+    });
+
+}
+
+function delete_add() {
+    // console.log("fresh");
+    $('.p_add').remove();
+    data = "";
+    count = 0;
 }
 
 
 
 function initScrollShow() {
-    if (document.getElementById('tabs').scrollWidth > document.getElementById('tabs').clientWidth) {
-        $('.content_tab').addClass('scroll');
-    } else {
-        $('.content_tab').removeClass('scroll');
-    }
+    // if (document.getElementById('tabs').scrollWidth > document.getElementById('tabs').clientWidth) {
+    //     $('.content_tab').addClass('scroll');
+    // } else {
+    //     $('.content_tab').removeClass('scroll');
+    // }
 }
 function initScrollState() {
-    if ($('.content_tab>ul').scrollLeft() == 0) {
-        $('.tab_left>a').removeClass('active');
-    } else {
-        $('.tab_left>a').addClass('active');
-    }
-    if (($('.content_tab>ul').scrollLeft() + document.getElementById('tabs').clientWidth) >= document.getElementById('tabs').scrollWidth) {
-        $('.tab_right>a').removeClass('active');
-    } else {
-        $('.tab_right>a').addClass('active');
-    }
+    // if ($('.content_tab>ul').scrollLeft() == 0) {
+    //     $('.tab_left>a').removeClass('active');
+    // } else {
+    //     $('.tab_left>a').addClass('active');
+    // }
+    // if (($('.content_tab>ul').scrollLeft() + document.getElementById('tabs').clientWidth) >= document.getElementById('tabs').scrollWidth) {
+    //     $('.tab_right>a').removeClass('active');
+    // } else {
+    //     $('.tab_right>a').addClass('active');
+    // }
 }
 
 function fullPage() {
@@ -389,34 +408,6 @@ $(function () {
         }
     });
 });
-// $(function () {
-//     //url集合
-//     var data_li = document.getElementsByClassName('waves-effect');
-//     var cur = document.getElementsByClassName('cur')[0];
-//     console.log(cur);
-//     // 便利集合
-//     for (var i=0; i<data_li.length; i++){
-//         var data_url = data_li[i].dataset.url;
-//         //usage:
-//         readTextFile(data_url, function(text){
-//             var data = JSON.parse(text);
-//             // console.log(data);
-//         });
-//     }
-//     if(cur){
-//         var cur_url = cur.dataset.url;
-//         console.log(cur_url);
-//     }
-//
-//     $('.add').click(function () {
-//
-//         //console.log(jsonUrl);
-//         $('.plus_input').append('<input type="text" class="form-control p_input" id="p_input" placeholder="设备ID">')
-//        // alert("ggg");
-//     });
-//     }
-//
-// );
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
     rawFile.overrideMimeType("application/json");

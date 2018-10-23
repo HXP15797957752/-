@@ -1,75 +1,43 @@
 package cn.bluedot.core.domain;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����4:46:33
- */
-public class HogCote {
-	/**
-	 * ������
-	 */
-	private String hogcoteNo;
-	
-	/**
-	 * ����޶�
-	 */
-	private int upperLimit;
-	
-	/**
-	 * ���
-	 */
-	private long area;
-	
-	/**
-	 * ��ǰ������
-	 */
-	private int curPigNumber;
-	
-	/**
-	 * ������
-	 */
-	private String pigstyNo;
-
-	public String getHogcoteNo() {
-		return hogcoteNo;
-	}
-
-	public void setHogcoteNo(String hogcoteNo) {
-		this.hogcoteNo = hogcoteNo;
-	}
-
-	public int getUpperLimit() {
-		return upperLimit;
-	}
-
-	public void setUpperLimit(int upperLimit) {
-		this.upperLimit = upperLimit;
-	}
-
-	public long getArea() {
-		return area;
-	}
-
-	public void setArea(long area) {
-		this.area = area;
-	}
-
-	public int getCurPigNumber() {
-		return curPigNumber;
-	}
-
-	public void setCurPigNumber(int curPigNumber) {
-		this.curPigNumber = curPigNumber;
-	}
-
-	public String getPigstyNo() {
-		return pigstyNo;
-	}
-
-	public void setPigstyNo(String pigstyNo) {
-		this.pigstyNo = pigstyNo;
-	}
-	
-	
-} 
+public class Hogcote{
+    /** */
+    private String hogcoteNo;
+    /** */
+    private Integer upperLimit;
+    /** */
+    private java.math.BigDecimal area;
+    /** */
+    private Integer curPigNumber;
+    /** */
+    private String pigstyNo;
+    public void setHogcoteNo(String hogcoteNo){
+        this.hogcoteNo = hogcoteNo;
+    }
+    public String getHogcoteNo(){
+        return this.hogcoteNo;
+    }
+    public void setUpperLimit(Integer upperLimit){
+        this.upperLimit = upperLimit;
+    }
+    public Integer getUpperLimit(){
+        return this.upperLimit;
+    }
+    public void setArea(java.math.BigDecimal area){
+        this.area = area;
+    }
+    public java.math.BigDecimal getArea(){
+        return this.area;
+    }
+    public void setCurPigNumber(Integer curPigNumber){
+        this.curPigNumber = curPigNumber;
+    }
+    public Integer getCurPigNumber(){
+        return this.curPigNumber;
+    }
+    public void setPigstyNo(String pigstyNo){
+        this.pigstyNo = pigstyNo;
+    }
+    public String getPigstyNo(){
+        return this.pigstyNo;
+    }
+}

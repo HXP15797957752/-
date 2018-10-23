@@ -1,74 +1,43 @@
 package cn.bluedot.core.domain;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����3:32:34
- */
-public class EatRecord {
-	/**
-	 * ��ʳ��¼ID
-	 */
-	private long eatRecordID;
-	
-	/**
-	 * �����
-	 */
-	private String pigNo;
-	
-	/**
-	 * �����׶�
-	 */
-	private int growthStateID;
-	
-	/**
-	 * ƽ��ʣ����
-	 */
-	private int surplus;
-	
-	/**
-	 * ƽ����ʳ��
-	 */
-	private int eatCount;
-
-	public long getEatRecordID() {
-		return eatRecordID;
-	}
-
-	public void setEatRecordID(long eatRecordID) {
-		this.eatRecordID = eatRecordID;
-	}
-
-	public String getPigNo() {
-		return pigNo;
-	}
-
-	public void setPigNo(String pigNo) {
-		this.pigNo = pigNo;
-	}
-
-	public int getGrowthStateID() {
-		return growthStateID;
-	}
-
-	public void setGrowthStateID(int growthStateID) {
-		this.growthStateID = growthStateID;
-	}
-
-	public int getSurplus() {
-		return surplus;
-	}
-
-	public void setSurplus(int surplus) {
-		this.surplus = surplus;
-	}
-
-	public int getEatCount() {
-		return eatCount;
-	}
-
-	public void setEatCount(int eatCount) {
-		this.eatCount = eatCount;
-	}
-	
+public class Eatrecord{
+    /** */
+    private Integer eatRecordID;
+    /** */
+    private String pigNo;
+    /**生长阶段*/
+    private Integer growthStateID;
+    /**平均剩余量*/
+    private Integer surplus;
+    /**平均食用量*/
+    private Integer eatCount;
+    public void setEatRecordID(Integer eatRecordID){
+        this.eatRecordID = eatRecordID;
+    }
+    public Integer getEatRecordID(){
+        return this.eatRecordID;
+    }
+    public void setPigNo(String pigNo){
+        this.pigNo = pigNo;
+    }
+    public String getPigNo(){
+        return this.pigNo;
+    }
+    public void setGrowthStateID(Integer growthStateID){
+        this.growthStateID = growthStateID;
+    }
+    public Integer getGrowthStateID(){
+        return this.growthStateID;
+    }
+    public void setSurplus(Integer surplus){
+        this.surplus = surplus;
+    }
+    public Integer getSurplus(){
+        return this.surplus;
+    }
+    public void setEatCount(Integer eatCount){
+        this.eatCount = eatCount;
+    }
+    public Integer getEatCount(){
+        return this.eatCount;
+    }
 }

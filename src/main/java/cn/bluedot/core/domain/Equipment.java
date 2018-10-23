@@ -1,127 +1,75 @@
 package cn.bluedot.core.domain;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����3:39:57
- */
-public class Equipment {
-	/**
-	 * �豸ID
-	 */
-	private long equipmentID;
-	
-	/**
-	 * �豸����
-	 */
-	private String ename;
-	
-	/**
-	 * �豸����
-	 */
-	private String etype;
-	
-	/**
-	 * ����״̬
-	 */
-	private int workState;
-	
-	/**
-	 * ������
-	 */
-	private String pigstyNo;
-	
-	/**
-	 * �������
-	 */
-	private String hogcoteNo;
-	
-	/**
-	 * �������ռ�����ʱ����
-	 */
-	private int timeInterval;
-	
-	/**
-	 * �����豸����,�¶�,ʪ��...
-	 */
-	private String controlType;
-	
-	/**
-	 * �����豸��ֵ
-	 */
-	private String controlThreshold;
-
-	public long getEquipmentID() {
-		return equipmentID;
-	}
-
-	public void setEquipmentID(long equipmentID) {
-		this.equipmentID = equipmentID;
-	}
-
-	public String getEname() {
-		return ename;
-	}
-
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
-
-	public String getEtype() {
-		return etype;
-	}
-
-	public void setEtype(String etype) {
-		this.etype = etype;
-	}
-
-	public int getWorkState() {
-		return workState;
-	}
-
-	public void setWorkState(int workState) {
-		this.workState = workState;
-	}
-
-	public String getPigstyNo() {
-		return pigstyNo;
-	}
-
-	public void setPigstyNo(String pigstyNo) {
-		this.pigstyNo = pigstyNo;
-	}
-
-	public String getHogcoteNo() {
-		return hogcoteNo;
-	}
-
-	public void setHogcoteNo(String hogcoteNo) {
-		this.hogcoteNo = hogcoteNo;
-	}
-
-	public int getTimeInterval() {
-		return timeInterval;
-	}
-
-	public void setTimeInterval(int timeInterval) {
-		this.timeInterval = timeInterval;
-	}
-
-	public String getControlType() {
-		return controlType;
-	}
-
-	public void setControlType(String controlType) {
-		this.controlType = controlType;
-	}
-
-	public String getControlThreshold() {
-		return controlThreshold;
-	}
-
-	public void setControlThreshold(String controlThreshold) {
-		this.controlThreshold = controlThreshold;
-	}
-	
-	
+public class Equipment{
+    /** */
+    private Integer equipmentID;
+    /** */
+    private String ename;
+    /** */
+    private String etype;
+    /** */
+    private Integer workState;
+    /**猪舍编号*/
+    private String pigstyNo;
+    /**猪栏编号*/
+    private String hogcoteNo;
+    /**传感器收集数据时间间隔,*/
+    private Integer timeInterval;
+    /**环控设备类型,温度,湿度...*/
+    private String controlType;
+    /**环控设备阈值*/
+    private String controlThreshold;
+    public void setEquipmentID(Integer equipmentID){
+        this.equipmentID = equipmentID;
+    }
+    public Integer getEquipmentID(){
+        return this.equipmentID;
+    }
+    public void setEname(String ename){
+        this.ename = ename;
+    }
+    public String getEname(){
+        return this.ename;
+    }
+    public void setEtype(String etype){
+        this.etype = etype;
+    }
+    public String getEtype(){
+        return this.etype;
+    }
+    public void setWorkState(Integer workState){
+        this.workState = workState;
+    }
+    public Integer getWorkState(){
+        return this.workState;
+    }
+    public void setPigstyNo(String pigstyNo){
+        this.pigstyNo = pigstyNo;
+    }
+    public String getPigstyNo(){
+        return this.pigstyNo;
+    }
+    public void setHogcoteNo(String hogcoteNo){
+        this.hogcoteNo = hogcoteNo;
+    }
+    public String getHogcoteNo(){
+        return this.hogcoteNo;
+    }
+    public void setTimeInterval(Integer timeInterval){
+        this.timeInterval = timeInterval;
+    }
+    public Integer getTimeInterval(){
+        return this.timeInterval;
+    }
+    public void setControlType(String controlType){
+        this.controlType = controlType;
+    }
+    public String getControlType(){
+        return this.controlType;
+    }
+    public void setControlThreshold(String controlThreshold){
+        this.controlThreshold = controlThreshold;
+    }
+    public String getControlThreshold(){
+        return this.controlThreshold;
+    }
 }

@@ -1,132 +1,75 @@
 package cn.bluedot.core.domain;
-
-import java.util.Date;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����2:32:54
- * @
- */
-public class Algorithm {
-	/**
-	 * �㷨����������
-	 */
-	private int algorithmID;
-	
-	/**
-	 * �㷨����
-	 */
-	private String name;
-	
-	/**
-	 * �㷨����  0��Ԥ�����㷨  1�������㷨
-	 */
-	private int type;
-	
-	/**
-	 * �㷨����
-	 */
-	private String description;
-	
-	/**
-	 * �ϴ�ʱ��
-	 */
-	private Date dateTime;
-	
-	/**
-	 * ״̬
-	 */
-	private int state;
-	
-	/**
-	 * �㷨����·��
-	 */
-	private String savePath;
-	
-	/**
-	 * �ϴ��㷨���û�
-	 */
-	private String uploadUserNo;
-	
-	/**
-	 * �û����ش���
-	 */
-	private int downloadCount;
-
-	public int getAlgorithmID() {
-		return algorithmID;
-	}
-
-	public void setAlgorithmID(int algorithmID) {
-		this.algorithmID = algorithmID;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getDateTime() {
-		return dateTime;
-	}
-
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
-	}
-
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
-	public String getSavePath() {
-		return savePath;
-	}
-
-	public void setSavePath(String savePath) {
-		this.savePath = savePath;
-	}
-
-	public String getUploadUserNo() {
-		return uploadUserNo;
-	}
-
-	public void setUploadUserNo(String uploadUserNo) {
-		this.uploadUserNo = uploadUserNo;
-	}
-
-	public int getDownloadCount() {
-		return downloadCount;
-	}
-
-	public void setDownloadCount(int downloadCount) {
-		this.downloadCount = downloadCount;
-	}
-	
-	
-	
-	
+public class Algorithm{
+    /**算法主键，自增*/
+    private Integer algorithmID;
+    /**算法名称*/
+    private String name;
+    /**0:预处理算法  1:分析算法*/
+    private Integer type;
+    /**系统管理员对此算法的描述*/
+    private String description;
+    /**上传时间,以****-**-** **:**:** 此种格式为标准存入，精确到秒*/
+    private java.util.Date uploadTime;
+    /** */
+    private Integer state;
+    /**' COMMENT '算法存储路径*/
+    private String savePath;
+    /**上传算法的用户*/
+    private String uploadUserNo;
+    /**用户下载次数*/
+    private Integer downloadCount;
+    public void setAlgorithmID(Integer algorithmID){
+        this.algorithmID = algorithmID;
+    }
+    public Integer getAlgorithmID(){
+        return this.algorithmID;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void setType(Integer type){
+        this.type = type;
+    }
+    public Integer getType(){
+        return this.type;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return this.description;
+    }
+    public void setUploadTime(java.util.Date uploadTime){
+        this.uploadTime = uploadTime;
+    }
+    public java.util.Date getUploadTime(){
+        return this.uploadTime;
+    }
+    public void setState(Integer state){
+        this.state = state;
+    }
+    public Integer getState(){
+        return this.state;
+    }
+    public void setSavePath(String savePath){
+        this.savePath = savePath;
+    }
+    public String getSavePath(){
+        return this.savePath;
+    }
+    public void setUploadUserNo(String uploadUserNo){
+        this.uploadUserNo = uploadUserNo;
+    }
+    public String getUploadUserNo(){
+        return this.uploadUserNo;
+    }
+    public void setDownloadCount(Integer downloadCount){
+        this.downloadCount = downloadCount;
+    }
+    public Integer getDownloadCount(){
+        return this.downloadCount;
+    }
 }

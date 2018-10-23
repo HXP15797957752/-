@@ -1,141 +1,83 @@
 package cn.bluedot.core.domain;
-
-import java.util.Date;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����3:21:07
- */
-public class DrugRecord {
-	/**
-	 * ҩ���¼ID
-	 */
-	private int durgRecordID;
-	
-	/**
-	 * ҩ������ID
-	 */
-	private int drugTypeID;
-	
-	/**
-	 * ��������
-	 */
-	private Date createTime;
-	
-	/**
-	 * ��Ч��
-	 */
-	private Date effectiveTime;
-	
-	/**
-	 * ��ǰ�����
-	 */
-	private int curNumber;
-	
-	/**
-	 * ��ҩ������λ
-	 */
-	private String unit;
-	
-	/**
-	 * �Ƿ�Ϊ������,0:��  1:��
-	 */
-	private int isWarehousing;
-	
-	/**
-	 * �����ʱ��
-	 */
-	private Date time;
-	
-	/**
-	 * ���������
-	 */
-	private int number;
-	
-	/**
-	 * ҩ�۸�
-	 */
-	private float price;
-
-	public int getDurgRecordID() {
-		return durgRecordID;
-	}
-
-	public void setDurgRecordID(int durgRecordID) {
-		this.durgRecordID = durgRecordID;
-	}
-
-	public int getDrugTypeID() {
-		return drugTypeID;
-	}
-
-	public void setDrugTypeID(int drugTypeID) {
-		this.drugTypeID = drugTypeID;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public Date getEffectiveTime() {
-		return effectiveTime;
-	}
-
-	public void setEffectiveTime(Date effectiveTime) {
-		this.effectiveTime = effectiveTime;
-	}
-
-	public int getCurNumber() {
-		return curNumber;
-	}
-
-	public void setCurNumber(int curNumber) {
-		this.curNumber = curNumber;
-	}
-
-	public String getUnit() {
-		return unit;
-	}
-
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
-	public int getIsWarehousing() {
-		return isWarehousing;
-	}
-
-	public void setIsWarehousing(int isWarehousing) {
-		this.isWarehousing = isWarehousing;
-	}
-
-	public Date getTime() {
-		return time;
-	}
-
-	public void setTime(Date time) {
-		this.time = time;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-	
+public class Drugrecord{
+    /** */
+    private Integer drugRecordID;
+    /** */
+    private Integer drugTypeID;
+    /**生产日期*/
+    private java.util.Date createTime;
+    /**有效期*/
+    private java.util.Date effectiveTime;
+    /**当前库存量*/
+    private Integer curNumber;
+    /** */
+    private String unit;
+    /**是否为入库操作,0:否  1:是*/
+    private Integer isWarehousing;
+    /**出入库时间*/
+    private java.util.Date time;
+    /**出入库数量*/
+    private Integer number;
+    /**药价格*/
+    private java.math.BigDecimal price;
+    public void setDrugRecordID(Integer drugRecordID){
+        this.drugRecordID = drugRecordID;
+    }
+    public Integer getDrugRecordID(){
+        return this.drugRecordID;
+    }
+    public void setDrugTypeID(Integer drugTypeID){
+        this.drugTypeID = drugTypeID;
+    }
+    public Integer getDrugTypeID(){
+        return this.drugTypeID;
+    }
+    public void setCreateTime(java.util.Date createTime){
+        this.createTime = createTime;
+    }
+    public java.util.Date getCreateTime(){
+        return this.createTime;
+    }
+    public void setEffectiveTime(java.util.Date effectiveTime){
+        this.effectiveTime = effectiveTime;
+    }
+    public java.util.Date getEffectiveTime(){
+        return this.effectiveTime;
+    }
+    public void setCurNumber(Integer curNumber){
+        this.curNumber = curNumber;
+    }
+    public Integer getCurNumber(){
+        return this.curNumber;
+    }
+    public void setUnit(String unit){
+        this.unit = unit;
+    }
+    public String getUnit(){
+        return this.unit;
+    }
+    public void setIsWarehousing(Integer isWarehousing){
+        this.isWarehousing = isWarehousing;
+    }
+    public Integer getIsWarehousing(){
+        return this.isWarehousing;
+    }
+    public void setTime(java.util.Date time){
+        this.time = time;
+    }
+    public java.util.Date getTime(){
+        return this.time;
+    }
+    public void setNumber(Integer number){
+        this.number = number;
+    }
+    public Integer getNumber(){
+        return this.number;
+    }
+    public void setPrice(java.math.BigDecimal price){
+        this.price = price;
+    }
+    public java.math.BigDecimal getPrice(){
+        return this.price;
+    }
 }

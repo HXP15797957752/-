@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Willdestroy{
+public class WillDestroy{
     /**销毁ID,主键，自增*/
     private Integer willDestroyID;
     /** */

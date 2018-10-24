@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Inoculationset{
+public class InoculationSet{
     /** */
     private Integer inoculationSetID;
     /**药种类*/

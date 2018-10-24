@@ -40,7 +40,6 @@ public class UserServlet extends BaseServlet {
         if (name != null && !"".equals(name) && ps != null && !"".equals(ps)) {
             String hql = "User|userNo=?";
             List<Object> list = superDao.HQLQuery(hql, name);
-            System.out.println(list.size());
             User findUser = null;
             if (list == null || list.isEmpty()) {
                 errCode = "10100";
@@ -70,12 +69,13 @@ public class UserServlet extends BaseServlet {
      * @throws IOException
      */
     public String tologin(HttpServletRequest request, HttpServletResponse resonse) throws ServletException, IOException {
-        System.out.println(request.getCookies().length + "......");
-        for (Cookie cookie : request.getCookies()) {
-            if ("cname".equals(cookie.getName())) {
-                request.setAttribute("username", cookie.getValue());
-            }else if("cps".equals(cookie.getName())) {
-                request.setAttribute("password", cookie.getValue());
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("cname".equals(cookie.getName())) {
+                    request.setAttribute("username", cookie.getValue());
+                }else if("cps".equals(cookie.getName())) {
+                    request.setAttribute("password", cookie.getValue());
+                }
             }
         }
         return "f:/login.jsp";
@@ -89,8 +89,7 @@ public class UserServlet extends BaseServlet {
      * @throws IOException
      */
     public String toIndex(HttpServletRequest request, HttpServletResponse resonse) throws ServletException, IOException {
-        System.out.println("toIndex");
-        return "f:/index.html";
+        return "f:/index.jsp";
     }
     /**
      * 注册业务逻辑
@@ -105,7 +104,6 @@ public class UserServlet extends BaseServlet {
         
         Map<String, String> errMap = new HashMap<>();
         List<Object> list = superDao.HQLQuery("User|userNo=?", registUser.getUserNo());
-        System.out.println(list.size());
         if (!list.isEmpty()) {
             errMap.put("userNo_err", "该用户名已经注册");
         }else if (registUser.getUserNo().length() <= 0) {
@@ -148,10 +146,8 @@ public class UserServlet extends BaseServlet {
         // 验证通过
         registUser.setCreateDate(new Date());
         registUser.setState(0);// 待审核状态0
-        System.out.println(registUser+"]]]");
         try {
-            int t = superDao.save(registUser);
-            System.out.println(":::t=" + t);
+            superDao.save(registUser);
         } catch (SQLException e) {
             e.printStackTrace();
         }

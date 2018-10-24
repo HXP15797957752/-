@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -203,13 +206,17 @@
 					<img src="resources/images/avatar.jpg"/>
 				</div>
 				<div class="sp-info">
-					李淑玥，您好！
+					<c:choose>
+					   <c:when test="${empty sessionScope.user}">未登录</c:when>
+					   <c:when test="${empty sessionScope.user.trueName}">${sessionScope.user.userNo},您好!</c:when>
+					   <c:otherwise>${sessionScope.user.trueName},您好!</c:otherwise>
+					</c:choose>
 					<i class="zmdi zmdi-caret-down"></i>
 				</div>
 			</a>
 			<ul class="main-menu">
 				<li>
-					<a class="waves-effect" href="javascript:Tab.addTab('个人资料','persData.html');"><i class="zmdi zmdi-account"></i> 个人资料</a>
+					<a class="waves-effect" href="javascript:Tab.addTab('个人资料','persData.jsp');"><i class="zmdi zmdi-account"></i> 个人资料</a>
 				</li>
 			</ul>
 		</div>

@@ -9,31 +9,4 @@
               attrname属性表示bo类中用的字段名称
               columnname属性表示po类中相应的字段名
  -->
-<bo classname="cn.bluedot.bigdatapig.framemarker.common.TestBo">
-    
-    <!-- 不是一个集合,必须写attrname -->
-    <po classname="cn.bluedot.bigdatapig.framemarker.common.User" tablename="user">
-         <id type="java.lang.Integer" attrname = "userid" columnname = "id"></id>
-         <property type="java.lang.String" attrname = "username" columnname = "name"></property>
-         <property type="java.lang.String" attrname = "sex" columnname = "sex"></property>
-    </po>
-    <!-- 如果写了name, property的attrname可以不写  : tablename.columnname-->
-    <po classname="cn.bluedot.bigdatapig.framemarker.common.Role" tablename="role" >
-        <id type="java.lang.Integer" attrname = "roleid" columnname = "id"></id>
-        <property type="java.lang.String" attrname = "roleName" columnname = "roleName"></property>   
-    </po>
-    <po classname="cn.bluedot.bigdatapig.framemarker.common.Book" tablename="book" listname = "bookes">
-        <id type="java.lang.Integer" columnname = "id"></id>
-        <property type="java.lang.String" columnname = "bookName"></property>   
-    </po>
-    <po classname="cn.bluedot.bigdatapig.framemarker.common.CLasses" tablename="classes">
-         <id type="java.lang.Integer" attrname = "classID" columnname = "id"></id>
-         <property type="java.lang.String" attrname = "className" columnname = "name"></property>
-    </po>
-    <!-- 写的是多对一的形式
-        //potablename
-     -->
-    <ref potablename="user" columnname="roleid" refpotablename="role"  refname="id" ></ref>
-    <ref potablename="user" columnname="classesid" refpotablename="classes"  refname="id"></ref>
-    <ref potablename="book" columnname="userid"  refpotablename="user" refname="id" ></ref>
-</bo>
+

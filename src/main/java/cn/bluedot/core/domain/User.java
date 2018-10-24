@@ -1,206 +1,132 @@
 package cn.bluedot.core.domain;
-
-import java.util.Date;
-
-/**
- * 
- * @author hxp
- * 2018��8��7�� ����6:28:18
- */
-public class User {
-	/**
-	 * �û���ţ����ţ�
-	 */
-	private String userNo;
-	
-	/**
-	 * ����
-	 */
-	private String email;
-	
-	/**
-	 * �ֻ���
-	 */
-	private char phoneNumber;
-	
-	/**
-	 * ����
-	 */
-	private String password;
-	
-	/**
-	 * ��ʵ����
-	 */
-	private String trueName;
-	
-	/**
-	 * �Ա�
-	 */
-	private int sex;
-	
-	/**
-	 * ���֤
-	 */
-	private char IDCard;
-	
-	/**
-	 * ͷ��url
-	 */
-	private String headPotraitUrl;
-	
-	/**
-	 * ע������
-	 */
-	private Date createDate;
-	
-	/**
-	 * ��Ч����
-	 */
-	private Date effectiveDate;
-	
-	/**
-	 * ���˼��
-	 */
-	private String personalProfile;
-	
-	/**
-	 * �ܱ�����
-	 */
-	private String question;
-	
-	/**
-	 * �ܱ���
-	 */
-	private String answer;
-	
-	/**
-	 * ���״̬��Ĭ��Ϊ����ˣ�
-	 */
-	private int state;
-	
-	/**
-	 * �����ע
-	 */
-	private String reviewAnnotation;
-
-	public String getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public char getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(char phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getTrueName() {
-		return trueName;
-	}
-
-	public void setTrueName(String trueName) {
-		this.trueName = trueName;
-	}
-
-	public int getSex() {
-		return sex;
-	}
-
-	public void setSex(int sex) {
-		this.sex = sex;
-	}
-
-	public char getIDCard() {
-		return IDCard;
-	}
-
-	public void setIDCard(char iDCard) {
-		IDCard = iDCard;
-	}
-
-	public String getHeadPotraitUrl() {
-		return headPotraitUrl;
-	}
-
-	public void setHeadPotraitUrl(String headPotraitUrl) {
-		this.headPotraitUrl = headPotraitUrl;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getEffectiveDate() {
-		return effectiveDate;
-	}
-
-	public void setEffectiveDate(Date effectiveDate) {
-		this.effectiveDate = effectiveDate;
-	}
-
-	public String getPersonalProfile() {
-		return personalProfile;
-	}
-
-	public void setPersonalProfile(String personalProfile) {
-		this.personalProfile = personalProfile;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
-	public String getReviewAnnotation() {
-		return reviewAnnotation;
-	}
-
-	public void setReviewAnnotation(String reviewAnnotation) {
-		this.reviewAnnotation = reviewAnnotation;
-	}
-	
+public class User{
+    /**工号,ID号,账号*/
+    private String userNo;
+    /** */
+    private String email;
+    /** */
+    private String phoneNumber;
+    /** */
+    private String password;
+    /** */
+    private String trueName;
+    /** */
+    private Integer sex;
+    /**' COMMENT '身份证*/
+    private String IDCard;
+    /**头像url*/
+    private String headPortraitUrl;
+    /**注册日期*/
+    private java.util.Date createDate;
+    /**生效日期*/
+    private java.util.Date effectiveDate;
+    /**个人简介*/
+    private String personalProfile;
+    /**密保问题*/
+    private String question;
+    /** */
+    private String answer;
+    /**审核状态*/
+    private Integer state;
+    /**审核批注*/
+    private String reviewAnnotation;
+    public void setUserNo(String userNo){
+        this.userNo = userNo;
+    }
+    public String getUserNo(){
+        return this.userNo;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public String getEmail(){
+        return this.email;
+    }
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
+    }
+    public String getPhoneNumber(){
+        return this.phoneNumber;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public String getPassword(){
+        return this.password;
+    }
+    public void setTrueName(String trueName){
+        this.trueName = trueName;
+    }
+    public String getTrueName(){
+        return this.trueName;
+    }
+    public void setSex(Integer sex){
+        this.sex = sex;
+    }
+    public Integer getSex(){
+        return this.sex;
+    }
+    public void setIDCard(String IDCard){
+        this.IDCard = IDCard;
+    }
+    public String getIDCard(){
+        return this.IDCard;
+    }
+    public void setHeadPortraitUrl(String headPortraitUrl){
+        this.headPortraitUrl = headPortraitUrl;
+    }
+    public String getHeadPortraitUrl(){
+        return this.headPortraitUrl;
+    }
+    public void setCreateDate(java.util.Date createDate){
+        this.createDate = createDate;
+    }
+    public java.util.Date getCreateDate(){
+        return this.createDate;
+    }
+    public void setEffectiveDate(java.util.Date effectiveDate){
+        this.effectiveDate = effectiveDate;
+    }
+    public java.util.Date getEffectiveDate(){
+        return this.effectiveDate;
+    }
+    public void setPersonalProfile(String personalProfile){
+        this.personalProfile = personalProfile;
+    }
+    public String getPersonalProfile(){
+        return this.personalProfile;
+    }
+    public void setQuestion(String question){
+        this.question = question;
+    }
+    public String getQuestion(){
+        return this.question;
+    }
+    public void setAnswer(String answer){
+        this.answer = answer;
+    }
+    public String getAnswer(){
+        return this.answer;
+    }
+    public void setState(Integer state){
+        this.state = state;
+    }
+    public Integer getState(){
+        return this.state;
+    }
+    public void setReviewAnnotation(String reviewAnnotation){
+        this.reviewAnnotation = reviewAnnotation;
+    }
+    public String getReviewAnnotation(){
+        return this.reviewAnnotation;
+    }
+    @Override
+    public String toString() {
+        return "User [userNo=" + userNo + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password=" + password
+                + ", trueName=" + trueName + ", sex=" + sex + ", IDCard=" + IDCard + ", headPortraitUrl="
+                + headPortraitUrl + ", createDate=" + createDate + ", effectiveDate=" + effectiveDate
+                + ", personalProfile=" + personalProfile + ", question=" + question + ", answer=" + answer + ", state="
+                + state + ", reviewAnnotation=" + reviewAnnotation + "]";
+    }
+    
 }

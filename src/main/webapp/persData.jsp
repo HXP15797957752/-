@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,14 +40,21 @@
                     <img src="resources/images/avatar.jpg" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
                 </a>
                 <a href="#" class="user-name">
-                    李淑玥
+                        <c:choose>
+                            <c:when test="${empty sessionScope.user.trueName}">未知</c:when>
+                            <c:otherwise>sessionScope.user.trueName</c:otherwise>
+                        </c:choose>
                     <span class="user-status is-online"></span>
                 </a><br />
                 <span class="user-title">
-									性别：女
+									性别：<c:choose>
+									   <c:when test="${sessionScope.user.sex eq 1}">男</c:when>
+									   <c:otherwise>女</c:otherwise>
+									</c:choose>
 								</span>
                 <span class="user-title" id="birthday">
-									1998-8-15
+                                    <!-- pattern="yyyy-MM-dd HH:mm:ss" -->
+									<fmt:formatDate value="${user.createDate}" pattern="yyyy-MM-dd"/>
 								</span>
 
                 <hr />
@@ -74,11 +85,11 @@
                     <!-- User info -->
                     <header>
                         <div class="user-details">
-                            <h5>身份证号：360102********2421</h5>
+                            <h5>身份证号：${sessionScope.user.IDCard}</h5>
                             <hr />
-                            <h5>手机号码：18172868710</h5>
+                            <h5>手机号码：${sessionScope.user.phoneNumber}</h5>
                             <hr />
-                            <h5>邮箱地址：841762543@qq.com</h5>
+                            <h5>邮箱地址：${sessionScope.user.email}</h5>
                             <hr />
                             <h5>工作单位：江西省南昌市江西农业大学</h5>
                             <hr />

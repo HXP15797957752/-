@@ -4,26 +4,8 @@
  *
 */
 
-#alloPerm{
-    width: 100%;
+body {	
 }
-#alloPerm td:first-child{
-    width: 25%;
-    text-align: center;
-}
-.checkbox label input{
-    margin-left: 10px;
-}
-#check{
-    width: 80%;
-    /*margin-top: 10%;*/
-    margin-left: 10%;
-}
-#check .modal-dialog{
-    width: 100%;
-    /*height: 100%*/
-}
-#check .modal-content{
-    width: 100%;
-    /*height: 100%;*/
+
+a {
 }

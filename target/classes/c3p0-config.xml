@@ -5,9 +5,9 @@
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="user">root</property>
 		<property name="password">renzhijiang</property>
-		<property name="initialPoolSize">60</property>
+		<property name="initialPoolSize">40</property>
 		<property name="minPoolSize">2</property>
-		<property name="maxPoolSize">800</property>
+		<property name="maxPoolSize">80</property>
 		<property name="maxUseCount">5</property>
 	</default-config>
 </c3p0-config>

@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Drugrecord{
+public class DrugRecord{
     /** */
     private Integer drugRecordID;
     /** */

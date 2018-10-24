@@ -1,59 +1,102 @@
 package cn.bluedot.core.domain;
-public class Diseasetreatment{
-    /**疾病治疗ID*/
-    private Integer diseaseTreatmentID;
-    /**猪耳号*/
-    private String pigNo;
-    /** */
-    private Integer drugTypeID;
-    /**服药时间*/
-    private java.util.Date eatTime;
-    /**用药总用量*/
-    private Integer useCount;
-    /**生病时间*/
-    private java.util.Date illTime;
-    /**病情描述*/
-    private String illDescription;
-    public void setDiseaseTreatmentID(Integer diseaseTreatmentID){
-        this.diseaseTreatmentID = diseaseTreatmentID;
-    }
-    public Integer getDiseaseTreatmentID(){
-        return this.diseaseTreatmentID;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setDrugTypeID(Integer drugTypeID){
-        this.drugTypeID = drugTypeID;
-    }
-    public Integer getDrugTypeID(){
-        return this.drugTypeID;
-    }
-    public void setEatTime(java.util.Date eatTime){
-        this.eatTime = eatTime;
-    }
-    public java.util.Date getEatTime(){
-        return this.eatTime;
-    }
-    public void setUseCount(Integer useCount){
-        this.useCount = useCount;
-    }
-    public Integer getUseCount(){
-        return this.useCount;
-    }
-    public void setIllTime(java.util.Date illTime){
-        this.illTime = illTime;
-    }
-    public java.util.Date getIllTime(){
-        return this.illTime;
-    }
-    public void setIllDescription(String illDescription){
-        this.illDescription = illDescription;
-    }
-    public String getIllDescription(){
-        return this.illDescription;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����3:15:57
+ */
+public class DiseaseTreatment {
+	/**
+	 * ��������ID
+	 */
+	private int diseaseTreatmentID;
+	
+	/**
+	 * �����
+	 */
+	private String pigNo;
+	
+	/**
+	 * ҩ������ID
+	 */
+	private int drugTypeID;
+	
+	/**
+	 * ��ҩʱ��
+	 */
+	private Date eatTime;
+	
+	/**
+	 * ��ҩ������
+	 */
+	private int useCouont;
+	
+	/**
+	 * ����ʱ��
+	 */
+	private Date illTime;
+	
+	/**
+	 * ��������
+	 */
+	private String illDescription;
+
+	public int getDiseaseTreatmentID() {
+		return diseaseTreatmentID;
+	}
+
+	public void setDiseaseTreatmentID(int diseaseTreatmentID) {
+		this.diseaseTreatmentID = diseaseTreatmentID;
+	}
+
+	public String getPigNo() {
+		return pigNo;
+	}
+
+	public void setPigNo(String pigNo) {
+		this.pigNo = pigNo;
+	}
+
+	public int getDrugTypeID() {
+		return drugTypeID;
+	}
+
+	public void setDrugTypeID(int drugTypeID) {
+		this.drugTypeID = drugTypeID;
+	}
+
+	public Date getEatTime() {
+		return eatTime;
+	}
+
+	public void setEatTime(Date eatTime) {
+		this.eatTime = eatTime;
+	}
+
+	public int getUseCouont() {
+		return useCouont;
+	}
+
+	public void setUseCouont(int useCouont) {
+		this.useCouont = useCouont;
+	}
+
+	public Date getIllTime() {
+		return illTime;
+	}
+
+	public void setIllTime(Date illTime) {
+		this.illTime = illTime;
+	}
+
+	public String getIllDescription() {
+		return illDescription;
+	}
+
+	public void setIllDescription(String illDescription) {
+		this.illDescription = illDescription;
+	}
+	
 }

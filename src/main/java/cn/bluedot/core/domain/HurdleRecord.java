@@ -1,83 +1,142 @@
 package cn.bluedot.core.domain;
-public class Hurdlerecord{
-    /** */
-    private Integer hurdleRecordID;
-    /**转栏时间*/
-    private java.util.Date time;
-    /** */
-    private String pigNo;
-    /** */
-    private Integer growthStateID;
-    /** */
-    private String inHogcoteNo;
-    /** */
-    private String outHogcoteNo;
-    /**操作人*/
-    private String userNo;
-    /**注释*/
-    private String description;
-    /**如果是出栏出售,此处为出栏价格*/
-    private java.math.BigDecimal outPrice;
-    /**如果是出栏出售,此处记录出售地*/
-    private String outPlace;
-    public void setHurdleRecordID(Integer hurdleRecordID){
-        this.hurdleRecordID = hurdleRecordID;
-    }
-    public Integer getHurdleRecordID(){
-        return this.hurdleRecordID;
-    }
-    public void setTime(java.util.Date time){
-        this.time = time;
-    }
-    public java.util.Date getTime(){
-        return this.time;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setGrowthStateID(Integer growthStateID){
-        this.growthStateID = growthStateID;
-    }
-    public Integer getGrowthStateID(){
-        return this.growthStateID;
-    }
-    public void setInHogcoteNo(String inHogcoteNo){
-        this.inHogcoteNo = inHogcoteNo;
-    }
-    public String getInHogcoteNo(){
-        return this.inHogcoteNo;
-    }
-    public void setOutHogcoteNo(String outHogcoteNo){
-        this.outHogcoteNo = outHogcoteNo;
-    }
-    public String getOutHogcoteNo(){
-        return this.outHogcoteNo;
-    }
-    public void setUserNo(String userNo){
-        this.userNo = userNo;
-    }
-    public String getUserNo(){
-        return this.userNo;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return this.description;
-    }
-    public void setOutPrice(java.math.BigDecimal outPrice){
-        this.outPrice = outPrice;
-    }
-    public java.math.BigDecimal getOutPrice(){
-        return this.outPrice;
-    }
-    public void setOutPlace(String outPlace){
-        this.outPlace = outPlace;
-    }
-    public String getOutPlace(){
-        return this.outPlace;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����4:55:28
+ */
+public class HurdleRecord {
+	/**
+	 * ת����¼
+	 */
+	private long hurdleRecordID;
+	
+	/**
+	 * ת��ʱ��
+	 */
+	private Date time;
+	
+	/**
+	 * �����
+	 */
+	private String pigNo;
+	
+	/**
+	 * ������
+	 */
+	private int growthStateID;
+	
+	/**
+	 * ���������
+	 */
+	private String inHogcoteNo;
+	
+	/**
+	 * ���������
+	 */
+	private String outHogcoteNo;
+	
+	/**
+	 * ������
+	 */
+	private String userNo;
+	
+	/**
+	 * ��ע
+	 */
+	private String description;
+	
+	/**
+	 * �����۸�
+	 */
+	private float outPrice;
+	
+	/**
+	 * ���۵�
+	 */
+	private String outPlace;
+
+	public long getHurdleRecordID() {
+		return hurdleRecordID;
+	}
+
+	public void setHurdleRecordID(long hurdleRecordID) {
+		this.hurdleRecordID = hurdleRecordID;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getPigNo() {
+		return pigNo;
+	}
+
+	public void setPigNo(String pigNo) {
+		this.pigNo = pigNo;
+	}
+
+	public int getGrowthStateID() {
+		return growthStateID;
+	}
+
+	public void setGrowthStateID(int growthStateID) {
+		this.growthStateID = growthStateID;
+	}
+
+	public String getInHogcoteNo() {
+		return inHogcoteNo;
+	}
+
+	public void setInHogcoteNo(String inHogcoteNo) {
+		this.inHogcoteNo = inHogcoteNo;
+	}
+
+	public String getOutHogcoteNo() {
+		return outHogcoteNo;
+	}
+
+	public void setOutHogcoteNo(String outHogcoteNo) {
+		this.outHogcoteNo = outHogcoteNo;
+	}
+
+	public String getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public float getOutPrice() {
+		return outPrice;
+	}
+
+	public void setOutPrice(float outPrice) {
+		this.outPrice = outPrice;
+	}
+
+	public String getOutPlace() {
+		return outPlace;
+	}
+
+	public void setOutPlace(String outPlace) {
+		this.outPlace = outPlace;
+	}
+	
+	
 }

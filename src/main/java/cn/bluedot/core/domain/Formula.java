@@ -1,83 +1,142 @@
 package cn.bluedot.core.domain;
-public class Formula{
-    /**配方*/
-    private Integer formulaID;
-    /** */
-    private String name;
-    /**水比例*/
-    private Integer waterProportion;
-    /** */
-    private Integer drugProportion;
-    /** */
-    private Integer feedProportion;
-    /** */
-    private Integer drugTypeID;
-    /**季节*/
-    private String season;
-    /** */
-    private java.util.Date createTime;
-    /** */
-    private String createUserNo;
-    /** */
-    private String description;
-    public void setFormulaID(Integer formulaID){
-        this.formulaID = formulaID;
-    }
-    public Integer getFormulaID(){
-        return this.formulaID;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return this.name;
-    }
-    public void setWaterProportion(Integer waterProportion){
-        this.waterProportion = waterProportion;
-    }
-    public Integer getWaterProportion(){
-        return this.waterProportion;
-    }
-    public void setDrugProportion(Integer drugProportion){
-        this.drugProportion = drugProportion;
-    }
-    public Integer getDrugProportion(){
-        return this.drugProportion;
-    }
-    public void setFeedProportion(Integer feedProportion){
-        this.feedProportion = feedProportion;
-    }
-    public Integer getFeedProportion(){
-        return this.feedProportion;
-    }
-    public void setDrugTypeID(Integer drugTypeID){
-        this.drugTypeID = drugTypeID;
-    }
-    public Integer getDrugTypeID(){
-        return this.drugTypeID;
-    }
-    public void setSeason(String season){
-        this.season = season;
-    }
-    public String getSeason(){
-        return this.season;
-    }
-    public void setCreateTime(java.util.Date createTime){
-        this.createTime = createTime;
-    }
-    public java.util.Date getCreateTime(){
-        return this.createTime;
-    }
-    public void setCreateUserNo(String createUserNo){
-        this.createUserNo = createUserNo;
-    }
-    public String getCreateUserNo(){
-        return this.createUserNo;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return this.description;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����4:36:02
+ */
+public class Formula {
+	/**
+	 * �䷽ID
+	 */
+	private int formulaID;
+	
+	/**
+	 * �䷽����
+	 */
+	private String name;
+	
+	/**
+	 * ˮ����
+	 */
+	private int waterProportion;
+	
+	/**
+	 * ҩ����
+	 */
+	private int drugProportion;
+	
+	/**
+	 * ���ϱ���
+	 */
+	private int feedProportion;
+	
+	/**
+	 * ҩ����ID
+	 */
+	private int drugTypeID;
+	
+	/**
+	 * ����
+	 */
+	private char season;
+	
+	/**
+	 * ����ʱ��
+	 */
+	private Date createTime;
+	
+	/**
+	 * ������
+	 */
+	private String createUserNo;
+	
+	/**
+	 * ��ע
+	 */
+	private String description;
+
+	public int getFormulaID() {
+		return formulaID;
+	}
+
+	public void setFormulaID(int formulaID) {
+		this.formulaID = formulaID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getWaterProportion() {
+		return waterProportion;
+	}
+
+	public void setWaterProportion(int waterProportion) {
+		this.waterProportion = waterProportion;
+	}
+
+	public int getDrugProportion() {
+		return drugProportion;
+	}
+
+	public void setDrugProportion(int drugProportion) {
+		this.drugProportion = drugProportion;
+	}
+
+	public int getFeedProportion() {
+		return feedProportion;
+	}
+
+	public void setFeedProportion(int feedProportion) {
+		this.feedProportion = feedProportion;
+	}
+
+	public int getDrugTypeID() {
+		return drugTypeID;
+	}
+
+	public void setDrugTypeID(int drugTypeID) {
+		this.drugTypeID = drugTypeID;
+	}
+
+	public char getSeason() {
+		return season;
+	}
+
+	public void setSeason(char season) {
+		this.season = season;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCreateUserNo() {
+		return createUserNo;
+	}
+
+	public void setCreateUserNo(String createUserNo) {
+		this.createUserNo = createUserNo;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 }

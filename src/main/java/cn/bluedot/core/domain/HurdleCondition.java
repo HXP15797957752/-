@@ -1,27 +1,49 @@
 package cn.bluedot.core.domain;
-public class Hurdlecondition{
-    /** */
-    private Integer hurdleConditionID;
-    /** */
-    private Integer growthStateID;
-    /**天数*/
-    private Integer days;
-    public void setHurdleConditionID(Integer hurdleConditionID){
-        this.hurdleConditionID = hurdleConditionID;
-    }
-    public Integer getHurdleConditionID(){
-        return this.hurdleConditionID;
-    }
-    public void setGrowthStateID(Integer growthStateID){
-        this.growthStateID = growthStateID;
-    }
-    public Integer getGrowthStateID(){
-        return this.growthStateID;
-    }
-    public void setDays(Integer days){
-        this.days = days;
-    }
-    public Integer getDays(){
-        return this.days;
-    }
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����4:50:35
+ */
+public class HurdleCondition {
+	/**
+	 * ת������
+	 */
+	private int hurdleConditionID;
+	
+	/**
+	 * ������
+	 */
+	private int growthStateID;
+	
+	/**
+	 * ��Ӧת������
+	 */
+	private int days;
+
+	public int getHurdleConditionID() {
+		return hurdleConditionID;
+	}
+
+	public void setHurdleConditionID(int hurdleConditionID) {
+		this.hurdleConditionID = hurdleConditionID;
+	}
+
+	public int getGrowthStateID() {
+		return growthStateID;
+	}
+
+	public void setGrowthStateID(int growthStateID) {
+		this.growthStateID = growthStateID;
+	}
+
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+	
+	
 }

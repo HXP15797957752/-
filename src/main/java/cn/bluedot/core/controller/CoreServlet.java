@@ -3,6 +3,7 @@ package cn.bluedot.core.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -50,8 +51,9 @@ public class CoreServlet extends HttpServlet {
          * 1. 获取method参数，它是用户想调用的方法
          */
         String[] params = Base64Util.decodeID(ID);
-        String modelName = "com.service." + params[0];
+        String modelName = "cn.bluedot.core.service." + params[0];
         String actionName = params[1];
+        System.out.println(modelName);
         Class<?> serviceClass = null;
         Method method = null;
 
@@ -79,7 +81,7 @@ public class CoreServlet extends HttpServlet {
               ((RequestWare)service).setReq_rep(req_rep);
           }
 
-            future = CSConduit.getIntance().exeTask
+         future = CSConduit.getIntance().exeTask
                     (new ServiceWrap(service, method, mapParams));
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -113,7 +115,10 @@ public class CoreServlet extends HttpServlet {
                 } else if (start.equals("r")) {// 前缀为r表示重定向
                     response.sendRedirect(request.getContextPath() + path);
                 } else if (start.equals("a")) {// 使用ajax
-                    response.getWriter().print(result.substring(2));
+                	String str=result.substring(2);
+/*                	result = URLDecoder.decode(str, "utf-8");*/
+                	System.out.println(str);
+                    response.getWriter().print(str);
                 }
             }
         }

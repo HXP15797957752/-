@@ -1,35 +1,64 @@
 package cn.bluedot.core.domain;
-public class Suspectedillness{
-    /** */
-    private Integer ID;
-    /**可疑生病ID,主键,自增*/
-    private String pigNo;
-    /** */
-    private java.util.Date date;
-    /** */
-    private Integer temperature;
-    public void setID(Integer ID){
-        this.ID = ID;
-    }
-    public Integer getID(){
-        return this.ID;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setDate(java.util.Date date){
-        this.date = date;
-    }
-    public java.util.Date getDate(){
-        return this.date;
-    }
-    public void setTemperature(Integer temperature){
-        this.temperature = temperature;
-    }
-    public Integer getTemperature(){
-        return this.temperature;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����6:25:42
+ */
+public class SuspectedIllness {
+	/**
+	 * ��������ID
+	 */
+	private long ID;
+	
+	/**
+	 * �����
+	 */
+	private String pigNO;
+	
+	/**
+	 * ����
+	 */
+	private Date date;
+	
+	/**
+	 * ����
+	 */
+	private int temperature;
+
+	public long getID() {
+		return ID;
+	}
+
+	public void setID(long iD) {
+		ID = iD;
+	}
+
+	public String getPigNO() {
+		return pigNO;
+	}
+
+	public void setPigNO(String pigNO) {
+		this.pigNO = pigNO;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(int temperature) {
+		this.temperature = temperature;
+	}
+	
+	
 }

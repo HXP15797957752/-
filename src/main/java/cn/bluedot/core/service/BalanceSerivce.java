@@ -1,50 +1,61 @@
 package cn.bluedot.core.service;
 
+import java.sql.SQLException;
 import java.util.Map;
+
+import cn.bluedot.core.domain.Payment;
+import cn.bluedot.core.util.MyBeanUtils;
 
 /**
  * @author : 游斌平
  *
  */
-public class BalanceSerivce {
+public class BalanceSerivce implements Service{
 	/**
-	 * 上传信息
-	 * @param data:传输过来的边界类的数据
-	 * @return  :执行情况，代表转发页面、数据
+	 * 插入收入
+	 * @param data
+	 * @return
 	 */
-	public String insertInformation(Map<String,String[]> data) {
-		return null;
+	public String insertGetInformation(Map data) {
+		Payment payment = MyBeanUtils.toBean(data, Payment.class);
+		try {
+			superDao.save(payment);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "a^算法组合成功";
 	}
 	/**
-	 * 删除信息
+	 * 删除收入
 	 * @param data :传输过来的边界类的数据
 	 * @return  执行情况，代表转发页面、数据
 	 */
-	public String deleteInformmation(Map<String, String[]> data) {
+	public String deleteGetInformmation(Map data) {
 		return null;
 	}
 	/**
-	 * 更新信息
+	 * 更新收入
 	 * @param data:传输过来的边界类的数据
 	 * @return  :执行情况，代表转发页面、数据
 	 */
-	public String updateInformation(Map<String, String[]> data) {
+	public String updateGetInformation(Map<String, String[]> data) {
 		return null;
 	}
 	/**
-	 * 查找信息
+	 * 查找收入
      * @param data:传输过来的边界类的数据
 	 * @return  :执行情况，代表转发页面、数据
 	 */
-	public String searchInformation(Map<String, String[]> data) {
+	public String searchGetInformation(Map<String, String[]> data) {
 		return null;
 	}
 	/**
-	 * 数据显示
+	 *收入数据显示
 	 * @param data:传输过来的边界类的数据
 	 * @return  :执行情况，代表转发页面、数据
 	 */
-	public String showData(Map<String, String[]> data) {
+	public String showPayData(Map<String, String[]> data) {
 		return null;
 	}
 	/**

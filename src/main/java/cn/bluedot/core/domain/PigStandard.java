@@ -1,75 +1,129 @@
 package cn.bluedot.core.domain;
-public class Pigstandard{
-    /** */
-    private Integer pigStandardID;
-    /** */
-    private Integer sex;
-    /** */
-    private Integer pigTypeID;
-    /** */
-    private Integer growthStateID;
-    /**日增重*/
-    private Integer addWeight;
-    /** */
-    private Integer upperLimit;
-    /**下限*/
-    private Integer lowerLimit;
-    /** */
-    private java.util.Date date;
-    /**时间间隔*/
-    private Integer timeInterval;
-    public void setPigStandardID(Integer pigStandardID){
-        this.pigStandardID = pigStandardID;
-    }
-    public Integer getPigStandardID(){
-        return this.pigStandardID;
-    }
-    public void setSex(Integer sex){
-        this.sex = sex;
-    }
-    public Integer getSex(){
-        return this.sex;
-    }
-    public void setPigTypeID(Integer pigTypeID){
-        this.pigTypeID = pigTypeID;
-    }
-    public Integer getPigTypeID(){
-        return this.pigTypeID;
-    }
-    public void setGrowthStateID(Integer growthStateID){
-        this.growthStateID = growthStateID;
-    }
-    public Integer getGrowthStateID(){
-        return this.growthStateID;
-    }
-    public void setAddWeight(Integer addWeight){
-        this.addWeight = addWeight;
-    }
-    public Integer getAddWeight(){
-        return this.addWeight;
-    }
-    public void setUpperLimit(Integer upperLimit){
-        this.upperLimit = upperLimit;
-    }
-    public Integer getUpperLimit(){
-        return this.upperLimit;
-    }
-    public void setLowerLimit(Integer lowerLimit){
-        this.lowerLimit = lowerLimit;
-    }
-    public Integer getLowerLimit(){
-        return this.lowerLimit;
-    }
-    public void setDate(java.util.Date date){
-        this.date = date;
-    }
-    public java.util.Date getDate(){
-        return this.date;
-    }
-    public void setTimeInterval(Integer timeInterval){
-        this.timeInterval = timeInterval;
-    }
-    public Integer getTimeInterval(){
-        return this.timeInterval;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����5:57:15
+ */
+public class PigStandard {
+	/**
+	 * ���׼ID
+	 */
+	private int pigStandardID;
+	
+	/**
+	 * ���Ա�
+	 */
+	private int sex;
+	
+	/**
+	 * ��Ʒ��
+	 */
+	private int pigTypeID;
+	
+	/**
+	 * �������׶�
+	 */
+	private int growthStateID;
+	
+	/**
+	 * ������
+	 */
+	private int addWeight;
+	
+	/**
+	 * ����
+	 */
+	private int upperLimit;
+	
+	/**
+	 * ����
+	 */
+	private int lowerLimit;
+	
+	/**
+	 * ����
+	 */
+	private Date date;
+	
+	/**
+	 * ʱ����
+	 */
+	private int timeInterval;
+
+	public int getPigStandardID() {
+		return pigStandardID;
+	}
+
+	public void setPigStandardID(int pigStandardID) {
+		this.pigStandardID = pigStandardID;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public int getPigTypeID() {
+		return pigTypeID;
+	}
+
+	public void setPigTypeID(int pigTypeID) {
+		this.pigTypeID = pigTypeID;
+	}
+
+	public int getGrowthStateID() {
+		return growthStateID;
+	}
+
+	public void setGrowthStateID(int growthStateID) {
+		this.growthStateID = growthStateID;
+	}
+
+	public int getAddWeight() {
+		return addWeight;
+	}
+
+	public void setAddWeight(int addWeight) {
+		this.addWeight = addWeight;
+	}
+
+	public int getUpperLimit() {
+		return upperLimit;
+	}
+
+	public void setUpperLimit(int upperLimit) {
+		this.upperLimit = upperLimit;
+	}
+
+	public int getLowerLimit() {
+		return lowerLimit;
+	}
+
+	public void setLowerLimit(int lowerLimit) {
+		this.lowerLimit = lowerLimit;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getTimeInterval() {
+		return timeInterval;
+	}
+
+	public void setTimeInterval(int timeInterval) {
+		this.timeInterval = timeInterval;
+	}
+	
+	
 }

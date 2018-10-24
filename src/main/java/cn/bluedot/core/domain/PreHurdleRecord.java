@@ -1,67 +1,116 @@
 package cn.bluedot.core.domain;
-public class Prehurdlerecord{
-    /**转栏ID，主键，自增*/
-    private Integer preHurdleRecordID;
-    /** */
-    private String pigNo;
-    /**转栏时间*/
-    private java.util.Date time;
-    /** */
-    private String startPigstyNo;
-    /** */
-    private String startHogcoteNo;
-    /** */
-    private String endPigstyNo;
-    /** */
-    private String endHogcoteNo;
-    /**操作人No*/
-    private String operatorUserNo;
-    public void setPreHurdleRecordID(Integer preHurdleRecordID){
-        this.preHurdleRecordID = preHurdleRecordID;
-    }
-    public Integer getPreHurdleRecordID(){
-        return this.preHurdleRecordID;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setTime(java.util.Date time){
-        this.time = time;
-    }
-    public java.util.Date getTime(){
-        return this.time;
-    }
-    public void setStartPigstyNo(String startPigstyNo){
-        this.startPigstyNo = startPigstyNo;
-    }
-    public String getStartPigstyNo(){
-        return this.startPigstyNo;
-    }
-    public void setStartHogcoteNo(String startHogcoteNo){
-        this.startHogcoteNo = startHogcoteNo;
-    }
-    public String getStartHogcoteNo(){
-        return this.startHogcoteNo;
-    }
-    public void setEndPigstyNo(String endPigstyNo){
-        this.endPigstyNo = endPigstyNo;
-    }
-    public String getEndPigstyNo(){
-        return this.endPigstyNo;
-    }
-    public void setEndHogcoteNo(String endHogcoteNo){
-        this.endHogcoteNo = endHogcoteNo;
-    }
-    public String getEndHogcoteNo(){
-        return this.endHogcoteNo;
-    }
-    public void setOperatorUserNo(String operatorUserNo){
-        this.operatorUserNo = operatorUserNo;
-    }
-    public String getOperatorUserNo(){
-        return this.operatorUserNo;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����6:13:28
+ */
+public class PreHurdleRecord {
+	/**
+	 * ת����¼ID
+	 */
+	private long preHurdleRecordID;
+	
+	/**
+	 * �����
+	 */
+	private String pigNo;
+	
+	/**
+	 * ת��ʱ��
+	 */
+	private Date time;
+	
+	/**
+	 * �������
+	 */
+	private String startPigstyNo;
+	
+	/**
+	 * �������
+	 */
+	private String startHogcoteNo;
+	
+	/**
+	 * �յ�����
+	 */
+	private String endPigstyNo;
+	
+	/**
+	 * �յ�����
+	 */
+	private String endHogcoteNo;
+	
+	/**
+	 * ������
+	 */
+	private String operatorUserNo;
+
+	public long getPreHurdleRecordID() {
+		return preHurdleRecordID;
+	}
+
+	public void setPreHurdleRecordID(long preHurdleRecordID) {
+		this.preHurdleRecordID = preHurdleRecordID;
+	}
+
+	public String getPigNo() {
+		return pigNo;
+	}
+
+	public void setPigNo(String pigNo) {
+		this.pigNo = pigNo;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getStartPigstyNo() {
+		return startPigstyNo;
+	}
+
+	public void setStartPigstyNo(String startPigstyNo) {
+		this.startPigstyNo = startPigstyNo;
+	}
+
+	public String getStartHogcoteNo() {
+		return startHogcoteNo;
+	}
+
+	public void setStartHogcoteNo(String startHogcoteNo) {
+		this.startHogcoteNo = startHogcoteNo;
+	}
+
+	public String getEndPigstyNo() {
+		return endPigstyNo;
+	}
+
+	public void setEndPigstyNo(String endPigstyNo) {
+		this.endPigstyNo = endPigstyNo;
+	}
+
+	public String getEndHogcoteNo() {
+		return endHogcoteNo;
+	}
+
+	public void setEndHogcoteNo(String endHogcoteNo) {
+		this.endHogcoteNo = endHogcoteNo;
+	}
+
+	public String getOperatorUserNo() {
+		return operatorUserNo;
+	}
+
+	public void setOperatorUserNo(String operatorUserNo) {
+		this.operatorUserNo = operatorUserNo;
+	}
+	
+	
 }

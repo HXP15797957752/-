@@ -19,7 +19,7 @@ public class EncodingFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		// 处理post请求编码问题
 		request.setCharacterEncoding("utf-8");
-		
+		response.setContentType("text/html;charset=utf-8");
 		HttpServletRequest req = (HttpServletRequest) request;
 		
 		/*

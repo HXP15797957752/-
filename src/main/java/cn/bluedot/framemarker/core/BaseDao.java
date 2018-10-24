@@ -30,9 +30,11 @@ public class BaseDao {
             Transaction.beginTransaction();
             pstmt = conn.prepareStatement(sr.getSql());
             for(int i = 0;i<sr.getParams().size();i++) {
+            	System.out.println(sr.getParams().get(i));
                 pstmt.setObject(i + 1, sr.getParams().get(i));
             }
-            result = pstmt.executeUpdate();   
+            result = pstmt.executeUpdate(); 
+            System.out.println("test"+result);
             Transaction.commitTransaction();
         } catch (SQLException e) {
             Transaction.rollbackTransaction();

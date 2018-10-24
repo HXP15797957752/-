@@ -1,51 +1,90 @@
 package cn.bluedot.core.domain;
-public class Willdestroy{
-    /**销毁ID,主键，自增*/
-    private Integer willDestroyID;
-    /** */
-    private String pigNo;
-    /**申请销毁提交时间*/
-    private java.util.Date commitTime;
-    /** */
-    private String reason;
-    /**审核人*/
-    private String checkUserNo;
-    /**是否同意*/
-    private Integer isAgree;
-    public void setWillDestroyID(Integer willDestroyID){
-        this.willDestroyID = willDestroyID;
-    }
-    public Integer getWillDestroyID(){
-        return this.willDestroyID;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setCommitTime(java.util.Date commitTime){
-        this.commitTime = commitTime;
-    }
-    public java.util.Date getCommitTime(){
-        return this.commitTime;
-    }
-    public void setReason(String reason){
-        this.reason = reason;
-    }
-    public String getReason(){
-        return this.reason;
-    }
-    public void setCheckUserNo(String checkUserNo){
-        this.checkUserNo = checkUserNo;
-    }
-    public String getCheckUserNo(){
-        return this.checkUserNo;
-    }
-    public void setIsAgree(Integer isAgree){
-        this.isAgree = isAgree;
-    }
-    public Integer getIsAgree(){
-        return this.isAgree;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����6:39:00
+ */
+public class WillDestroy {
+	/**
+	 * ������ID
+	 */
+	private long willDestroyID;
+	
+	/**
+	 * �����
+	 */
+	private String pigNo;
+	
+	/**
+	 * �����ύ����
+	 */
+	private Date commitTime;
+	
+	/**
+	 * ԭ��
+	 */
+	private String reason;
+	
+	/**
+	 * �����
+	 */
+	private String checkUserNo;
+	
+	/**
+	 * �Ƿ���׼
+	 */
+	private int isAgree;
+
+	public long getWillDestroyID() {
+		return willDestroyID;
+	}
+
+	public void setWillDestroyID(long willDestroyID) {
+		this.willDestroyID = willDestroyID;
+	}
+
+	public String getPigNo() {
+		return pigNo;
+	}
+
+	public void setPigNo(String pigNo) {
+		this.pigNo = pigNo;
+	}
+
+	public Date getCommitTime() {
+		return commitTime;
+	}
+
+	public void setCommitTime(Date commitTime) {
+		this.commitTime = commitTime;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getCheckUserNo() {
+		return checkUserNo;
+	}
+
+	public void setCheckUserNo(String checkUserNo) {
+		this.checkUserNo = checkUserNo;
+	}
+
+	public int getIsAgree() {
+		return isAgree;
+	}
+
+	public void setIsAgree(int isAgree) {
+		this.isAgree = isAgree;
+	}
+	
+	
 }

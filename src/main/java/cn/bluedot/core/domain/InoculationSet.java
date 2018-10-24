@@ -1,75 +1,128 @@
 package cn.bluedot.core.domain;
-public class Inoculationset{
-    /** */
-    private Integer inoculationSetID;
-    /**药种类*/
-    private Integer drugTypeID;
-    /**接种时间*/
-    private java.util.Date inoculationTime;
-    /**单位*/
-    private String unit;
-    /**用量*/
-    private Integer useCount;
-    /**接种人ID*/
-    private String inoculationUserNo;
-    /**猪舍编号*/
-    private String pigstyNo;
-    /**创建时间*/
-    private java.util.Date createTime;
-    /**描述*/
-    private String description;
-    public void setInoculationSetID(Integer inoculationSetID){
-        this.inoculationSetID = inoculationSetID;
-    }
-    public Integer getInoculationSetID(){
-        return this.inoculationSetID;
-    }
-    public void setDrugTypeID(Integer drugTypeID){
-        this.drugTypeID = drugTypeID;
-    }
-    public Integer getDrugTypeID(){
-        return this.drugTypeID;
-    }
-    public void setInoculationTime(java.util.Date inoculationTime){
-        this.inoculationTime = inoculationTime;
-    }
-    public java.util.Date getInoculationTime(){
-        return this.inoculationTime;
-    }
-    public void setUnit(String unit){
-        this.unit = unit;
-    }
-    public String getUnit(){
-        return this.unit;
-    }
-    public void setUseCount(Integer useCount){
-        this.useCount = useCount;
-    }
-    public Integer getUseCount(){
-        return this.useCount;
-    }
-    public void setInoculationUserNo(String inoculationUserNo){
-        this.inoculationUserNo = inoculationUserNo;
-    }
-    public String getInoculationUserNo(){
-        return this.inoculationUserNo;
-    }
-    public void setPigstyNo(String pigstyNo){
-        this.pigstyNo = pigstyNo;
-    }
-    public String getPigstyNo(){
-        return this.pigstyNo;
-    }
-    public void setCreateTime(java.util.Date createTime){
-        this.createTime = createTime;
-    }
-    public java.util.Date getCreateTime(){
-        return this.createTime;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return this.description;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����5:38:06
+ */
+public class InoculationSet {
+	/**
+	 * �����趨ID
+	 */
+	private long inoculationSetID;
+	
+	/**
+	 * ҩƷ����ID
+	 */
+	private int drugTypeID;
+	
+	/**
+	 * ����ʱ��
+	 */
+	private Date inoculationTime;
+	
+	/**
+	 * ��λ
+	 */
+	private String unit;
+	
+	/**
+	 * ����
+	 */
+	private int useCount;
+	
+	/**
+	 * ������
+	 */
+	private String inoculationUserNo;
+	
+	/**
+	 * ������
+	 */
+	private String pipgstyNo;
+	
+	/**
+	 * ����ʱ��
+	 */
+	private Date createTime;
+	
+	/**
+	 * ����˵��
+	 */
+	private String description;
+
+	public long getInoculationSetID() {
+		return inoculationSetID;
+	}
+
+	public void setInoculationSetID(long inoculationSetID) {
+		this.inoculationSetID = inoculationSetID;
+	}
+
+	public int getDrugTypeID() {
+		return drugTypeID;
+	}
+
+	public void setDrugTypeID(int drugTypeID) {
+		this.drugTypeID = drugTypeID;
+	}
+
+	public Date getInoculationTime() {
+		return inoculationTime;
+	}
+
+	public void setInoculationTime(Date inoculationTime) {
+		this.inoculationTime = inoculationTime;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public int getUseCount() {
+		return useCount;
+	}
+
+	public void setUseCount(int useCount) {
+		this.useCount = useCount;
+	}
+
+	public String getInoculationUserNo() {
+		return inoculationUserNo;
+	}
+
+	public void setInoculationUserNo(String inoculationUserNo) {
+		this.inoculationUserNo = inoculationUserNo;
+	}
+
+	public String getPipgstyNo() {
+		return pipgstyNo;
+	}
+
+	public void setPipgstyNo(String pipgstyNo) {
+		this.pipgstyNo = pipgstyNo;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 }

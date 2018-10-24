@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Inoculationrecord{
+public class InoculationRecord{
     /**接种记录*/
     private Integer inoculationRecordID;
     /**接种设定ID*/

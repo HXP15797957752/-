@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Backup{
+public class BackUp{
     /**备份表主键，自增*/
     private Integer backupID;
     /**备份文件名称*/

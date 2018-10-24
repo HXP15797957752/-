@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Hurdlecondition{
+public class HurdleCondition{
     /** */
     private Integer hurdleConditionID;
     /** */

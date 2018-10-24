@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -17,7 +20,6 @@
 <body>
 <div  id="login-window" class="container" style="height: 51.3%">
 
-    <form action="#" method="get">
     <div class="input-group m-b-20 row">
 
 			<span class="input-group-addon">
@@ -30,7 +32,7 @@
                 leave-active-class="animated swing "
         >
             <div class="fg-line col-xs-8" v-show="isShow">
-                <input  id="username" type="text" class="form-control" name="username" placeholder="真实姓名" required autofocus >
+                <input  id="userNo" type="text" class="form-control" name="userNo" value="${requestScope.userNo}" placeholder="账号" required autofocus >
             </div>
         </transition>
 
@@ -46,7 +48,7 @@
                 leave-active-class="animated swing "
         >
             <div class="fg-line  col-xs-8" v-show="isShow">
-                <input id="password" type="password" class="form-control" name="password" placeholder="密码" required >
+                <input id="password" type="password" class="form-control" name="password" value="${requestScope.password}" placeholder="密码" required >
             </div>
         </transition>
     </div>
@@ -61,7 +63,7 @@
                 leave-active-class="animated swing "
         >
             <div class="fg-line  col-xs-8" v-show="isShow">
-                <input id="phone" type="text" class="form-control" name="password" placeholder="手机号" required >
+                <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" value="${requestScope.phoneNumber}" placeholder="手机号"  required >
             </div>
         </transition>
     </div>
@@ -76,35 +78,34 @@
                 leave-active-class="animated swing "
         >
             <div class="fg-line  col-xs-8" v-show="isShow">
-                <input id="identify" type="text" class="form-control" name="identify" placeholder="身份证" required >
+                <input id="IDCard" type="text" class="form-control" name="IDCard" value="${requestScope.IDCard}" placeholder="身份证" required >
             </div>
         </transition>
     </div>
     <div class="input-group m-b-20 row">
         <div class="select_btn">
             <span>请选择性别：</span>
-            &nbsp;男&nbsp;<input type="radio" name="sex" value="male" />
-            &nbsp;女&nbsp;<input type="radio" name="sex" value="female" />
+            &nbsp;男&nbsp;<input id="sex1" type="radio" checked="checked" name="sex" value="1" />
+            &nbsp;女&nbsp;<input id="sex2" type="radio" name="sex" value="0" />
             <button class="btn question" data-toggle="modal" data-target="#myModal">添加密保问题</button>
         </div>
 
 
     </div>
-    </form>
 
 
     <div class="clearfix row">
     </div>
     <div class="checkbox row">
         <div class="col-md-1 col-md-push-10" v-show="isShow">
-            <button type="button" class="btn btn-default register" data-text="已有账号，前去登陆" name="register" onclick="window.open('login.html')">
+            <button type="button" class="btn btn-default register" data-text="已有账号，前去登陆" name="register" onclick="window.open('login.jsp')">
                 <!--<a  href="login.html">已有账号，前去登陆</a>-->
                 已有账号，前去登陆
             </button>
         </div>
 
     </div>
-    <a @click="loginBtnClick" id="login-bt" href="javascript:;" class="waves-effect waves-button waves-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+    <a @click="registBtnClick" id="login-bt" href="javascript:;" class="waves-effect waves-button waves-float"><i class="zmdi zmdi-arrow-forward"></i></a>
 </div>
 
 <!--密保问题-->
@@ -117,14 +118,14 @@
             </div>
             <div class="modal-body">
                 <!--第一组密保问题开始-->
-                <select class="selectpicker" data-live-search="true">
+                <select class="selectpicker" data-live-search="true" name="question" id="question">
                     <option value="1">您母亲的姓名</option>
                     <option value="2">您父亲的姓名</option>
                     <option value="3">您的出生年月</option>
                     <option value="4">您配偶的生日是？</option>
                     <option value="5">您的学号（或工号）是？</option>
                 </select>
-                <input type="text" class="form-control" id="first_question" placeholder="第一个密保问题答案" style="margin-bottom: 10px">
+                <input type="text" class="form-control" id="answer" name="answer" placeholder="第一个密保问题答案" style="margin-bottom: 10px" value="${requestScope.answer}">
                 <!--第一组密保问题结束-->
 
                 <!--第二组密保问题-->

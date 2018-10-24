@@ -1,4 +1,6 @@
-﻿
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -30,7 +32,7 @@
 				leave-active-class="animated swing "
 		>
 			<div class="fg-line col-xs-8" v-show="isShow">
-				<input  id="username" type="text" class="form-control" name="username" placeholder="帐号" required autofocus value="admin">
+				<input  id="username" type="text" class="form-control" name="username" placeholder="帐号" required autofocus value="${requestScope.username}">
 			</div>
 		</transition>
 
@@ -46,7 +48,7 @@
 				leave-active-class="animated swing "
 		>
 			<div class="fg-line  col-xs-8" v-show="isShow">
-				<input id="password" type="password" class="form-control" name="password" placeholder="密码" required value="123456">
+				<input id="password" type="password" class="form-control" name="password" placeholder="密码" required value="${requestScope.password}">
 			</div>
 		</transition>
 	</div>
@@ -56,10 +58,10 @@
 	</div>
 	<div class="checkbox row">
 		<div class="col-md-9" v-show="isShow">
-			<input id="rememberMe" type="checkbox" class="checkbix" data-text="自动登录" name="rememberMe">
+			<input id="rememberMe" type="checkbox" class="checkbix" data-text="自动登录" name="rememberMe" >
 		</div>
 		<div class="col-md-1" v-show="isShow">
-			<button type="button" class="btn btn-default register" data-text="注册" name="register" onclick="window.open('register.html')">
+			<button type="button" class="btn btn-default register" data-text="注册" name="register" onclick="window.open('register.jsp')">
 				<!--<a href="register.html">注册</a>-->
 				注册
 			</button>

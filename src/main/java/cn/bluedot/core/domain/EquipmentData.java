@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Equipmentdata{
+public class EquipmentData{
     /** */
     private Integer equipmentDataID;
     /** */

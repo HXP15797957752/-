@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Hurdlerecord{
+public class HurdleRecord{
     /** */
     private Integer hurdleRecordID;
     /**转栏时间*/

@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Pigstandard{
+public class PigStandard{
     /** */
     private Integer pigStandardID;
     /** */

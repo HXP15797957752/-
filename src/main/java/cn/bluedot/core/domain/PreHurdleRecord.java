@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class PrehurdleRecord{
+public class PreHurdleRecord{
     /**转栏ID，主键，自增*/
     private Integer preHurdleRecordID;
     /** */

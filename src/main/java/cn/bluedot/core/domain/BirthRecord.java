@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Birthrecord{
+public class BirthRecord{
     /**出生记录编号*/
     private Integer birthRecordID;
     /** */

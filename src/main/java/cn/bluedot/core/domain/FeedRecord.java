@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Feedrecord{
+public class FeedRecord{
     /** */
     private Integer feedRecordID;
     /** */

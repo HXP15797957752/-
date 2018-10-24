@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Fetalstructure{
+public class FetalStructure{
     /**胎次结构ID,主键*/
     private Integer fetalStructureID;
     /**母猪耳号*/

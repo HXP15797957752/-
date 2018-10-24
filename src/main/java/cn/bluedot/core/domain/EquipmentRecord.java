@@ -1,59 +1,103 @@
 package cn.bluedot.core.domain;
-public class EquipmentRecord{
-    /** */
-    private Integer equipmentRecordID;
-    /**设备ID*/
-    private Integer equipmentID;
-    /**有效日期*/
-    private java.util.Date effectiveDate;
-    /**生产日期*/
-    private java.util.Date createDate;
-    /** */
-    private java.util.Date date;
-    /**采购价格*/
-    private java.math.BigDecimal price;
-    /**使用状态*/
-    private Integer useState;
-    public void setEquipmentRecordID(Integer equipmentRecordID){
-        this.equipmentRecordID = equipmentRecordID;
-    }
-    public Integer getEquipmentRecordID(){
-        return this.equipmentRecordID;
-    }
-    public void setEquipmentID(Integer equipmentID){
-        this.equipmentID = equipmentID;
-    }
-    public Integer getEquipmentID(){
-        return this.equipmentID;
-    }
-    public void setEffectiveDate(java.util.Date effectiveDate){
-        this.effectiveDate = effectiveDate;
-    }
-    public java.util.Date getEffectiveDate(){
-        return this.effectiveDate;
-    }
-    public void setCreateDate(java.util.Date createDate){
-        this.createDate = createDate;
-    }
-    public java.util.Date getCreateDate(){
-        return this.createDate;
-    }
-    public void setDate(java.util.Date date){
-        this.date = date;
-    }
-    public java.util.Date getDate(){
-        return this.date;
-    }
-    public void setPrice(java.math.BigDecimal price){
-        this.price = price;
-    }
-    public java.math.BigDecimal getPrice(){
-        return this.price;
-    }
-    public void setUseState(Integer useState){
-        this.useState = useState;
-    }
-    public Integer getUseState(){
-        return this.useState;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����3:51:13
+ */
+public class EquipmentRecord {
+	/**
+	 * �豸��¼ID
+	 */
+	private long equipmentRecordID;
+	
+	/**
+	 * �豸ID
+	 */
+	private long equipmentID;
+	
+	/**
+	 * ��Ч����
+	 */
+	private Date effectiveDate;
+	
+	/**
+	 * ��������
+	 */
+	private Date createDate;
+	
+	/**
+	 * ���ݴ���ʱ��
+	 */
+	private Date date;
+	
+	/**
+	 * �ɹ��۸�
+	 */
+	private float price;
+	
+	/**
+	 * ʹ��״̬
+	 */
+	private int useState;
+
+	public long getEquipmentRecordID() {
+		return equipmentRecordID;
+	}
+
+	public void setEquipmentRecordID(long equipmentRecordID) {
+		this.equipmentRecordID = equipmentRecordID;
+	}
+
+	public long getEquipmentID() {
+		return equipmentID;
+	}
+
+	public void setEquipmentID(long equipmentID) {
+		this.equipmentID = equipmentID;
+	}
+
+	public Date getEffectiveDate() {
+		return effectiveDate;
+	}
+
+	public void setEffectiveDate(Date effectiveDate) {
+		this.effectiveDate = effectiveDate;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public int getUseState() {
+		return useState;
+	}
+
+	public void setUseState(int useState) {
+		this.useState = useState;
+	}
+	
+	
 }

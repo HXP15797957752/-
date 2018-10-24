@@ -1,51 +1,90 @@
 package cn.bluedot.core.domain;
-public class Log{
-    /** */
-    private Integer logID;
-    /**操作时间*/
-    private java.util.Date time;
-    /**操作人*/
-    private String userNo;
-    /** */
-    private Integer powerID;
-    /** */
-    private String operationName;
-    /** */
-    private String ipAddress;
-    public void setLogID(Integer logID){
-        this.logID = logID;
-    }
-    public Integer getLogID(){
-        return this.logID;
-    }
-    public void setTime(java.util.Date time){
-        this.time = time;
-    }
-    public java.util.Date getTime(){
-        return this.time;
-    }
-    public void setUserNo(String userNo){
-        this.userNo = userNo;
-    }
-    public String getUserNo(){
-        return this.userNo;
-    }
-    public void setPowerID(Integer powerID){
-        this.powerID = powerID;
-    }
-    public Integer getPowerID(){
-        return this.powerID;
-    }
-    public void setOperationName(String operationName){
-        this.operationName = operationName;
-    }
-    public String getOperationName(){
-        return this.operationName;
-    }
-    public void setIpAddress(String ipAddress){
-        this.ipAddress = ipAddress;
-    }
-    public String getIpAddress(){
-        return this.ipAddress;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����5:43:44
+ */
+public class Log {
+	/**
+	 * ��־ID
+	 */
+	private long logID;
+	
+	/**
+	 * ��������
+	 */
+	private Date time;
+	
+	/**
+	 * ������
+	 */
+	private String userNo;
+	
+	/**
+	 * Ȩ��ID
+	 */
+	private int powerID;
+	
+	/**
+	 * ��������
+	 */
+	private String operationName;
+	
+	/**
+	 * ip��ַ
+	 */
+	private String ipAddress;
+
+	public long getLogID() {
+		return logID;
+	}
+
+	public void setLogID(long logID) {
+		this.logID = logID;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
+
+	public int getPowerID() {
+		return powerID;
+	}
+
+	public void setPowerID(int powerID) {
+		this.powerID = powerID;
+	}
+
+	public String getOperationName() {
+		return operationName;
+	}
+
+	public void setOperationName(String operationName) {
+		this.operationName = operationName;
+	}
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+	
+	
 }

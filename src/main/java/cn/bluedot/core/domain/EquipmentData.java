@@ -1,35 +1,63 @@
 package cn.bluedot.core.domain;
-public class EquipmentData{
-    /** */
-    private Integer equipmentDataID;
-    /** */
-    private String data;
-    /** */
-    private Integer equipmentID;
-    /**数据接受时间*/
-    private java.util.Date time;
-    public void setEquipmentDataID(Integer equipmentDataID){
-        this.equipmentDataID = equipmentDataID;
-    }
-    public Integer getEquipmentDataID(){
-        return this.equipmentDataID;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
-    public String getData(){
-        return this.data;
-    }
-    public void setEquipmentID(Integer equipmentID){
-        this.equipmentID = equipmentID;
-    }
-    public Integer getEquipmentID(){
-        return this.equipmentID;
-    }
-    public void setTime(java.util.Date time){
-        this.time = time;
-    }
-    public java.util.Date getTime(){
-        return this.time;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����3:46:19
+ */
+public class EquipmentData {
+	/**
+	 * �豸����ID
+	 */
+	private long equipmentDataID;
+	
+	/**
+	 * ����
+	 */
+	private String data;
+	
+	/**
+	 * �豸ID
+	 */
+	private long equipmentID;
+	
+	/**
+	 * ���ݽ���ʱ��
+	 */
+	private Date time;
+
+	public long getEquipmentDataID() {
+		return equipmentDataID;
+	}
+
+	public void setEquipmentDataID(long equipmentDataID) {
+		this.equipmentDataID = equipmentDataID;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public long getEquipmentID() {
+		return equipmentID;
+	}
+
+	public void setEquipmentID(long equipmentID) {
+		this.equipmentID = equipmentID;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	
 }

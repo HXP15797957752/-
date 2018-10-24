@@ -1,35 +1,63 @@
 package cn.bluedot.core.domain;
-public class BirthRecord{
-    /**出生记录编号*/
-    private Integer birthRecordID;
-    /** */
-    private String pigNo;
-    /**出生时间*/
-    private java.util.Date birthTime;
-    /**子猪数量*/
-    private Integer babyCount;
-    public void setBirthRecordID(Integer birthRecordID){
-        this.birthRecordID = birthRecordID;
-    }
-    public Integer getBirthRecordID(){
-        return this.birthRecordID;
-    }
-    public void setPigNo(String pigNo){
-        this.pigNo = pigNo;
-    }
-    public String getPigNo(){
-        return this.pigNo;
-    }
-    public void setBirthTime(java.util.Date birthTime){
-        this.birthTime = birthTime;
-    }
-    public java.util.Date getBirthTime(){
-        return this.birthTime;
-    }
-    public void setBabyCount(Integer babyCount){
-        this.babyCount = babyCount;
-    }
-    public Integer getBabyCount(){
-        return this.babyCount;
-    }
+
+import java.util.Date;
+
+/**
+ * 
+ * @author hxp
+ * 2018��8��7�� ����3:03:42
+ */
+public class BirthRecord {
+	/**
+	 * ������¼���
+	 */
+	private int birthRecordID;
+	
+	/**
+	 * ĸ����
+	 */
+	private String pigNo;
+	
+	/**
+	 * ����ʱ��
+	 */
+	private Date dateTime;
+	
+	/**
+	 * ��������
+	 */
+	private int babyCount;
+
+	public int getBirthRecordID() {
+		return birthRecordID;
+	}
+
+	public void setBirthRecordID(int birthRecordID) {
+		this.birthRecordID = birthRecordID;
+	}
+
+	public String getPigNo() {
+		return pigNo;
+	}
+
+	public void setPigNo(String pigNo) {
+		this.pigNo = pigNo;
+	}
+
+	public Date getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(Date dateTime) {
+		this.dateTime = dateTime;
+	}
+
+	public int getBabyCount() {
+		return babyCount;
+	}
+
+	public void setBabyCount(int babyCount) {
+		this.babyCount = babyCount;
+	}
+	
 }

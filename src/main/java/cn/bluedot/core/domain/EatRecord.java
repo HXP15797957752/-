@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Eatrecord{
+public class EatRecord{
     /** */
     private Integer eatRecordID;
     /** */

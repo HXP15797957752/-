@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Diseasetreatment{
+public class DiseaseTreatment{
     /**疾病治疗ID*/
     private Integer diseaseTreatmentID;
     /**猪耳号*/

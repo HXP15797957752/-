@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Suspectedillness{
+public class SuspectedIllness{
     /** */
     private Integer ID;
     /**可疑生病ID,主键,自增*/

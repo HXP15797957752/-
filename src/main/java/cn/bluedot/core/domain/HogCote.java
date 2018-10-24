@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Hogcote{
+public class HogCote{
     /** */
     private String hogcoteNo;
     /** */

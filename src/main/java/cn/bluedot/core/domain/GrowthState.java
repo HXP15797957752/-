@@ -1,5 +1,5 @@
 package cn.bluedot.core.domain;
-public class Growthstate{
+public class GrowthState{
     /** */
     private Integer growthStateID;
     /** */

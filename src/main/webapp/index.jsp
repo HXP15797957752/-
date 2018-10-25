@@ -238,26 +238,68 @@
 			<li class="sub-menu system_menus system_1 3">
 				<a class="waves-effect" href="javascript:;"><i class="zmdi zmdi-accounts"></i> 猪只管理</a>
 				<ul>
+				
+				   <li class="sub-menu system_menus system_1 9">
+				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>猪只生长情况管理</a>
+				<ul>
+
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/stanSett.json');delete_add();Tab.addTab('生长情况标准设置', 'dataList.html','resources/data/stanSett.json');" data-url='resources/data/stanSett.json' id="stanSett">生长情况标准设置</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/equiOperCont.json');delete_add();Tab.addTab('生长情况统计', 'dataList.html');" >生长情况统计</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/suspIllnStat.json');delete_add();Tab.addTab('疑似生病统计', 'dataList.html');">疑似生病统计</a></li>
+
+				</ul>
+			</li>
+					
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/pigElimMana.json');delete_add();Tab.addTab('猪只淘汰管理', 'dataList.html','pigElimMana');">猪只淘汰管理</a></li>
+					   <li class="sub-menu system_menus system_1 9">
+				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>猪只饲喂管理</a>
+				<ul>
+
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/feedMana.json');delete_add();Tab.addTab('饲喂管理', 'dataList.html','resources/data/feedMana.json');" data-url='resources/data/feedMana.json' id="feedMana">饲喂管理</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/formColl.json');delete_add();Tab.addTab('配方搭配', 'dataList.html','resources/data/formColl.json');" data-url='resources/data/formColl.json' id="formColl">配方搭配</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/feedRegu.json');delete_add();Tab.addTab('饲喂调控', 'dataList.html','resources/data/feedRegu.json');" data-url='resources/data/feedRegu.json' id="feedRegu">饲喂调控</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/feedStat.json');delete_add();Tab.addTab('饲喂统计', 'dataList.html','resources/data/feedStat.json');" data-url='resources/data/feedStat.json' id="feedStat">饲喂统计</a></li>
+
+				</ul>
+			</li>
+					
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/pigInfoMana.json');delete_add();Tab.addTab('猪只信息管理', 'dataList.html','resources/data/pigInfoMana.json');" data-url='resources/data/pigInfoMana.json' id="pigInfoMana">猪只信息管理</a></li>
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/pigSafeMana.json');delete_add();Tab.addTab('猪只安全管理', 'dataList.html','resources/data/pigSafeMana.json');" data-url='resources/data/pigSafeMana.json' id="pigSafeMana">猪只安全管理</a></li>
+					
+					
+					
+						<li class="sub-menu system_menus system_1 9">
+				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>猪只安全管理</a>
+				<ul>
+
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/vaccSett.json');delete_add();Tab.addTab('疫苗接种设置', 'dataList.html','resources/data/vaccSett.json');" data-url='resources/data/vaccSett.json' id="vaccSett">疫苗接种设置</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/vaccMana.json');delete_add();Tab.addTab('疫苗接种管理', 'dataList.html','resources/data/vaccMana.json');" data-url='resources/data/vaccMana.json' id="vaccMana">疫苗接种管理</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/diseMana.json');delete_add();Tab.addTab('疾病管理', 'dataList.html','resources/data/diseMana.json');" data-url='resources/data/diseMana.json' id="diseMana">疾病管理</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/destMana.json');delete_add();Tab.addTab('销毁管理', 'dataList.html','resources/data/destMana.json');" data-url='resources/data/destMana.json' id="destMana">销毁管理</a></li>
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/migrMana.json');delete_add();Tab.addTab('移栏管理', 'dataList.html','resources/data/migrMana.json');" data-url='resources/data/migrMana.json' id="migrMana">移栏管理</a></li>
+
+				</ul>
+			</li>
+					<li class="sub-menu system_menus system_1 9">
+				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>移栏管理</a>
+				<ul>
+
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/entrMana.json');delete_add();Tab.addTab('入栏管理', 'dataList.html','resources/data/entrMana.json');" data-url='resources/data/entrMana.json' id="entrMana">入栏管理</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/coluMana.json');delete_add();Tab.addTab('出栏管理', 'dataList.html','resources/data/coluMana.json');" data-url='resources/data/coluMana.json' id="coluMana">出栏管理</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/hurdMana.json');delete_add();Tab.addTab('转栏管理', 'dataList.html','resources/data/hurdMana.json');" data-url='resources/data/hurdMana.json' id="hurdMana">转栏管理</a></li>
+
 				</ul>
 			</li>
+		   <li class="sub-menu system_menus system_1 9">
+				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>母猪管理</a>
+				<ul>
+
+					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowBree.json');delete_add();Tab.addTab('母猪配种管理', 'dataList.html','resources/data/sowBree.json');" data-url='resources/data/sowBree.json' id="sowBree">母猪配种管理</a></li>
+					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/weanCont.json');delete_add();Tab.addTab('母猪断奶管理', 'dataList.html','resources/data/weanCont.json');" data-url='resources/data/weanCont.json' id="weanCont">母猪断奶管理</a></li>
+					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowsDeli.json');delete_add();Tab.addTab('母猪分娩管理', 'dataList.html','resources/data/sowsDeli.json');" data-url='resources/data/sowsDeli.json' id="sowsDeli">母猪分娩管理</a></li>
+				</ul>
+			</li>
+				</ul>
+			</li>
+			
 			<li class="sub-menu system_menus system_1 6">
 				<a class="waves-effect" href="javascript:;"><i class="zmdi zmdi-lock-outline"></i> 维护与安全管理</a>
 				<ul>
@@ -287,16 +329,7 @@
 			<li class="sub-menu system_menus system_1 8">
 				<a class="waves-effect" href="javascript:add_bacColor('resources/data/consSett.json');delete_add();Tab.addTab('养护结算', 'dataList.html','resources/data/consSett.json');" data-url='resources/data/consSett.json' id="consSett"><i class="fa fa-hand-lizard-o" ></i> 养护结算</a>
 			</li>
-			<li class="sub-menu system_menus system_1 9">
-				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>母猪管理</a>
-				<ul>
-
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowBree.json');delete_add();Tab.addTab('母猪配种管理', 'dataList.html','resources/data/sowBree.json');" data-url='resources/data/sowBree.json' id="sowBree">母猪配种管理</a></li>
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/weanCont.json');delete_add();Tab.addTab('母猪断奶管理', 'dataList.html','resources/data/weanCont.json');" data-url='resources/data/weanCont.json' id="weanCont">母猪断奶管理</a></li>
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowsDeli.json');delete_add();Tab.addTab('母猪分娩管理', 'dataList.html','resources/data/sowsDeli.json');" data-url='resources/data/sowsDeli.json' id="sowsDeli">母猪分娩管理</a></li>
-
-				</ul>
-			</li>
+			
 			<li>
 				<div class="upms-version">
 					&copy; lsy V1.0.0

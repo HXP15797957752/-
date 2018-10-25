@@ -243,9 +243,9 @@
 				<a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>猪只生长情况管理</a>
 				<ul>
 
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/stanSett.json');delete_add();Tab.addTab('生长情况标准设置', 'dataList.html','resources/data/stanSett.json');" data-url='resources/data/stanSett.json' id="stanSett">生长情况标准设置</a></li>
+					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/stanSett.json');Tab.addTab('生长情况标准设置', 'dataList.html','/IntelligentSystem/api/UGlnU2VydmljZTpzZXRHcm93dGhTdGFuZGFyZA');" id="stanSett">生长情况标准设置</a></li>
 					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/equiOperCont.json');delete_add();Tab.addTab('生长情况统计', 'dataList.html');" >生长情况统计</a></li>
-					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/suspIllnStat.json');delete_add();Tab.addTab('疑似生病统计', 'dataList.html');">疑似生病统计</a></li>
+					<li><a class="waves-effect" href="javascript:add_bacColor('resources/data/equiOperCont.json');Tab.addTab('疑似生病统计', 'dataList.html','/IntelligentSystem/api/UGlnU2VydmljZTpkb3VidGZ1bElsbA');" id="equiOperCont">疑似生病统计</a></li>
 
 				</ul>
 			</li>

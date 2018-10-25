@@ -1,6 +1,7 @@
 package cn.bluedot.framemarker.util;
 
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Tool {
 	        SAXReader reader = new SAXReader();
 	        InputStream fis = null;
 	        try{
-	            fis = this.getClass().getResourceAsStream("/" +"c3p0-config.xml");
+	            fis = this.getClass().getResourceAsStream("/c3p0-config.xml");
 	            //加载xml文档
 	            Document doc = reader.read(fis);
 	            //获取根元素

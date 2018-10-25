@@ -43,14 +43,11 @@ public class ResultSetHandler {
                     //获取所有属性对应的set方法，方法名为set+属性名首字母大写
                     String setName ="set"+firstName.toUpperCase()+fName.substring(1);
                     //属性类型与set方法参数类型一致，所以获得set方法
-                    System.out.println("***************************");
-                    System.out.println(field.getType()+"---");
-                    System.out.println(rs.getObject(fName));
                     Method setMethod =  clazz.getMethod(setName, field.getType());
                     //执行set方法，将resultset的值设置到破属性中
-                    System.out.println(metaData.getColumnTypeName(i+1));
+                    
+                    System.out.println(field.getType());
                     setMethod.invoke(t, rs.getObject(fName));
-                    System.out.println("888");
                 }
                 //添加po到list
                 list.add(t);

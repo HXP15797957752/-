@@ -58,7 +58,6 @@ public class Config {
     
     public static String getKey(String simpleName){
        //Role=id|cn.xxx.xxx.Role
-    	System.out.println(simpleName);
         String temp = keys.get(simpleName);
         return temp.substring(0, temp.indexOf("|"));
     }
@@ -147,12 +146,10 @@ public class Config {
         SAXReader reader = new SAXReader();
         Map<String, BoConfig> map = new HashMap<>();
         try {
-        	System.out.println(fileName);
             Document doc = reader.read(Config.class.getClassLoader().getResourceAsStream(fileName));
-            System.out.println(doc);
             Element root = doc.getRootElement();
             //先拿到所有的BO
-            List<Element> list = root.selectNodes("/bo");
+            List<Element> list = root.selectNodes("bo");
             for(Element element : list) {
                 BoConfig boConfig = new BoConfig();
                 String classname = element.attributeValue("classname");

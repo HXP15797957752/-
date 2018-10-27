@@ -93,14 +93,14 @@ public class PigService implements Service{
      * @param viewmap
      */
     private void initsetGrowthStandard(Map<String, Object> viewmap) {
-        viewmap.put("pigType", "猪种");
-        viewmap.put("pigSex", "猪性别");
-        viewmap.put("growthStandard", "生长期");
-        viewmap.put("dayWeight", "日增重量");
-        viewmap.put("upData", "上限");
-        viewmap.put("lowData", "下限");
+        viewmap.put("typeName", "猪种");
+        viewmap.put("sex", "猪性别");
+        viewmap.put("growthName", "生长期");
+        viewmap.put("addWeight", "日增重量");
+        viewmap.put("upperLimit", "上限");
+        viewmap.put("lowerLimit", "下限");
         viewmap.put("date", "日期");
-        viewmap.put("timeGap", "提示间隔");
+        viewmap.put("timeInterval", "提示间隔");
     }
     
     /**

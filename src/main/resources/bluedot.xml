@@ -9,4 +9,177 @@
               attrname属性表示bo类中用的字段名称
               columnname属性表示po类中相应的字段名
  -->
-
+<bos>
+	
+	<bo classname="cn.bluedot.core.bo.GrowthStandardBo">
+        
+        <!-- 不是一个集合,必须写attrname -->
+        <po classname="cn.bluedot.core.domain.PigStandard" tablename="pigstandard">
+             <id type="java.lang.Integer" attrname = "pigStandardID" columnname = "pigStandardID"></id>
+             <property type="java.lang.Integer" attrname = "sex" columnname = "sex"></property>
+             <property type="java.lang.Integer" attrname = "addWeight" columnname = "addWeight"></property>
+             <property type="java.lang.Integer" attrname = "upperLimit" columnname = "upperLimit"></property>
+             <property type="java.lang.Integer" attrname = "lowerLimit" columnname = "lowerLimit"></property>
+             
+             <property type="java.lang.Integer" attrname = "timeInterval" columnname = "timeInterval"></property>
+        </po>
+        <!-- 如果写了name, property的attrname可以不写  : tablename.columnname-->
+        <po classname="cn.bluedot.core.domain.PigType" tablename="pigtype" >
+            <id type="java.lang.Integer" attrname = "pigTypeID" columnname = "pigTypeID"></id>
+            <property type="java.lang.String" attrname = "typeName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.GrowthState" tablename="growthstate">
+            <id type="java.lang.Integer" attrname = "growthStateID" columnname = "growthStageID"></id>
+            <property type="java.lang.String" attrname = "growthName" columnname = "name"></property>   
+        </po>
+        <!-- 写的是多对一的形式
+            //potablename
+         -->
+        <ref potablename="pigstandard" columnname="pigTypeID" refpotablename="pigtype"  refname="pigTypeID" ></ref>
+        <ref potablename="pigstandard" columnname="growthStateID" refpotablename="growthstate"  refname="growthStageID"></ref>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.DoubtfulIllBo">
+        
+        <!-- 不是一个集合,必须写attrname -->
+        <po classname="cn.bluedot.core.domain.Pig" tablename="pig">
+             <id type="java.lang.Integer" attrname = "pigNo" columnname = "pigNo"></id>
+             <property type="java.lang.Integer" attrname = "sex" columnname = "sex"></property>
+             <property type="java.lang.Integer" attrname = "state" columnname = "state"></property>
+             <property type="java.lang.String" attrname = "hogcoteNo" columnname = "hogcoteNo"></property>
+             
+        </po>
+        <!-- 如果写了name, property的attrname可以不写  : tablename.columnname-->
+        <po classname="cn.bluedot.core.domain.PigType" tablename="pigtype" >
+            <id type="java.lang.Integer" attrname = "pigTypeID" columnname = "pigTypeID"></id>
+            <property type="java.lang.String" attrname = "typeName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.GrowthState" tablename="growthstate">
+            <id type="java.lang.Integer" attrname = "growthStateID" columnname = "growthStageID"></id>
+            <property type="java.lang.String" attrname = "growthName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.HogCote" tablename="hogcote">
+            <id type="java.lang.String" attrname = "hhogcoteNo" columnname = "hogcoteNo"></id>
+            <property type="java.lang.String" attrname = "pigstyNo" columnname = "pigstyNo"></property>
+        </po>
+        <!-- 写的是多对一的形式
+            //potablename
+         -->
+        <ref potablename="pig" columnname="pigTypeID" refpotablename="pigtype"  refname="pigTypeID" ></ref>
+        <ref potablename="pig" columnname="growthStateID" refpotablename="growthstate"  refname="growthStageID"></ref>
+        <ref potablename="hogcote" columnname="hogcoteNo" refpotablename="pigsty"  refname="pigstyNo"></ref>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.DiseaseTreatmentBo">
+        
+        <!-- 不是一个集合,必须写attrname -->
+        <po classname="cn.bluedot.core.domain.DiseaseTreatment" tablename="diseaseTreatment">
+             <id type="java.lang.Integer" attrname = "ID" columnname = "ID"></id>
+             <property type="java.lang.Integer" attrname = "useCount" columnname = "useCount"></property>
+             <property type="java.Util.Date" attrname = "eatTime" columnname = "eatTime"></property>
+             <property type="java.Util.Date" attrname = "illTime" columnname = "illTime"></property>
+             <property type="java.Util.String" attrname = "illDescription" columnname = "illDescription"></property>
+        </po>
+        <!-- 如果写了name, property的attrname可以不写  : tablename.columnname-->
+        <po classname="cn.bluedot.core.domain.Pig" tablename="pig" >
+            <id type="java.lang.String" attrname = "pigNo" columnname = "pigNo"></id>
+        </po>
+        <po classname="cn.bluedot.core.domain.DrugType" tablename="drugtype">
+            <id type="java.lang.Integer" attrname = "drugTypeID" columnname = "drugTypeID"></id>
+            <property type="java.lang.String" attrname = "drugName" columnname = "drugName"></property>   
+        </po>
+        <!-- 写的是多对一的形式
+            //potablename
+         -->
+        <ref potablename="diseaseTreatment" columnname="drugTypeID" refpotablename="drugtype"  refname="name" ></ref>
+        <ref potablename="diseaseTreatment" columnname="drugTypeID" refpotablename="pig"  refname="pigNo"></ref>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.FeedSetBo">
+        <po classname="cn.bluedot.core.domain.FeedSet" tablename="feedset" >
+            <id type="java.lang.Integer" attrname = "feedSetID" columnname = "feedSetID"></id>
+            <property type="java.lang.Integer" attrname = "putNumber" columnname = "putNumber"></property>
+            <property type="java.lang.Date" attrname = "putTime" columnname = "putTime"></property>
+            <property type="java.lang.Integer" attrname = "timeInterval" columnname = "timeInterval"></property>
+        </po>
+        <po classname="cn.bluedot.core.domain.PigType" tablename="pigtype" >
+            <id type="java.lang.Integer" attrname = "pigTypeID" columnname = "pigTypeID"></id>
+            <property type="java.lang.String" attrname = "typeName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.GrowthState" tablename="growthstate">
+            <id type="java.lang.Integer" attrname = "growthStateID" columnname = "growthStageID"></id>
+            <property type="java.lang.String" attrname = "growthName" columnname = "name"></property>   
+        </po>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.inoculationSetBo">
+        <po classname="cn.bluedot.core.domain.InoculationSet" tablename="inoculationset" >
+            <id type="java.lang.Integer" attrname = "inoculationSetID" columnname = "inoculationSetID"></id>
+            <property type="java.Util.Date" attrname = "inoculationTime" columnname = "inoculationTime"></property>
+            <property type="java.lang.String" attrname = "unit" columnname = "unit"></property>
+            <property type="java.lang.Integer" attrname = "useCount" columnname = "useCount"></property>
+            <property type="java.lang.String" attrname = "pigstyNo" columnname = "pigstyNo"></property>
+            <property type="java.Util.Date" attrname = "createTime" columnname = "createTime"></property>
+            <property type="java.lang.String" attrname = "description" columnname = "description"></property>
+        </po>
+        <po classname="cn.bluedot.core.domain.PigType" tablename="pigtype" >
+            <id type="java.lang.Integer" attrname = "pigTypeID" columnname = "pigTypeID"></id>
+            <property type="java.lang.String" attrname = "typeName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.GrowthState" tablename="growthstate">
+            <id type="java.lang.Integer" attrname = "growthStateID" columnname = "growthStageID"></id>
+            <property type="java.lang.String" attrname = "growthName" columnname = "name"></property>   
+        </po>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.PigBo">
+        <po classname="cn.bluedot.core.domain.Pig" tablename="pig" >
+            <id type="java.lang.String" attrname = "pigNo" columnname = "pigNo"></id>
+            <property type="java.lang.Integer" attrname = "sex" columnname = "sex"></property>
+            <property type="java.lang.Integer" attrname = "age" columnname = "age"></property>
+            <property type="java.lang.Integer" attrname = "state" columnname = "state"></property>
+            <property type="java.lang.String" attrname = "orignPlace" columnname = "orignPlace"></property>
+            <property type="java.Util.Date" attrname = "birthTime" columnname = "birthTime"></property>
+            <property type="java.lang.String" attrname = "hogcoteNo" columnname = "hogcoteNo"></property>
+        </po>
+        <po classname="cn.bluedot.core.domain.DrugType" tablename="drugtype" >
+            <id type="java.lang.Integer" attrname = "drugTypeID" columnname = "drugTypeID"></id>
+            <property type="java.lang.String" attrname = "drugName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.User" tablename="user">
+            <id type="java.lang.String" attrname = "inoculationUserNo" columnname = "inoculationUserNo"></id>
+            <property type="java.lang.String" attrname = "username" columnname = "name"></property>   
+        </po>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.SetFormulsaBo">
+        <po classname="cn.bluedot.core.domain.Formulsa" tablename="formulsa" >
+            <id type="java.lang.Integer" attrname = "formulaID" columnname = "formulaID"></id>
+            <property type="java.lang.String" attrname = "formulaName" columnname = "formulaName"></property>
+            <property type="java.lang.Integer" attrname = "waterProportion" columnname = "waterProportion"></property>
+            <property type="java.lang.Integer" attrname = "drugProportion" columnname = "drugProportion"></property>
+            <property type="java.lang.Integer" attrname = "feedProportion" columnname = "feedProportion"></property>
+            <property type="java.lang.String" attrname = "season" columnname = "season"></property>
+            <property type="java.Util.Date" attrname = "createTime" columnname = "createTime"></property>
+            <property type="java.lang.String" attrname = "description" columnname = "description"></property>
+        </po>
+        <po classname="cn.bluedot.core.domain.DrugType" tablename="drugtype" >
+            <id type="java.lang.Integer" attrname = "drugTypeID" columnname = "drugTypeID"></id>
+            <property type="java.lang.String" attrname = "drugName" columnname = "name"></property>   
+        </po>
+        <po classname="cn.bluedot.core.domain.User" tablename="user">
+            <id type="java.lang.String" attrname = "inoculationUserNo" columnname = "inoculationUserNo"></id>
+            <property type="java.lang.String" attrname = "username" columnname = "name"></property>   
+        </po>
+    </bo>
+    <bo classname="cn.bluedot.core.bo.willDestroyBo">
+        <po classname="cn.bluedot.core.domain.WillDestroy" tablename="willdestroy" >
+            <id type="java.lang.Integer" attrname = "formulaID" columnname = "formulaID"></id>
+            <property type="java.Util.Date" attrname = "commitTime" columnname = "commitTime"></property>
+            <property type="java.lang.String" attrname = "reason" columnname = "reason"></property>
+            <property type="java.lang.Integer" attrname = "isAgree" columnname = "isAgree"></property>
+            
+        </po>
+        <po classname="cn.bluedot.core.domain.Pig" tablename="pig" >
+            <id type="java.lang.String" attrname = "pigNo" columnname = "pigNo"></id>
+        </po>
+        <po classname="cn.bluedot.core.domain.User" tablename="user">
+            <id type="java.lang.String" attrname = "inoculationUserNo" columnname = "inoculationUserNo"></id>
+            <property type="java.lang.String" attrname = "username" columnname = "name"></property>   
+        </po>
+    </bo>
+</bos>

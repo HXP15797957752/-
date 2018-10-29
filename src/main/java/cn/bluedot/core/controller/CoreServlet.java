@@ -25,7 +25,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cn.bluedot.core.service.RequestWare;
 import cn.bluedot.core.service.Service;
-import cn.bluedot.core.util.Base64Util;
+import cn.bluedot.core.util.PasreUtil;
 
 /**
  * Servlet implementation class CoreServlet
@@ -50,7 +50,7 @@ public class CoreServlet extends HttpServlet {
         /**
          * 1. 获取method参数，它是用户想调用的方法
          */
-        String[] params = Base64Util.decodeID(ID);
+        String[] params = PasreUtil.decodeID(ID);
         String modelName = "cn.bluedot.core.service." + params[0];
         String actionName = params[1];
         System.out.println(modelName);

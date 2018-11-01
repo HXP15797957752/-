@@ -22,6 +22,9 @@ public class RequestWare {
 	public void setReq_rep(Map req_rep) {
 		this.req_rep = req_rep;
 	}
+	/*
+	*获取参数封装到map
+	*/
 	public Map getMap() {
 		HttpServletRequest request = (HttpServletRequest) req_rep.get("request");
 		String classAtrrName = request.getParameter("formName");

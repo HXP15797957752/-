@@ -1,16 +1,15 @@
 /*
-Navicat MySQL Data Transfer
+cn.bluedot.core.domain.User
+OriginAccessFilter
+UserService
+service.user 包下及其子包下的所有
 
-Source Server         : root
-Source Server Version : 50717
-Source Host           : localhost:3306
-Source Database       : testname
-
-Target Server Type    : MYSQL
-Target Server Version : 50717
-File Encoding         : 65001
-
-Date: 2018-10-25 01:06:53
+js/common.js 添加一个sessionUser方法
+login.js
+index.html 206, 307-318, 377-xxx
+login.html 
+register.html
+dataList.html 238 开始-?
 */
 
 SET FOREIGN_KEY_CHECKS=0;

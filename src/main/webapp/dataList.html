@@ -122,7 +122,7 @@
         "hurdMana": "OnlyRemove",
         "sowMana": "UnwKnow",// 母猪管理待定
         // user
-        "userAudiActiDiag": "OK_Remove",
+        "UserService": "OK_Remove",
         "userCanc": "OnlyRemove",
         "consSett" :"OnlyRemove"
     }
@@ -216,6 +216,26 @@
         columnsArray.push({field: 'action', title: '操作',
             halign: 'center', align: 'center', formatter: 'actionFormatter',
             events: 'actionEvents', clickToSelect: false});
+
+        // 处理date 无法显示
+        var arr = json[1];
+        for (var i = 0;i < arr.length;i++){
+            // 遍历其所有属性
+            for (var item in arr[i]){
+                if(typeof(arr[i][item])== "function")
+                      continue;
+                  var to = arr[i][item];
+                  if (Object.prototype.toString.call(to) === '[object Object]'){
+                      if (to.hasOwnProperty('time')){
+                          var myDate = new Date(arr[i][item].time);
+                          arr[i][item] = myDate.Format("yyyy-MM-dd HH:mm:ss").toString();
+                      }
+
+                  }
+                
+            }
+        }
+
         //console.log(columnsArray);
         $('#table').bootstrapTable('destroy').bootstrapTable({
             data: json[1],
@@ -253,7 +273,7 @@
             var property = (Object.keys(json[0][0]))[i];// 数据表名
             var CN_property = (json[0][0][property]);// 标题么
             createsettingDialogInHtml=createsettingDialogInHtml+ '<div class="input-control" >'+
-                '<input type="text" class="form-control" ' +
+                '<input type="text" class="form-control rl_data" ' +
                 'placeholder='+CN_property+ ' name='+property+' >'
                 +'</div>'
         }
@@ -268,7 +288,7 @@
             var property = (Object.keys(json[0][0]))[i];// 数据表名
             var CN_property = (json[0][0][property]);// 标题
             createsettingDialogInHtml=createsettingDialogInHtml+ '<div class="input-control" >'+
-                '<input type="text" class="form-control" ' +
+                '<input type="text" class="form-control sz_data" ' +
                 'placeholder='+CN_property+ ' name='+property+' >'
             +'</div>'
         }
@@ -301,13 +321,14 @@
     });
 
     if(jsonUrl == "resources/data/equiOperCont.json" || jsonUrl == "resources/data/userCanc.json"
-    || jsonUrl == "resources/data/userAudiActiDiag.json" || jsonUrl == "formColl1.json" ||jsonUrl == "formColl2.json"
-        || jsonUrl == "formColl3.json" || jsonUrl == "stanSett.json" || jsonUrl == "equiOperCont.json" ||
-        jsonUrl == "feedMana.json" || jsonUrl == "formColl.json"|| jsonUrl == "feedRegu.json"
-        || jsonUrl == "feedStat.json"|| jsonUrl == "pigInfoMana.json"|| jsonUrl == "pigSafeMana.json"||
-        jsonUrl == "vaccSett.json" || jsonUrl == "vaccMana.json"|| jsonUrl == "diseMana.json"|| jsonUrl == "destMana.json" ||
-    jsonUrl == "suspIllnStat.json" || jsonUrl == "pigElimMana.json"|| jsonUrl == "migrMana.json"|| jsonUrl == "entrMana.json"||
-        jsonUrl == "coluMana.json"|| jsonUrl == "hurdMana.json"|| jsonUrl == "sowBree.json"|| jsonUrl == "weanCont.json"|| jsonUrl == "sowsDeli.json") {
+    || jsonUrl == "resources/data/userAudiActiDiag.json" || jsonUrl == "resources/data/formColl1.json" ||jsonUrl == "resources/data/formColl2.json"
+        || jsonUrl == "resources/data/formColl3.json" || jsonUrl == "resources/data/stanSett.json" || jsonUrl == "resources/data/equiOperCont.json" ||
+        jsonUrl == "resources/data/feedMana.json" || jsonUrl == "resources/data/formColl.json"|| jsonUrl == "resources/data/feedRegu.json"
+        || jsonUrl == "resources/data/feedStat.json"|| jsonUrl == "resources/data/pigInfoMana.json"|| jsonUrl == "resources/data/pigSafeMana.json"||
+        jsonUrl == "resources/data/vaccSett.json" || jsonUrl == "resources/data/vaccMana.json"|| jsonUrl == "resources/data/diseMana.json"|| jsonUrl == "resources/data/destMana.json" ||
+    jsonUrl == "resources/data/suspIllnStat.json" || jsonUrl == "resources/data/pigElimMana.json"|| jsonUrl == "resources/data/migrMana.json"|| jsonUrl == "resources/data/entrMana.json"||
+        jsonUrl == "resources/data/coluMana.json"|| jsonUrl == "resources/data/hurdMana.json"|| jsonUrl == "resources/data/sowBree.json"|| jsonUrl == "resources/data/weanCont.json"|| jsonUrl == "resources/data/sowsDeli.json"
+    ||jsonUrl == "resources/data/logMana.json" || jsonUrl == "resources/data/rightMana.json" || jsonUrl == "resources/data/dataBase.json") {
         $('.visualization').attr("style", "display:none;");
         $('.fixed-table-body').attr("style", "height:500px");
     }else if (jsonUrl == "resources/data/consSett.json"){

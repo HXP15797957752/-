@@ -1,18 +1,33 @@
 package cn.bluedot.core.domain;
+
+import cn.bluedot.core.service.user.validation.annotation.Email;
+import cn.bluedot.core.service.user.validation.annotation.Length;
+import cn.bluedot.core.service.user.validation.annotation.NotNull;
+
 public class User{
     /**工号,ID号,账号*/
+    @NotNull
+    @Length(min=6, max=32)
     private String userNo;
-    /** */
+    /**邮箱 */
+    @Email
     private String email;
     /** */
+    @NotNull
+    @Length(min=11, max=11)
     private String phoneNumber;
     /** */
+    @NotNull
+    @Length(min=1, max=16)
     private String password;
     /** */
     private String trueName;
     /** */
+    @NotNull
     private Integer sex;
     /**' COMMENT '身份证*/
+    @NotNull
+    @Length(min=18, max=18)
     private String IDCard;
     /**头像url*/
     private String headPortraitUrl;

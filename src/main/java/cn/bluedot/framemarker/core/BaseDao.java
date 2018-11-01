@@ -81,7 +81,7 @@ public class BaseDao {
                 pstmt.setObject(i + 1,sr.getParams().get(i));
             }
             rs = pstmt.executeQuery(); 
-           list = ResultSetHandler.RsToList(rs,sr);
+            list = ResultSetHandler.RsToList(rs,sr);
             Transaction.commitTransaction();
             
         }catch(SQLException e) {

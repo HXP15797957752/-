@@ -48,7 +48,7 @@ public class ResultSetHandler {
                     System.out.println(rs.getObject(fName));
                     Method setMethod =  clazz.getMethod(setName, field.getType());
                     //执行set方法，将resultset的值设置到破属性中
-                    System.out.println(metaData.getColumnTypeName(i+1));
+
                     setMethod.invoke(t, rs.getObject(fName));
                     System.out.println("888");
                 }

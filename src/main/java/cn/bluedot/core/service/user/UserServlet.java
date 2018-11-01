@@ -19,8 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *  对于/user 路径进行拦截, 用户业务
  */
 import cn.bluedot.core.domain.User;
+import cn.bluedot.core.service.user.validation.ValidationUtil;
 import cn.bluedot.core.util.MyBeanUtils;
 import cn.bluedot.framemarker.dao.SuperDao;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 @WebServlet("/user")
 public class UserServlet extends BaseServlet {
     private static final long serialVersionUID = 1L;
@@ -36,7 +39,7 @@ public class UserServlet extends BaseServlet {
         String name = request.getParameter("username");
         String ps = request.getParameter("password");
         String rememberMe = request.getParameter("rememberMe");
-        String errCode = "1";
+        String errCode = "0";
         if (name != null && !"".equals(name) && ps != null && !"".equals(ps)) {
             String hql = "User|userNo=?";
             List<Object> list = superDao.HQLQuery(hql, name);
@@ -45,8 +48,13 @@ public class UserServlet extends BaseServlet {
                 errCode = "10100";
             }else if((findUser = (User)list.get(0)) != null && !findUser.getPassword().equals(ps)) {
                 errCode = "10101";
+            }else if(findUser.getState() == 0) {
+                errCode = "10102";
+            }else if(findUser.getState() == 2) {
+                errCode = "10103";
             }else {
                 request.getSession().setAttribute("user", findUser);
+                System.out.println(findUser + "已经登陆!!!");
                 if (rememberMe.equals("true")) {
                     Cookie c1 = new Cookie("cname", name);
                     Cookie c2 = new Cookie("cps", ps);
@@ -57,42 +65,14 @@ public class UserServlet extends BaseServlet {
                 }
             }
         }
-        response.getWriter().append("{code:'" + errCode + "', 'data':'/user?method=toIndex'}");
+        response.getWriter().append("{code:'" + errCode + "', 'data':'/index.html'}");
         return null;
     }
-    /**
-     * 跳转到处理登陆业务 
-     * @param request
-     * @param resonse
-     * @return
-     * @throws ServletException
-     * @throws IOException
-     */
-    public String tologin(HttpServletRequest request, HttpServletResponse resonse) throws ServletException, IOException {
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if ("cname".equals(cookie.getName())) {
-                    request.setAttribute("username", cookie.getValue());
-                }else if("cps".equals(cookie.getName())) {
-                    request.setAttribute("password", cookie.getValue());
-                }
-            }
-        }
-        return "f:/login.jsp";
-    }
-    /**
-     * 登陆之后跳转到主页
-     * @param request
-     * @param resonse
-     * @return
-     * @throws ServletException
-     * @throws IOException
-     */
-    public String toIndex(HttpServletRequest request, HttpServletResponse resonse) throws ServletException, IOException {
-        return "f:/index.jsp";
-    }
+    
+    
     /**
      * 注册业务逻辑
+     * 用户状态补充:待审核状态0; 审核通过1;审核不通过2;注销状态3
      * @param req
      * @param res
      * @return
@@ -102,44 +82,18 @@ public class UserServlet extends BaseServlet {
     public String ajaxRegist(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         User registUser = MyBeanUtils.toBean(req.getParameterMap(), User.class);
         
-        Map<String, String> errMap = new HashMap<>();
         List<Object> list = superDao.HQLQuery("User|userNo=?", registUser.getUserNo());
-        if (!list.isEmpty()) {
-            errMap.put("userNo_err", "该用户名已经注册");
-        }else if (registUser.getUserNo().length() <= 0) {
-            errMap.put("userNo_err", "用户名不能为空");
-        }else if (registUser.getUserNo().length() > 32) {
-            errMap.put("userNo_err", "用户名长度最大12位");
-        }
-        if (registUser.getPassword().length() <= 0) {
-            errMap.put("password_err", "密码不能为空");
-        }else if(registUser.getPassword().length() > 16) {
-            errMap.put("password_err", "密码最大长度16位");
-        }
-        if (registUser.getIDCard().length() != 18) {
-            errMap.put("IDCard_err", "身份证错误");
-        }
-        if (registUser.getPhoneNumber().length() != 11) {
-            errMap.put("phoneNumber_err", "电话号码错误");
-        }
-        if (registUser.getSex() != 0 && registUser.getSex() != 1) {
-            errMap.put("sex_err", "性别错误");
-        }
-        if (registUser.getQuestion() != null && registUser.getQuestion().length()>100) {
-            errMap.put("question_err", "问题长度过长");
-        }
-        if (registUser.getAnswer() != null && registUser.getAnswer().length() > 100) {
-            errMap.put("answer_err", "答案长度过长");
-        }
-        // userNo (0, 32],ps (0, 16], phoneNumber len=11, IDCard len=18, sex 0/1
-        // 通过验证, 注册(但是还需要通过审核用户才能登陆成功)
-        if (!errMap.isEmpty()) {
+        Map<String, String> map = ValidationUtil.validat(registUser);
+        
+        if (!list.isEmpty() || ValidationUtil.validat(map) == false) {
             // 验证不通过
             reqP2A(req);
-            toReq(errMap, req);
             res.getWriter().append("{code:'0', data:''}");
             return null;
         }
+        // userNo (0, 32],ps (0, 16], phoneNumber len=11, IDCard len=18, sex 0/1
+        // 通过验证, 注册(但是还需要通过审核用户才能登陆成功)
+        
         if (registUser.getAnswer() == null || "".equals(registUser.getAnswer())) {
             registUser.setQuestion(null);
         }
@@ -151,24 +105,73 @@ public class UserServlet extends BaseServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        res.getWriter().append("{code:'1', data:'" + registUser.getUserNo() +"', 'backurl':'/user?method=tologin'}");
+        res.getWriter().append("{code:'1', data:'" + registUser.getUserNo() +"', 'backurl':'/login.html'}");
         return null;
     }
     /**
-     * 找回密码
+     * 注册字段校验
+     * @param req
+     * @param res
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     * 
+     * 
+     */
+    public String registCheck(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String msg = ValidationUtil.validat(req, User.class, "name", "value");
+        res.getWriter().append("{msg:'" + msg + "'}");
+        return null;
+    }
+    /**
+     * 返回 User对象的JSON
      * @param req
      * @param res
      * @return
      * @throws ServletException
      * @throws IOException
      */
-    public String findPassword(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        
+    public String sessionUser(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        User user = (User)req.getSession().getAttribute("user");
+        if (user != null) {
+            String t = JSONObject.fromObject(user).toString();
+            res.getWriter().append(t);
+        }
+        return null;
+    }
+    
+    /**
+     * 修改密码
+     * @param req
+     * @param res
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String updatePassword(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        //userNo, 原密码, 新密码
+        String userNo = req.getParameter("userNo");
+        String oldPs = req.getParameter("oldps");
+        String newPs = req.getParameter("newps");
+        List<Object> list = superDao.HQLQuery("User|userNo=?", userNo);
+        if (!list.isEmpty()) {
+            User user = (User) list.get(0);
+            if (user.getPassword().equals(oldPs)){
+                user.setPassword(newPs);
+                if ("".equals(ValidationUtil.validat("password", user))) {
+                    superDao.update(user);
+                    
+                    res.getWriter().append("{msg:'修改成功', code:'0'}");
+                    return null;
+                }
+            }
+        }
+        // 修改失败
+        res.getWriter().append("{msg:'修改失败', code:'1'}");
         return null;
     }
     /**
-     * 更新用户信息
-     * 包括了修改密码, 密保, 个人信息, 和用户状态修改
+     * 更新 个人信息
      * @param req
      * @param res
      * @return
@@ -177,40 +180,41 @@ public class UserServlet extends BaseServlet {
      */
     public String update(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // 主要页面: persData.html
+        System.out.println("guolaile, update");
         User user = MyBeanUtils.toBean(req.getParameterMap(), User.class);
         List<Object> list = superDao.HQLQuery("User|userNo=?", user.getUserNo());
-        Map<String, String> errMap = new HashMap<>();
-        if (list.isEmpty()) {
-            errMap.put("userNo_err", "用户名不能修改");
-        }else if (user.getUserNo().length() <= 0) {
-            errMap.put("userNo_err", "用户名不能为空");
-        }else if (user.getUserNo().length() > 32) {
-            errMap.put("userNo_err", "用户名长度最大32位");
+        if (!list.isEmpty()) {
+            
+            if (ValidationUtil.validat(ValidationUtil.validat(user))) {
+                superDao.update(user);
+                
+                res.getWriter().append("{msg:'修改成功', code:'0'}");
+                list = superDao.HQLQuery("User|userNo=?", user.getUserNo());
+                req.getSession().setAttribute("user", list.get(0));
+                return null;
+            }
         }
-        if (user.getPassword().length() <= 0) {
-            errMap.put("password_err", "密码不能为空");
-        }else if(user.getPassword().length() > 16) {
-            errMap.put("password_err", "密码最大长度16位");
-        }
-        if (user.getIDCard().length() != 18) {
-            errMap.put("IDCard_err", "身份证错误");
-        }
-        if (user.getPhoneNumber().length() != 11) {
-            errMap.put("phoneNumber_err", "电话号码错误");
-        }
-        if (user.getSex() != 0 && user.getSex() != 1) {
-            errMap.put("sex_err", "性别错误");
-        }
-        // 还有其他的验证暂时不写
-        if (!errMap.isEmpty()) {
-            reqP2A(req);
-            toReq(errMap, req);
-            return "f:/persData.jsp";
-        }
-        superDao.update(user);
-        return "r:/persData.jsp";
+        res.getWriter().append("{msg:'修改失败', code:'1'}");
+        return null;
     }
-    
+    public String updateMibao(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        // 主要页面: persData.html
+        User user = MyBeanUtils.toBean(req.getParameterMap(), User.class);
+        List<Object> list = superDao.HQLQuery("User|userNo=?", user.getUserNo());
+        if (!list.isEmpty()) {
+            
+            if ("".equals(ValidationUtil.validat("question", user)) && "".equals(ValidationUtil.validat("answer", user))) {
+                superDao.update(user);
+                
+                res.getWriter().append("{msg:'修改成功', code:'0'}");
+                list = superDao.HQLQuery("User|userNo=?", user.getUserNo());
+                req.getSession().setAttribute("user", list.get(0));
+                return null;
+            }
+        }
+        res.getWriter().append("{msg:'修改失败', code:'1'}");
+        return null;
+    }
     /**
      * Dao 数据访问对象
      */

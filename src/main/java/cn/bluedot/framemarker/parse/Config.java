@@ -152,7 +152,7 @@ public class Config {
             System.out.println(doc);
             Element root = doc.getRootElement();
             //先拿到所有的BO
-            List<Element> list = root.selectNodes("/bo");
+            List<Element> list = root.selectNodes("bo");
             for(Element element : list) {
                 BoConfig boConfig = new BoConfig();
                 String classname = element.attributeValue("classname");

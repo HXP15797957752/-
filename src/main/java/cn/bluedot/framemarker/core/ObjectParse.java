@@ -52,6 +52,7 @@ public class ObjectParse {
         for(Field field : fields){
             String fieldName = field.getName();
             try {
+                System.out.println(fieldName);
                 Object o = clazz.getDeclaredMethod("get"+ getOneUpString(fieldName)).invoke(obj);
                 if(o != null){
                     
@@ -121,7 +122,7 @@ public class ObjectParse {
         
         sql.append(")");
         SqlResult sr = new SqlResult(sql.toString(),list);
-        
+        System.out.println(sql);
         bd.update(sr);
         
         return 0;
@@ -195,6 +196,8 @@ public class ObjectParse {
      * @return         po对象的集合
      */
     public List<Object> queryparsetoSQL(Class clazz, Map<String, Object> params){
+        
+        
         StringBuilder sql = new StringBuilder("select ");
         List<Object> list = new ArrayList<>();
         
@@ -213,7 +216,7 @@ public class ObjectParse {
         String className = getTableName(clazz);
     
         String content = "";
-        String fanweitiaojian = "";
+        
         StringBuilder whereOption = new StringBuilder("");
         
         for(Field field : clazz.getDeclaredFields()){
@@ -223,8 +226,8 @@ public class ObjectParse {
         
         sql.append(content.substring(1));
         
-        sql.append(" from ").append(className).append(" where ");
-        
+        sql.append(" from ").append(className);
+        System.out.println(123123);
         for(String str : params.keySet()){
             if(params.containsKey("limit")){
                 continue;
@@ -233,7 +236,10 @@ public class ObjectParse {
             whereString(parmObject, str, whereOption, list, "");
         }
         
-        sql.append(whereOption.substring(5));
+        if(!"".equals(whereOption.toString())){
+            sql.append(" where ");
+            sql.append(whereOption.substring(5));
+        }
         
         XValue obj = (XValue)params.get("limit");
         
@@ -310,7 +316,7 @@ public class ObjectParse {
      * @param list  sql语句中值的封装
      * @param params 查询条件
      */
-    private void fengzhung(Map<String, PoConfig> map, StringBuilder sql, List<Object> list, Map<String, Object> params){
+    private void fengzhung(Map<String, PoConfig> map, StringBuilder sql, List<Object> list, Map<String, Object> params, Map<String, Ref> refs){
         String content = "";
         String tableNames = "";
         StringBuilder whereoption = new StringBuilder("");
@@ -328,7 +334,7 @@ public class ObjectParse {
                
                 String columName = field.getColumnname();
                 
-                if(params.containsKey(field.getAttrname())){
+                if(params != null && params.containsKey(field.getAttrname())){
                     Object object = params.get(field.getAttrname());
                     
                     whereString(object, columName, whereoption, list, tableName+".");
@@ -338,9 +344,35 @@ public class ObjectParse {
             tableNames += ","+tableName;
         }
         sql.append(" " + content.substring(1)).append(" from ").append(tableNames.substring(1));
-        if(!whereoption.toString() .equals("")){
-            sql.append(" where ").append(whereoption.substring(5));
-        } 
+        sql.append(" where ");
+        
+        
+        
+        String waijian = "";
+        
+        for(String key : refs.keySet()){
+            Ref ref = refs.get(key);
+            // not list user,role,classes
+            if(map.containsKey(ref.getPotablename()) && map.containsKey(ref.getRefpotablename())){
+                waijian += " and " + ref.getPotablename() + "." + ref.getColumnname() + "=" + ref.getRefpotablename() + "." + ref.getRefname(); 
+            }
+        }
+        
+        if(whereoption.toString().equals("") && waijian.toString().equals("")){
+            sql.substring(sql.length()-6);
+        } else {
+            if(!whereoption.toString().equals("")){
+                sql.append(whereoption.substring(5));
+               
+            }else if(!waijian.toString().equals("")){
+                System.out.println("4545454");
+                
+                sql.append(waijian.substring(5));
+            }
+        }
+        
+        
+        
     }
     
     /**
@@ -353,9 +385,9 @@ public class ObjectParse {
     public List<Object> selectparsetoSQL(Class clazz, Map<String, Object> params) throws Exception{
         
         String className = getTableName(clazz);
-
+        System.out.println(className);
         BoConfig bc = Config.getBoconfig(className);
-        
+       
         
         Map<String, Ref> refs = bc.getRefs();
         StringBuilder sb = new StringBuilder("select");
@@ -364,21 +396,13 @@ public class ObjectParse {
         Map<String, PoConfig> isList = bc.getIsListPoConfigs();
         Map<String, PoConfig> notList = bc.getNotListPoConfig();
         
-        fengzhung(notList, sb, list, params);
+        fengzhung(notList, sb, list, params, refs);
         
-        String waijian = "";
+        XValue xvlimit = null;
         
-        for(String key : refs.keySet()){
-            Ref ref = refs.get(key);
-            // not list user,role,classes
-            if(notList.containsKey(ref.getPotablename()) && notList.containsKey(ref.getRefpotablename())){
-                waijian += " and " + ref.getPotablename() + "." + ref.getColumnname() + "=" + ref.getRefpotablename() + "." + ref.getRefname(); 
-            }
+        if(params != null){
+            xvlimit = (XValue)params.get("limit");
         }
-        
-        sb.append(waijian);
-        
-        XValue xvlimit = (XValue)params.get("limit");
         
         limitString(xvlimit, sb, list);
         
@@ -443,7 +467,7 @@ public class ObjectParse {
                 Object childobj = Class.forName(Config.getpoclassName(getOneUpString(strs))).newInstance();
                 List<Object> polist = bd.query(new SqlResult(sbsql.toString(), childlist, childobj));
                 quclazz.getDeclaredMethod("set"+getOneUpString(po.getListname()), List.class).invoke(obj, polist);
-               // System.out.println("402====="+((TestBo)obj));
+       
             }
         }
         
@@ -458,10 +482,13 @@ public class ObjectParse {
      * @throws Exception
      */
     public List<Object> selectparsetoSQL(String simpleName, Map<String, Object> params) throws Exception{
+       
         BoConfig bc = Config.getBoconfig(simpleName);
+        System.out.println(bc);
         Class clazz = null;
         //SqlResult sr = null;
         if(bc == null){
+            System.out.println(14);
             clazz = Class.forName(Config.getpoclassName(simpleName));
             return queryparsetoSQL(clazz, params);
         }else{

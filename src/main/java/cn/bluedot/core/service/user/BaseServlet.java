@@ -33,7 +33,7 @@ public abstract class BaseServlet extends HttpServlet {
 	protected static final String KEY = "method";   
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-	  //处理乱码问题
+	    // 处理乱码问题
         req.setCharacterEncoding("UTF-8");
         res.setContentType("text/html;charset=utf-8");
         /**

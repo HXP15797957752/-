@@ -15,13 +15,12 @@ $(function() {
 	// 回车事件
 	$('#username, #password').keypress(function (event) {
 		if (13 == event.keyCode) {
-			alert("enter...press");
 			login();
 		}
 	});
 });
 
-var baseUrl = "http://127.0.0.1:8080/IntelligentSystem";
+var baseUrl = "http://localhost:8080/IntelligentSystem";
 var loginApp=new Vue({
     el:'#login-window',
     data: {
@@ -31,24 +30,23 @@ var loginApp=new Vue({
         loginBtnClick:function () {
             this.isShow=!this.isShow;
             // login 逻辑
-            login(baseUrl);
+            login();
             
         },
         registBtnClick:function(){
-    		regist(baseUrl);
+    		regist();
     	}
     }
 });
 // 登录
-function login(loginUrl) {
+function login() {
 	$.ajax({
-		url: loginUrl + "/user",
+		url: baseUrl + "/user",
 		type: 'POST',
 		data: {
 			username: $('#username').val(),
 			password: $('#password').val(),
 			rememberMe: $('#rememberMe').is(':checked'),
-			//backurl: backUrl,
 			method: "ajaxLogin"
 		},
 		beforeSend: function() {
@@ -56,15 +54,20 @@ function login(loginUrl) {
 		},
 		success: function(json){
 			var resObj = eval('(' + json + ')');
-			if (resObj.code == 1) {
-				location.href = loginUrl + resObj.data;
+			if (resObj.code == 0) {
+				location.href = baseUrl + resObj.data;
 			} else {
 				
-				if (10101 == resObj.code) {
+				if (10100 == resObj.code) {
 					$('#username').focus();
 				}
-				if (10102 == resObj.code) {
+				if (10101 == resObj.code) {
 					$('#password').focus();
+				}
+				if (10102 == resObj.code) {
+					alert('您当前处于未审核状态');
+				}else if (10103 == resObj.code) {
+					alert('您当前未通过审核');
 				}
 			}
 		},
@@ -72,9 +75,10 @@ function login(loginUrl) {
 			console.log(error);
 		}
 	});
-}
+};
+
 //注册
-function regist(url) {
+function regist() {
 	var bool = $('#sex1').is(':checked');
 	var sex = 1;
 	if (bool == true){
@@ -83,7 +87,7 @@ function regist(url) {
 		sex = 0;
 	}
 	$.ajax({
-		url: url + "/user",
+		url: baseUrl + "/user",
 		type: 'POST',
 		data: {
 			userNo: $('#userNo').val(),
@@ -102,13 +106,14 @@ function regist(url) {
 			var resObj = eval('(' + json + ')');
 			
 			if (resObj.code == 1) {
-				alert(resObj.data + "注册成功!");
-				location.href = url + resObj.backurl;
+				alert(resObj.data + ":注册成功!");
+				location.href = baseUrl + resObj.backurl;
 			}
-			//错误消息暂时不接受
+			// 错误消息暂时不接受
 		},
 		error: function(error){
 			console.log(error);
 		}
 	});
+	
 }

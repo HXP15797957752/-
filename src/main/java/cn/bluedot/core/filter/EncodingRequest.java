@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * 装饰reqeust
  *
  */
-
 public class EncodingRequest extends HttpServletRequestWrapper {
 								//装饰者模式
 	private HttpServletRequest req;

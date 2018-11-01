@@ -76,9 +76,10 @@ public class ParseHQL {
         
         List<Object> lists = null;
         try {
+            
             lists = op.selectparsetoSQL(simpleName, params);
         } catch (Exception e) {
-            System.out.println("Error in exe");
+            throw new RuntimeException(e);
         }
         return lists;
     }

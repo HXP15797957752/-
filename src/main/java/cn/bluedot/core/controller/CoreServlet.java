@@ -115,6 +115,9 @@ public class CoreServlet extends HttpServlet {
                 	System.out.println(str);
                     response.getWriter().print(str);
                 }else if(start.equals("t")) {
+                    /*
+                    *解决ajax响应问题
+                    */
                 	String str=result.substring(2);
                 	JSONObject jsonObject = new JSONObject();
                     jsonObject.put("data",str);

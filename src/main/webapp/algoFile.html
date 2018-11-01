@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>算法文件</title>
+    <link rel="stylesheet" href="resources/css/file.css">
+    <link rel="shortcut icon" href="resources/images/favicon.png">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="resources/css/xenon-core.css">
+    <link rel="stylesheet" href="resources/css/xenon-forms.css">
+    <link rel="stylesheet" href="resources/css/xenon-components.css">
+    <link rel="stylesheet" href="resources/css/xenon-skins.css">
+
+    <!--字体-->
+    <link rel="stylesheet" href="resources/css/arimo.css">
+    <link rel="stylesheet" href="resources/css/linecons.css">
+    <link rel="stylesheet" href="resources/css/custom.css">
+    <link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.css">
+    <script src="resources/js/jquery-1.11.1.min.js"></script>
+    <!--让ie低版本等浏览器支持HTML5标签的解决方案-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <!--文件夹所需js、css-->
+    <link rel="stylesheet" href="resources/css/folder.css">
+    <script src="resources/js/folder/folder.js"></script>
+    <script src="resources/js/folder/BootstrapMenu.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+</head>
+<body>
+<section class="gallery-env">
+    <div class="row">
+        <div class="col-sm-12 mailbox-right">
+            <div class="album-header">
+                <div class="row" style="margin-top: -5px;">
+                    <div class="col-sm-12">
+                        <h2>算法文件</h2>
+                        <ul class="album-options list-unstyled list-inline" style="margin-top: -10px">
+                            <li>
+                                <button type="button" class="btn btn-default buttonself1 back1">
+                                    <i class="fa-reply fontstyle"></i>返回上一级</button>
+                            </li>
+                            <li>
+                                <button type="button" id="openuploadmodal" class="btn btn-default buttonself1 upload1">
+                                    <i class="fa-upload fontstyle"></i>上传算法</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-default buttonself1 download1">
+                                    <i class="fa-download fontstyle"></i>下载</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-default buttonself1 delete1">
+                                    <i class="fa-trash fontstyle"></i>删除</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DataTables -->
+            <section class="mailbox-env" >
+                <div class="mail-env" >
+                    <!--第二步：添加如下 HTML 代码-->
+                    <div  width="95%" style="margin-left:20px;" >
+                        <div class="album-header">
+                            <table id="example" class="table table-striped table-bordered" style="width: 95%" cellspacing="0" >
+                                <thead>
+                                <tr>
+                                    <th class="no-sorting">
+                                        全选<input type="checkbox" class="a" name="checkbox" id="btn1">
+                                    </th>
+                                    <th>算法名称</th>
+                                    <th>算法类别</th>
+                                    <th>版本号</th>
+                                    <th>上传时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="tabletr">
+                                    <td>
+                                        <input type="checkbox"  name="checkbox">
+                                    </td>
+                                    <td>巫发萍1号</td>
+                                    <td>预处理算法</td>
+                                    <td>0.0.1</td>
+                                    <td>2017-05-09 12:23:20</td>
+                                </tr>
+                                <tr class="tabletr">
+                                    <td>
+                                        <input type="checkbox" name="checkbox">
+                                    </td>
+                                    <td>巫发萍2号</td>
+                                    <td>分析算法</td>
+                                    <td>0.0.3</td>
+                                    <td>2012-02-09 11:23:20</td>
+                                </tr>
+                                <tr class="tabletr">
+                                    <td>
+                                        <input type="checkbox" class="4"  name="checkbox">
+                                    </td>
+                                    <td>巫发萍3号</td>
+                                    <td>分析算法</td>
+                                    <td>1.0.3</td>
+                                    <td>2012-02-09 11:23:20</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <script type="text/javascript">
+
+                                <!--右击菜单开始-->
+                                /*文件操作*/
+                                var menufile1 = new BootstrapMenu('.tabletr', {//初始化插件
+                                    //fetchElementData获取元数据
+                                    fetchElementData:function($rowElem){
+                                        var data = $rowElem;
+                                        return data;    //return的目的是给下面的onClick传递参数
+                                    },
+
+                                    /*BootstrapMenu的构造函数第一个参数接收一个字符串格式的元素选择器，第二个参数是一个options参数对象。
+                                     options对象必须至少有一个actions数组，数组中包含右键菜单的action。*/
+                                    actions: [{
+                                        name: '查看',
+                                        onClick: function() {
+                                            $('#look').modal({
+                                                keyboard: false
+                                            })
+
+                                        }
+                                    }, {
+                                        name: '删除',
+                                        onClick: function(obj) {
+                                            obj.remove();
+                                        }
+                                    },{
+                                        name: '下载',
+                                        onClick: function(obj) {
+
+                                        }
+                                    }]
+                                });
+                                <!--右击菜单结束-->
+
+                                /*删除文件*/
+                                $(document).on("click", ".delete1", function(){
+                                    $('table :checkbox').each(function(){
+
+                                        var isChecked = $(this).prop('checked');     // $(this) 获取当前的循环对象，此例中表示 table 中的 checkbox 子元素 集合中的一个元素
+
+                                        if(isChecked) {
+
+                                            $(this).parent().parent(".tabletr").remove();
+                                        }
+                                    }) ;
+                                });
+                                /*放回上一级*/
+                                $(document).on("click",".back1",function () {
+                                    $(location).prop("href","algoMana.html");
+                                });
+                        </script>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</section>
+
+<!--底栏注释-->
+<footer class="main-footer sticky footer-type-1">
+    <div class="footer-inner">
+        <!-- Add your copyright text here -->
+        <div class="footer-text">
+            &copy; 2016-2017 <strong>蓝点工作室</strong> 江西农业大学
+            <a href="#" target="_blank">大数据智能猪舍</a>
+            - 开发团队:
+            <a href="#" target="_blank">蓝点工作室</a>
+        </div>
+    </div>
+</footer>
+
+<!-- 模态框（Modal） -->
+<!--上传算法开始-->
+<div class="modal fade" id="uploadmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">上传算法</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">请填写上传信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="plugin/uploadPlugin" role="form" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="pluginName">算法名称 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.pluginName" id="pluginName" placeholder="请填写您的算法名称" maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="pluginName">算法版本号 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.version"  placeholder="请填写您的算法版本号" maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">算法类型 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="plugin.pluginType" id="pluginType" required>
+                                        <option>预处理算法</option>
+                                        <option>分析算法</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="description">算法描述 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control autogrow" cols="5" name="plugin.description" id="description" placeholder="请填写您的算法描述" maxlength="200" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">jar包 <font color="red">*</font></label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="binFile" value="" class="col-sm-8" required/>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group col-sm-6 pull-right" >
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">上传</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--上传算法结束-->
+
+<!--查看算法开始-->
+<div class="modal fade" id="look" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">查看算法</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="plugin/uploadPlugin" role="form" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="pluginName">算法名称 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.pluginName" id="pluginName" placeholder="算法名称..." maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="pluginName">算法版本号 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.version" id="version" placeholder="算法版本号..." maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="pluginName">上传时间 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.version" id="version" placeholder="算法版本号..." maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">算法类型 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="plugin.pluginName" id="pluginName" placeholder="算法类型..." maxlength="16" required>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="description">算法描述 <font color="red">*</font></label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control autogrow" cols="5" name="plugin.description" id="description" placeholder="算法描述..." maxlength="200" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group-separator"></div>
+
+                            <div class="form-group-separator"></div>
+                            <div class="form-group col-sm-6 pull-right" >
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--查看算法结束-->
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/TweenMax.min.js"></script>
+<script src="resources/js/resizeable.js"></script>
+<script src="resources/js/joinable.js"></script>
+<script src="resources/js/xenon-api.js"></script>
+<script src="resources/js/xenon-toggles.js"></script>
+<script>
+    $(function () {
+        $("#openuploadmodal").click(function () {
+            $("#uploadmodal").modal('show');
+            loadView2();
+        });
+    });
+</script>
+<!-- Imported scripts on this page -->
+<script src="resources/js/jquery-ui.min.js"></script>
+<!-- JavaScripts initializations and stuff -->
+<script src="resources/js/xenon-custom.js"></script>
+</body>
+</html>

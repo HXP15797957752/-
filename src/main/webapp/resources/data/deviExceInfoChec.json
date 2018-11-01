@@ -1,0 +1,40 @@
+[[
+{
+  "Piggery_ID":"猪舍ID",
+  "pigsty_ ID":"猪栏ID",
+  "equipment_type":"设备类型",
+  "Sensor_type":"传感器名称",
+  "Sensor_function":"传感器ID",
+  "Time_start":"起始时间",
+  "Time_end":"终止时间",
+  "method":"方式",
+  "Processing_person":"处理人",
+  "unusual_time":"异常时间"
+}
+],
+[
+{
+"Piggery_ID":"0101",
+"pigsty_ ID":"0112",
+"equipment_type":"传感器",
+"Sensor_type":"温度传感器",
+"Sensor_function":"001",
+"Time_start":"2:00",
+"Time_end":"2:10",
+"method":"关闭",
+"Processing_person":"李淑玥",
+"unusual_time":"1:58"
+},
+{
+"Piggery_ID":"0101",
+"pigsty_ ID":"0112",
+"equipment_type":"传感器",
+"Sensor_type":"红外线体温计",
+"Sensor_function":"001",
+"Time_start":"2:00",
+"Time_end":"2:09",
+"method":"重启",
+"Processing_person":"李淑玥",
+"unusual_time":"1:59"
+}
+]]

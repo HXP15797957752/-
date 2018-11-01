@@ -1,0 +1,45 @@
+[
+  [
+    {
+      "phopoUrl": "头像",
+      "name": "真实姓名",
+      "sex": "性别",
+      "userstate": "用户状态",
+      "regisperDay": "注册日期",
+      "effecpiveDay": "生效日期",
+      "idCard": "身份证",
+      "phoneNumber": "手机号",
+      "email": "邮箱",
+      "individualResume": "个人简介",
+      "Role": "拥有角色"
+    }
+  ],
+  [
+    {
+    "phopoUrl": "照片101",
+    "name": "李叔月",
+    "sex": "男",
+    "userstate": "待审核",
+    "regisperDay": "2018年8月15日17:40:05",
+    "effecpiveDay": "暂无",
+    "idCard": "360005",
+    "phoneNumber": "13334567890",
+    "email": "13334567890@huemail.com",
+    "individualResume": "这个人很懒,什么都没有写",
+    "Role": "暂无"
+  },
+    {
+      "phopoUrl": "照片201",
+      "name": "李数月",
+      "sex": "女",
+      "userstate": "已审核",
+      "regisperDay": "2018年8月15日17:40:05",
+      "effecpiveDay": "2018年8月15日17:41:44",
+      "idCard": "36003125",
+      "phoneNumber": "13334571890",
+      "email": "13334571890@huemail.com",
+      "individualResume": "这个人很懒,什么都没有写",
+      "Role": "工作人员"
+    }
+  ]
+]

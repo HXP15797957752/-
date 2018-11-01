@@ -1,0 +1,172 @@
+[
+  [
+  {
+    "equipment_ID": "设备ID",
+    "Piggery_ID": "猪舍ID",
+    "pigsty_ ID": "猪栏ID",
+    "equipment_type": "设备类型",
+    "equipment_name": "设备名称",
+    "state": "状态"
+  }
+],
+[
+{
+  "equipment_ID": "0001",
+  "Piggery_ID": "0212",
+  "pigsty_ ID": "00017",
+  "equipment_type": "传感器",
+  "equipment_name": "温度传感器",
+  "state": "关闭"
+},{
+  "equipment_ID": "0001",
+  "Piggery_ID": "0212",
+  "pigsty_ ID": "00017",
+  "equipment_type": "传感器",
+  "equipment_name": "温度传感器",
+  "state": "关闭"
+},
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },{
+  "equipment_ID": "0001",
+  "Piggery_ID": "0212",
+  "pigsty_ ID": "00017",
+  "equipment_type": "传感器",
+  "equipment_name": "温度传感器",
+  "state": "关闭"
+},
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0001",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "温度传感器",
+    "state": "关闭"
+  },
+  {
+    "equipment_ID": "0002",
+    "Piggery_ID": "0212",
+    "pigsty_ ID": "00017",
+    "equipment_type": "传感器",
+    "equipment_name": "红外线体温计",
+    "state": "启动"
+  }
+]
+]

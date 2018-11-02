@@ -32,7 +32,7 @@ public class Algorithm {
 	/**
 	 * �ϴ�ʱ��
 	 */
-	private Date dateTime;
+	private String dateTime;
 	
 	/**
 	 * ״̬
@@ -86,11 +86,11 @@ public class Algorithm {
 		this.description = description;
 	}
 
-	public Date getDateTime() {
+	public String getDateTime() {
 		return dateTime;
 	}
 
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
 

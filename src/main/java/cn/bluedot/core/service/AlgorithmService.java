@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import cn.bluedot.core.domain.Algorithm;
 import cn.bluedot.core.domain.CombinatorialAlgorithm;
+import cn.bluedot.core.domain.SowPei;
 import cn.bluedot.core.util.MyBeanUtils;
 import cn.bluedot.core.util.ParseUpload;
 import cn.bluedot.framemarker.dao.SuperDao;
@@ -158,6 +161,17 @@ public class  AlgorithmService extends RequestWare implements Service  {
 		return "a^算法删除成功";
 	}
 	
+	private void initSetSow(Map<String, Object> viewmap) {
+        viewmap.put("algorithmID", "母猪耳号");
+        viewmap.put("name", "输精日期");
+        viewmap.put("type", "所在舍");
+        viewmap.put("description", "所在栏");
+        viewmap.put("dateTime", "与配公猪");
+        viewmap.put("state", "输精方式");
+        viewmap.put("uploadUserNo", "母猪耳号");
+        viewmap.put("downloadCount", "输精日期");
+    }
+	
 	/**
 	 * 查看算法文件
 	 * 用例描述	系统管理员或管理员查看算法的相应信息
@@ -171,16 +185,31 @@ public class  AlgorithmService extends RequestWare implements Service  {
 	 * @param map
 	 * @return
 	 */
-	public String viewAlgorithmfiles (Map map) {
+	private String setSowPei(Map<String, Object[]> sowStartard){
+        Map<String, Object> viewmap =new LinkedHashMap<>();	            
+        initSetSow(viewmap);
+        
+        return viewAlgorithmfiles(Algorithm.class, viewmap);
+    }
+	public String viewAlgorithmfiles (Class clazz,Map<String,Object> viewmap) {
 		// 根据map字段参数生成Algorithm查询条件
-		Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
+		//Algorithm algorithm = MyBeanUtils.toBean(map, Algorithm.class);
 		
 		// hql语句
-		String hql = "Algorithm|algorithmID=?|limit 0,10";
+		 List  vos = new LinkedList<>() ;
+		String hql = "Algorithm";
 		
+ 		
 		// 查询结果
-		List vo = superDao.HQLQuery(hql, algorithm.getAlgorithmID());
+		vos.addAll(superDao.HQLQuery(hql, null));
 		
+		List<Map> vot = new LinkedList<>() ;
+        vot.add(viewmap);
+		List vo = new LinkedList<>();
+        vo.add(vot);
+        vo.add(vos);
+        System.out.println(vo);
+        
 		// 转化为json
 		JSONArray View = JSONArray.fromObject(vo);
 		

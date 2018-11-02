@@ -9,7 +9,6 @@ import java.util.Map;
  */
 import java.util.TreeMap;
 
-import cn.bluedot.core.bo.GrowthStandardBo;
 import cn.bluedot.core.domain.Algorithm;
 import cn.bluedot.core.domain.PigType;
 import cn.bluedot.core.domain.SowPei;

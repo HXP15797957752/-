@@ -4,7 +4,7 @@
 		<property name="jdbcUrl">jdbc:mysql://localhost:3306/testname?useSSL=true</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="user">root</property>
-		<property name="password">renzhijiang</property>
+		<property name="password">root</property>
 		<property name="initialPoolSize">10</property>
 		<property name="minPoolSize">2</property>
 		<property name="maxPoolSize">80</property>

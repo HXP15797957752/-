@@ -46,6 +46,9 @@ public class CoreServlet extends HttpServlet {
          * 1. 获取method参数，它是用户想调用的方法
          */
         String[] params = Base64Util.decodeID(ID);
+        for (String string : params) {
+			System.out.println(string);
+		}
         String modelName = "cn.bluedot.core.service." + params[0];
         String actionName = params[1];
         System.out.println(modelName);

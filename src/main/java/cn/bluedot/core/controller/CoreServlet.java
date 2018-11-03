@@ -1,7 +1,6 @@
 package cn.bluedot.core.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,11 +15,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.map.HashedMap;
+
+import cn.bluedot.core.domain.User;
 import cn.bluedot.core.service.RequestWare;
 import cn.bluedot.core.service.Service;
 import cn.bluedot.core.util.Base64Util;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import cn.bluedot.core.util.LogProxy;
 
 /**
  * Servlet implementation class CoreServlet
@@ -37,6 +38,10 @@ public class CoreServlet extends HttpServlet {
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)res;
         Map<String, String[]> mapParams = request.getParameterMap();
+        User user= (User) request.getSession().getAttribute("user");
+        String ipAddress = request.getRemoteAddr();
+        System.out.println("ipAddress==="+ipAddress);
+        System.out.println("user==="+user);
         Map<String, Object> req_rep = new HashMap<String, Object>();
         // .../api/类名!methodnmae
             
@@ -46,9 +51,6 @@ public class CoreServlet extends HttpServlet {
          * 1. 获取method参数，它是用户想调用的方法
          */
         String[] params = Base64Util.decodeID(ID);
-        for (String string : params) {
-			System.out.println(string);
-		}
         String modelName = "cn.bluedot.core.service." + params[0];
         String actionName = params[1];
         System.out.println(modelName);
@@ -71,7 +73,10 @@ public class CoreServlet extends HttpServlet {
         System.out.println(Thread.currentThread().getName());
         try {
             // ??...
-            Service service = (Service) serviceClass.newInstance();
+          //Service service = (Service) serviceClass.newInstance();
+            //修改为利用自定义动态代理生成service，以便记录日志
+            LogProxy logProxy = new LogProxy(ipAddress,user.getTrueName());
+            Service service  = (Service)logProxy.getProxy(serviceClass);
             //需要用到req 和 rep的模块
           if (service instanceof RequestWare) {
         	  req_rep.put("request", request);
@@ -88,7 +93,6 @@ public class CoreServlet extends HttpServlet {
         String result = null;
         try {
             result = (String) future.get();
-            System.out.println(result);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -115,20 +119,9 @@ public class CoreServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + path);
                 } else if (start.equals("a")) {// 使用ajax
                 	String str=result.substring(2);
+/*                	result = URLDecoder.decode(str, "utf-8");*/
                 	System.out.println(str);
                     response.getWriter().print(str);
-                }else if(start.equals("t")) {
-                    /*
-                    *解决ajax响应问题
-                    */
-                	String str=result.substring(2);
-                	JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("data",str);
-                    JSONArray jsonArray = new JSONArray();
-                    jsonArray.add(jsonObject);
-                    response.setContentType("text/html; charset=utf-8");
-                    PrintWriter out = response.getWriter();
-                    out.write(jsonArray.toString());
                 }
             }
         }

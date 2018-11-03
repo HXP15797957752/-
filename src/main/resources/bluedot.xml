@@ -38,4 +38,24 @@
         <ref potablename="pigstandard" columnname="pigTypeID" refpotablename="pigtype"  refname="pigTypeID" ></ref>
         <ref potablename="pigstandard" columnname="growthStateID" refpotablename="growthstate"  refname="growthStageID"></ref>
     </bo>
+    <!-- 菜单Bo -->
+    <bo classname="cn.bluedot.core.domain.MenuBo">
+        <po classname="cn.bluedot.core.domain.Menu" tablename="menu">
+             <id type="java.lang.Integer" attrname = "menuID" columnname = "menuID"></id>
+             <property type="java.lang.String" attrname = "userNo" columnname = "userNo"></property>
+             <property type="java.lang.String" attrname = "menuName" columnname = "menuName"></property>
+             <property type="java.lang.String" attrname = "label" columnname = "label"></property>
+        </po>
+      
+      <po classname="cn.bluedot.core.domain.Menuitem" tablename="menuItem" listname="menuItemList">
+           <id type="java.lang.Integer" attrname = "menuItemID" columnname = "menuItemID"></id>
+           <property type="java.lang.String" attrname = "userNo" columnname = "userNo"></property>
+           <property type="java.lang.menuID" attrname = "menuID" columnname = "menuID"></property>
+           <property type="java.lang.String" attrname = "itemName" columnname = "itemName"></property>
+           <property type="java.lang.String" attrname = "labelId" columnname = "labelId"></property>
+           <property type="java.lang.String" attrname = "targetPage" columnname = "targetPage"></property>     
+           <property type="java.lang.String" attrname = "serviceURL" columnname = "serviceURL"></property>
+      </po>
+	   <ref potablename="menuitem" columnname="menuID" refpotablename="menu"  refname="menuID" ></ref>
+    </bo>
 </bos>

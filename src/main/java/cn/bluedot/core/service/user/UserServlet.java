@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *  对于/user 路径进行拦截, 用户业务
  */
 import cn.bluedot.core.domain.User;
+import cn.bluedot.core.service.PowerManage;
 import cn.bluedot.core.service.user.validation.ValidationUtil;
 import cn.bluedot.core.util.MyBeanUtils;
 import cn.bluedot.framemarker.dao.SuperDao;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 @WebServlet("/user")
 public class UserServlet extends BaseServlet {
@@ -55,6 +55,13 @@ public class UserServlet extends BaseServlet {
             }else {
                 request.getSession().setAttribute("user", findUser);
                 System.out.println(findUser + "已经登陆!!!");
+                //以下为获取对应用户的菜单权限显示，并保存到session
+                Map menuMap  = new HashMap();
+                menuMap.put("userNo", findUser.getUserNo());
+                List menuList = new PowerManage().loadPage(menuMap);
+                System.out.println("menuList=="+menuList);
+                request.getSession().setAttribute("menuList", menuList);
+                
                 if (rememberMe.equals("true")) {
                     Cookie c1 = new Cookie("cname", name);
                     Cookie c2 = new Cookie("cps", ps);
@@ -65,7 +72,7 @@ public class UserServlet extends BaseServlet {
                 }
             }
         }
-        response.getWriter().append("{code:'" + errCode + "', 'data':'/index.html'}");
+        response.getWriter().append("{code:'" + errCode + "', 'data':'/index.jsp'}");
         return null;
     }
     
@@ -226,5 +233,6 @@ public class UserServlet extends BaseServlet {
         String hql = "User|userNo=?";
         List<Object> users = superDao.HQLQuery(hql, name);
         System.out.println(users);
+        
     }
 }

@@ -222,7 +222,7 @@
             <li>
                 <a class="waves-effect" href="index.jsp"><i class="zmdi zmdi-home"></i> 首页</a>
             </li>
-            <!-- <li class="sub-menu system_menus system_1 0">
+             <li class="sub-menu system_menus system_1 0">
                 <a class="waves-effect" href="javascript:;"><i class="zmdi zmdi-accounts-list"></i> 设备管理</a>
                 <ul>
                     <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/equiOperCont.json');delete_add();Tab.addTab('设备运行控制', 'dataList.html','resources/data/equiOperCont.json');" data-url="resources/data/equiOperCont.json" id="equiOperCont">设备运行控制</a></li>
@@ -287,12 +287,12 @@
                 <a class="waves-effect" href="javascript:;" ><i class="fa fa-child" aria-hidden="true"></i>母猪管理</a>
                 <ul>
 
-                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowBree.json');delete_add();Tab.addTab('母猪配种管理', 'dataList.html','resources/data/sowBree.json');" data-url='resources/data/sowBree.json' id="sowBree">母猪配种管理</a></li>
-                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/weanCont.json');delete_add();Tab.addTab('母猪断奶管理', 'dataList.html','resources/data/weanCont.json');" data-url='resources/data/weanCont.json' id="weanCont">母猪断奶管理</a></li>
-                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowsDeli.json');delete_add();Tab.addTab('母猪分娩管理', 'dataList.html','resources/data/sowsDeli.json');" data-url='resources/data/sowsDeli.json' id="sowsDeli">母猪分娩管理</a></li>
+                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowBree.json');delete_add();Tab.addTab('母猪配种管理', 'dataList.html','/IntelligentSystem/api/U293UGVpU2VydmljZTpzZXRTb3dQZWk=');"  id="sowBree">母猪配种管理</a></li>
+                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/weanCont.json');delete_add();Tab.addTab('母猪断奶管理', 'dataList.html','/IntelligentSystem/api/U293RHVhblNlcnZpY2U6c2V0U293RHVhbg==');"  id="weanCont">母猪断奶管理</a></li>
+                    <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/sowsDeli.json');delete_add();Tab.addTab('母猪分娩管理', 'dataList.html','/IntelligentSystem/api/U293RmVuU2VydmljZTpzZXRTb3dGZW4=');"  id="sowsDeli">母猪分娩管理</a></li>
 
                 </ul>
-            </li> -->
+            </li> 
             <!-- 根据权限循环显示不同角色的不同菜单 -->
             <c:forEach items="${menuList}" var="menu">
 	            <li class="sub-menu system_menus system_1 9">	                

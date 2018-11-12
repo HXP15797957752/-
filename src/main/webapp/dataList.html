@@ -199,10 +199,10 @@ var objectdata;
         {
         	
             returnActionFormatter =
-                [
-                	ajaxAction("/IntelligentSystem/api/"+ remove + "?pigStandardID=" + option );
+                [             	
                     //OnlyRemove
-                    //'<a class="remove ml10" href="/IntelligentSystem/api/'+ remove + '?pigStandardID=' + option +'" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                    //'<button onclick='ajaxAction("/IntelligentSystem/api/"+ remove + "?pigStandardID=' + option )">Copy Text</button>'
+                    '<button class="remove ml10" onclick="ajaxAction("/IntelligentSystem/api/"+ remove + "?pigStandardID=' + option )" title="Remove"><i class="glyphicon glyphicon-remove"></i></button>'
                 ]
         }
         else if (actionFormatterUrl.trim() === "Nothing" ||actionFormatterUrl.trim() === "UnwKnow")
@@ -222,6 +222,8 @@ var objectdata;
         },
         'click .remove': function (e, value, row, index) {
             alert('You click remove icon, row: ' + JSON.stringify(row)) + ' '+e;
+            objectdata[index]="";
+            console.log(objectdata[index]);
             console.log(value, row, index);
         },
         'click .operate':function (e, value, row, index) {

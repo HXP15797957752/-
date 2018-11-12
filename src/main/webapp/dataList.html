@@ -143,6 +143,23 @@ var objectdata;
         
         "PigGrowthService":"OnlyRemove"
     }
+    function ajaxAction (url){
+    	console(url);
+    	$.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            json: 'callback',
+            success: function (json) {
+            	alert(json);
+            },
+            error: function () {
+                alert("操作失败!");
+            }
+        });
+     }
+    
     //不同 jsonUrl 表格操作不同
     function actionFormatter(value, row, index) {
     	var option = objectdata[index]["pigStandardID"];
@@ -183,9 +200,9 @@ var objectdata;
         	
             returnActionFormatter =
                 [
-                    
+                	ajaxAction("/IntelligentSystem/api/"+ remove + "?pigStandardID=" + option );
                     //OnlyRemove
-                    '<a class="remove ml10" href="/IntelligentSystem/api/'+ remove + '?pigStandardID=' + option +'" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                    //'<a class="remove ml10" href="/IntelligentSystem/api/'+ remove + '?pigStandardID=' + option +'" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
                 ]
         }
         else if (actionFormatterUrl.trim() === "Nothing" ||actionFormatterUrl.trim() === "UnwKnow")

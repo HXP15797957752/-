@@ -66,7 +66,6 @@ public final class JdbcUtils {
 		Connection con = tl.get();//获取当前线程的事务连接
 		if(con == null) throw new SQLException("没有事务不能提交！");
 		con.commit();//提交事务
-		con.setAutoCommit(true);
 		con.close();//关闭连接
 		con = null;//表示事务结束！
 		tl.remove();
@@ -80,7 +79,6 @@ public final class JdbcUtils {
 		Connection con = tl.get();//获取当前线程的事务连接
 		if(con == null) throw new SQLException("没有事务不能回滚！");
 		con.rollback();
-		con.setAutoCommit(true);
 		con.close();
 		con = null;
 		tl.remove();

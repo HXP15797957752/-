@@ -16,12 +16,12 @@ public class Pig {
 	/**
 	 * �Ա�
 	 */
-	private int sex;
+	private Integer sex;
 	
 	/**
 	 * ����
 	 */
-	private int age;
+	private Integer age;
 	
 	/**
 	 * ��������
@@ -31,17 +31,17 @@ public class Pig {
 	/**
 	 * Ʒ��
 	 */
-	private int pigTypeID;
+	private Integer pigTypeID;
 	
 	/**
 	 * �����׶�
 	 */
-	private int growthStateID;
+	private Integer growthStateID;
 	
 	/**
 	 * ״̬
 	 */
-	private int state;
+	private Integer state;
 	
 	/**
 	 * ������
@@ -71,19 +71,19 @@ public class Pig {
 		this.pigNo = pigNo;
 	}
 
-	public int getSex() {
+	public Integer getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -95,27 +95,27 @@ public class Pig {
 		this.birthTime = birthTime;
 	}
 
-	public int getPigTypeID() {
+	public Integer getPigTypeID() {
 		return pigTypeID;
 	}
 
-	public void setPigTypeID(int pigTypeID) {
+	public void setPigTypeID(Integer pigTypeID) {
 		this.pigTypeID = pigTypeID;
 	}
 
-	public int getGrowthStateID() {
+	public Integer getGrowthStateID() {
 		return growthStateID;
 	}
 
-	public void setGrowthStateID(int growthStateID) {
+	public void setGrowthStateID(Integer growthStateID) {
 		this.growthStateID = growthStateID;
 	}
 
-	public int getState() {
+	public Integer getState() {
 		return state;
 	}
 
-	public void setState(int state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
 

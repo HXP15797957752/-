@@ -1,6 +1,7 @@
 package cn.bluedot.framemarker.util;
 
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;

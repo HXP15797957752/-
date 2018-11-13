@@ -14,7 +14,7 @@ public class Gathering {
 	/**
 	 * 收款类型
 	 */
-	private String gatheringType;
+	private Integer gatheringType;
 	/**
 	 * 收款时间
 	 */
@@ -49,10 +49,11 @@ public class Gathering {
 	public void setGatheringID(Integer gatheringID) {
 		this.gatheringID = gatheringID;
 	}
-	public String getGatheringType() {
+	
+	public Integer getGatheringType() {
 		return gatheringType;
 	}
-	public void setGatheringType(String gatheringType) {
+	public void setGatheringType(Integer gatheringType) {
 		this.gatheringType = gatheringType;
 	}
 	public Date getGatherDate() {

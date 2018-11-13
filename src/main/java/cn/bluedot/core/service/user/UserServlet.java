@@ -61,7 +61,6 @@ public class UserServlet extends BaseServlet {
                 List menuList = new PowerManage().loadPage(menuMap);
                 System.out.println("menuList=="+menuList);
                 request.getSession().setAttribute("menuList", menuList);
-                
                 if (rememberMe.equals("true")) {
                     Cookie c1 = new Cookie("cname", name);
                     Cookie c2 = new Cookie("cps", ps);

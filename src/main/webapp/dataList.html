@@ -44,6 +44,7 @@
     <div class="main" style="width: 97%;margin-left: 20px;height: 90%">
         <table id="table" style="text-align: center;height: 80%"></table>
     </div>
+    <!-- 
 <ul class="visualization" style="display: inline">
     <li style="float: left;display: inline"><div id="container1" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
     <li style="float: left;display: inline"><div id="container2" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
@@ -51,6 +52,7 @@
     <li style="float: left;display: inline"><div id="container4" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
     <li style="float: left;display: inline"><div id="container5" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
 </ul>
+-->
     <div class="modal fade" id="cons" tabindex="－1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="z-index: 9999;width: 80%">
             <div class="modal-content">
@@ -124,7 +126,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         "entrMana": "OnlyRemove",
         "coluMana": "Nothing",
         "hurdMana": "OnlyRemove",
-        "sowMana": "UnwKnow",// 母猪管理待定
+        "sowMana": "UnwKnow",
         // user
         "UserService": "OK_Remove",
         "userCanc": "OnlyRemove",
@@ -132,7 +134,11 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         // algo
         "AlgorithmService": "Combination_DownLoad",
         //日志管理
-        "LogManage":"Nothing"
+        "LogManage":"Nothing",
+        "SowPeiService":"OK_Remove",
+        "SowFenService":"OK_Remove",
+        "SowDuanService":"OK_Remove",
+        "EquipmentRecordService":"OK_Remove"
 
     }
     //不同 jsonUrl 表格操作不同
@@ -358,6 +364,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         $('.fixed-table-body').attr("style", "height:500px");
     }
 </script>
+<!-- 
 <script>
     // 仪表盘数据demo
     var seriesDate = [
@@ -504,7 +511,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
             }, 2000);
         }
 </script>
-
+-->
 <!--折线图-->
 <script>
     $(".wenduyibiaopan").click(function () {

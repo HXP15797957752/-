@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import cn.bluedot.framemarker.dao.SuperDao;
 
-@WebFilter("/index.html")
+@WebFilter("/index.jsp")
 public class AutoLoginFilter implements Filter {
 
 	public void destroy() {
@@ -40,6 +40,7 @@ public class AutoLoginFilter implements Filter {
 	                 List<Object> list = new SuperDao().HQLQuery("User|userNo=?, password=?", cname, cps);
 	                 if (!list.isEmpty()) {
 	                     req.getSession().setAttribute("user", list.get(0));
+	                     
 	                 }
 	             }
 	         }

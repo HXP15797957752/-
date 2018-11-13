@@ -4,10 +4,15 @@
 		<property name="jdbcUrl">jdbc:mysql://localhost:3306/testname?useSSL=true</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="user">root</property>
+<<<<<<< HEAD
 		<property name="password">renzhijiang</property>
 		<property name="initialPoolSize">10</property>
+=======
+		<property name="password">222418</property>
+		<property name="initialPoolSize">30</property>
+>>>>>>> bd4e2ee511dea28118651148b46f441458a9acdf
 		<property name="minPoolSize">2</property>
-		<property name="maxPoolSize">80</property>
+		<property name="maxPoolSize">800</property>
 		<property name="maxUseCount">5</property>
 	</default-config>
 </c3p0-config>

@@ -15,4 +15,11 @@ public class Base64Util {
 		}
 		return null;
 	}
+	
+	public static String encode(String string){
+	    if(string == null){
+	        return null;
+	    }
+	    return new sun.misc.BASE64Encoder().encode(string.getBytes());
+	}
 }

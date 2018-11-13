@@ -1,5 +1,6 @@
 package cn.bluedot.core.domain;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ public class WillDestroy {
 	/**
 	 * ������ID
 	 */
-	private long willDestroyID;
+	private BigInteger willDestroyID;
 	
 	/**
 	 * �����
@@ -38,11 +39,11 @@ public class WillDestroy {
 	 */
 	private int isAgree;
 
-	public long getWillDestroyID() {
+	public BigInteger getWillDestroyID() {
 		return willDestroyID;
 	}
 
-	public void setWillDestroyID(long willDestroyID) {
+	public void setWillDestroyID(BigInteger willDestroyID) {
 		this.willDestroyID = willDestroyID;
 	}
 

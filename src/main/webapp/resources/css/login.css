@@ -78,10 +78,3 @@ input[type=checkbox].checkbix:checked+label>span:before{box-sizing: content-box;
     width: 90%;
     height: 40px;
 }
-.errorMessage{
-    float: right;
-    color: red;
-    margin-right: 10px;
-    visibility: hidden;
-
-}

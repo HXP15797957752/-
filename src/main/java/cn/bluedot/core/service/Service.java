@@ -7,6 +7,8 @@ import cn.bluedot.framemarker.dao.SuperDao;
  * */
 public interface Service {
     SuperDao superDao=new SuperDao();
+    
+    
 }
 
 

@@ -11,37 +11,37 @@ public class PigStandard {
 	/**
 	 * ���׼ID
 	 */
-	private int pigStandardID;
+	private Integer pigStandardID;
 	
 	/**
 	 * ���Ա�
 	 */
-	private int sex;
+	private Integer sex;
 	
 	/**
 	 * ��Ʒ��
 	 */
-	private int pigTypeID;
+	private Integer pigTypeID;
 	
 	/**
 	 * �������׶�
 	 */
-	private int growthStateID;
+	private Integer growthStateID;
 	
 	/**
 	 * ������
 	 */
-	private int addWeight;
+	private Integer addWeight;
 	
 	/**
 	 * ����
 	 */
-	private int upperLimit;
+	private Integer upperLimit;
 	
 	/**
 	 * ����
 	 */
-	private int lowerLimit;
+	private Integer lowerLimit;
 	
 	/**
 	 * ����
@@ -51,79 +51,83 @@ public class PigStandard {
 	/**
 	 * ʱ����
 	 */
-	private int timeInterval;
+	private Integer timeInterval;
 
-	public int getPigStandardID() {
-		return pigStandardID;
-	}
+    public Integer getPigStandardID() {
+        return pigStandardID;
+    }
 
-	public void setPigStandardID(int pigStandardID) {
-		this.pigStandardID = pigStandardID;
-	}
+    public void setPigStandardID(Integer pigStandardID) {
+        this.pigStandardID = pigStandardID;
+    }
 
-	public int getSex() {
-		return sex;
-	}
+    public Integer getSex() {
+        return sex;
+    }
 
-	public void setSex(int sex) {
-		this.sex = sex;
-	}
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
 
-	public int getPigTypeID() {
-		return pigTypeID;
-	}
+    public Integer getPigTypeID() {
+        return pigTypeID;
+    }
 
-	public void setPigTypeID(int pigTypeID) {
-		this.pigTypeID = pigTypeID;
-	}
+    public void setPigTypeID(Integer pigTypeID) {
+        this.pigTypeID = pigTypeID;
+    }
 
-	public int getGrowthStateID() {
-		return growthStateID;
-	}
+    public Integer getGrowthStateID() {
+        return growthStateID;
+    }
 
-	public void setGrowthStateID(int growthStateID) {
-		this.growthStateID = growthStateID;
-	}
+    public void setGrowthStateID(Integer growthStateID) {
+        this.growthStateID = growthStateID;
+    }
 
-	public int getAddWeight() {
-		return addWeight;
-	}
+    public Integer getAddWeight() {
+        return addWeight;
+    }
 
-	public void setAddWeight(int addWeight) {
-		this.addWeight = addWeight;
-	}
+    public void setAddWeight(Integer addWeight) {
+        this.addWeight = addWeight;
+    }
 
-	public int getUpperLimit() {
-		return upperLimit;
-	}
+    public Integer getUpperLimit() {
+        return upperLimit;
+    }
 
-	public void setUpperLimit(int upperLimit) {
-		this.upperLimit = upperLimit;
-	}
+    public void setUpperLimit(Integer upperLimit) {
+        this.upperLimit = upperLimit;
+    }
 
-	public int getLowerLimit() {
-		return lowerLimit;
-	}
+    public Integer getLowerLimit() {
+        return lowerLimit;
+    }
 
-	public void setLowerLimit(int lowerLimit) {
-		this.lowerLimit = lowerLimit;
-	}
+    public void setLowerLimit(Integer lowerLimit) {
+        this.lowerLimit = lowerLimit;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public Date getDate() {
+        return date;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public int getTimeInterval() {
-		return timeInterval;
-	}
+    public Integer getTimeInterval() {
+        return timeInterval;
+    }
 
-	public void setTimeInterval(int timeInterval) {
-		this.timeInterval = timeInterval;
-	}
+    public void setTimeInterval(Integer timeInterval) {
+        this.timeInterval = timeInterval;
+    }
+
 	
-	
+	@Override
+	public String toString() {
+	   return pigTypeID + ":" + growthStateID + ":" +sex;
+	}
 }

@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class CommonService {
 	/**
-	 * 插入总信息
+	 * 查询信息
 	 * @param data:传输过来的边界类的数据
 	 * @return  :执行情况，代表转发页面、数据
 	 */

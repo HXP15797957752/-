@@ -3,9 +3,14 @@ package cn.bluedot.framemarker.core;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import cn.bluedot.framemarker.common.BoSuper;
+import cn.bluedot.framemarker.common.TestBo;
 import cn.bluedot.framemarker.parse.BoConfig;
 import cn.bluedot.framemarker.parse.Config;
 import cn.bluedot.framemarker.parse.FieldConfig;
@@ -51,12 +56,12 @@ public class ObjectParse {
 
         for(Field field : fields){
             String fieldName = field.getName();
+            
             try {
-                System.out.println(fieldName);
+                
                 Object o = clazz.getDeclaredMethod("get"+ getOneUpString(fieldName)).invoke(obj);
                 if(o != null){
-                    
-                    System.out.println(o.toString());
+                    list.add(o);
                     if(notwhere == ObjectParse.INSERT_VIEW){        
                         str += ","+ fieldName;
                       
@@ -68,12 +73,8 @@ public class ObjectParse {
                     }else if(notwhere == ObjectParse.SET_KEY){
                         if(!Config.getKey(clazz.getName().substring(clazz.getName().lastIndexOf(".")+1)).equals(fieldName)){
                             str += ","+ fieldName+ "=?";
-                        }else {
-                        	continue;
                         }
-
                     }
-                    list.add(o);
                 }
             } catch(Exception e) {
                 // TODO Auto-generated catch block
@@ -121,6 +122,7 @@ public class ObjectParse {
         }
         
         sql.append(")");
+        
         SqlResult sr = new SqlResult(sql.toString(),list);
         System.out.println(sql);
         bd.update(sr);
@@ -141,9 +143,9 @@ public class ObjectParse {
         
         sql.append(" " + getTableName(clazz) + " where ");
         sql.append(getParaName(obj, list, ObjectParse.WHERE_CONDITION).substring(5));
-        System.out.println(sql.toString());
-        bd.update(new SqlResult(sql.toString(),list));
         
+        bd.update(new SqlResult(sql.toString(),list));
+        System.out.println("148ObjectParse" + sql.toString() + list);
         return 0;
     }
     
@@ -167,24 +169,12 @@ public class ObjectParse {
             sql.append(getParaName(obj, list, 4).substring(1));
             sql.append(" where ");
             sql.append(Config.getKey(className)).append("=?");
-            try {
-				list.add(obj.getClass().getDeclaredMethod("get"+getOneUpString(Config.getKey(className))).invoke(obj));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
         }else{
             sql.append(getParaName(obj, list, ObjectParse.SET_VALUE).substring(1));
             sql.append(" where ");
             sql.append(getParaName(obj, list, ObjectParse.WHERE_CONDITION).substring(5));
         }
-        System.out.println(sql.toString());
-        try {
-			bd.update(new SqlResult(sql.toString(),list));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        new SqlResult(sql.toString(),list);
         return 0;
     }
     
@@ -344,7 +334,7 @@ public class ObjectParse {
             tableNames += ","+tableName;
         }
         sql.append(" " + content.substring(1)).append(" from ").append(tableNames.substring(1));
-        sql.append(" where ");
+        //sql.append(" where ");
         
         
         
@@ -358,17 +348,18 @@ public class ObjectParse {
             }
         }
         
-        if(whereoption.toString().equals("") && waijian.toString().equals("")){
-            sql.substring(sql.length()-6);
-        } else {
+        if(!whereoption.toString().equals("") || !waijian.toString().equals("")) {
+            sql.append(" where ");
+
             if(!whereoption.toString().equals("")){
+
                 sql.append(whereoption.substring(5));
-               
-            }else if(!waijian.toString().equals("")){
-                System.out.println("4545454");
                 
+            }else if(!waijian.toString().equals("")){
+    
                 sql.append(waijian.substring(5));
             }
+        
         }
         
         
@@ -405,8 +396,6 @@ public class ObjectParse {
         }
         
         limitString(xvlimit, sb, list);
-        
-        
         
         SqlResult sr = new SqlResult(sb.toString(),list);
         Object obj11 = clazz.newInstance();
@@ -488,7 +477,8 @@ public class ObjectParse {
         Class clazz = null;
         //SqlResult sr = null;
         if(bc == null){
-            System.out.println(14);
+            System.out.println(simpleName);
+            
             clazz = Class.forName(Config.getpoclassName(simpleName));
             return queryparsetoSQL(clazz, params);
         }else{

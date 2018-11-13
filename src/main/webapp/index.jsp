@@ -221,8 +221,8 @@
         <ul class="main-menu">
             <li>
                 <a class="waves-effect" href="index.jsp"><i class="zmdi zmdi-home"></i> 首页</a>
-            </li>
-            <!-- <li class="sub-menu system_menus system_1 0">
+           <!--   </li>
+            <li class="sub-menu system_menus system_1 0">
                 <a class="waves-effect" href="javascript:;"><i class="zmdi zmdi-accounts-list"></i> 设备管理</a>
                 <ul>
                     <li><a class="waves-effect" href="javascript:add_bacColor('resources/data/equiOperCont.json');delete_add();Tab.addTab('设备运行控制', 'dataList.html','resources/data/equiOperCont.json');" data-url="resources/data/equiOperCont.json" id="equiOperCont">设备运行控制</a></li>

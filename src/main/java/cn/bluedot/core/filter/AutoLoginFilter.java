@@ -1,7 +1,9 @@
 package cn.bluedot.core.filter;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,9 +15,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import cn.bluedot.core.domain.User;
+import cn.bluedot.core.service.PowerManage;
 import cn.bluedot.framemarker.dao.SuperDao;
 
-@WebFilter("/index.html")
+@WebFilter("/index.jsp")
 public class AutoLoginFilter implements Filter {
 
 	public void destroy() {
@@ -39,7 +43,13 @@ public class AutoLoginFilter implements Filter {
 	             if (cname != null && cps != null) {
 	                 List<Object> list = new SuperDao().HQLQuery("User|userNo=?, password=?", cname, cps);
 	                 if (!list.isEmpty()) {
-	                     req.getSession().setAttribute("user", list.get(0));
+	                     User findUser = (User)list.get(0);
+	                     req.getSession().setAttribute("user", findUser);
+	                   //以下为获取对应用户的菜单权限显示，并保存到session
+	                     Map menuMap  = new HashMap();
+	                     menuMap.put("userNo", findUser.getUserNo());
+	                     List menuList = new PowerManage().loadPage(menuMap);
+	                     req.getSession().setAttribute("menuList", menuList);
 	                 }
 	             }
 	         }

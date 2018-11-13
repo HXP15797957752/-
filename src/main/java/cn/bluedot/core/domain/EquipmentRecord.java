@@ -9,95 +9,87 @@ import java.util.Date;
  */
 public class EquipmentRecord {
 	/**
-	 * �豸��¼ID
+	 * 设备库存记录ID
 	 */
-	private long equipmentRecordID;
+	private int equipmentRecordID;
 	
 	/**
-	 * �豸ID
+	 * 设备ID
 	 */
-	private long equipmentID;
+	private String equipmentID;
 	
 	/**
-	 * ��Ч����
+	 * 有效日期
 	 */
-	private Date effectiveDate;
+	private String effectiveDate;
 	
 	/**
-	 * ��������
+	 *生产日期
 	 */
-	private Date createDate;
+	private String createDate;
 	
 	/**
-	 * ���ݴ���ʱ��
+	 * 采购价格
 	 */
-	private Date date;
+	private Double price;
 	
 	/**
-	 * �ɹ��۸�
+	 * useState״̬
 	 */
-	private float price;
-	
-	/**
-	 * ʹ��״̬
-	 */
-	private int useState;
+	private String useState;
 
-	public long getEquipmentRecordID() {
+	public int getEquipmentRecordID() {
 		return equipmentRecordID;
 	}
 
-	public void setEquipmentRecordID(long equipmentRecordID) {
+	public void setEquipmentRecordID(int equipmentRecordID) {
 		this.equipmentRecordID = equipmentRecordID;
 	}
 
-	public long getEquipmentID() {
-		return equipmentID;
-	}
-
-	public void setEquipmentID(long equipmentID) {
-		this.equipmentID = equipmentID;
-	}
-
-	public Date getEffectiveDate() {
+	
+	public String getEffectiveDate() {
 		return effectiveDate;
 	}
 
-	public void setEffectiveDate(Date effectiveDate) {
+	public void setEffectiveDate(String effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
-	public Date getDate() {
-		return date;
-	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public int getUseState() {
+	public String getEquipmentID() {
+		return equipmentID;
+	}
+
+	public void setEquipmentID(String equipmentID) {
+		this.equipmentID = equipmentID;
+	}
+
+	public String getUseState() {
 		return useState;
 	}
 
-	public void setUseState(int useState) {
+	public void setUseState(String useState) {
 		this.useState = useState;
 	}
+
+	
+
 	
 	
 }

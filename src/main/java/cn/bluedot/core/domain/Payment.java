@@ -14,7 +14,7 @@ public class Payment {
 	/**
 	 * 付款的类型
 	 */
-	private String paymentType;
+	private Integer paymentType;
 	/**
 	 * 付款时间
 	 */
@@ -50,10 +50,11 @@ public class Payment {
 		this.paymentID = paymentID;
 	}
 	
-	public String getPaymentType() {
+	
+	public Integer getPaymentType() {
 		return paymentType;
 	}
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(Integer paymentType) {
 		this.paymentType = paymentType;
 	}
 	public Date getPaymentDate() {

@@ -1,0 +1,825 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" style="height: auto">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="resources/css/common.css" rel="stylesheet"/>
+    <title>设备运行管控</title>
+
+    <link href="resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet"/>
+    <link href="resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="resources/plugins/waves-0.7.5/waves.min.css" rel="stylesheet"/>
+    <link href="resources/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet"/>
+    <link href="resources/plugins/select2/css/select2.min.css" rel="stylesheet"/>
+    <link href="resources/css/zui.css" rel="stylesheet"/>
+    <link href="resources/css/zui.lite.css" rel="stylesheet"/>
+    <link href="resources/css/zui-theme.css" rel="stylesheet"/>
+    <link href="resources/css/common.css" rel="stylesheet"/>
+    <link href="resources/css/jk_control.css" rel="stylesheet"/>
+    <link href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+
+
+    <script src="resources/plugins/jquery.1.12.4.min.js"></script>
+    <script src="resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+    <script src="resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.js"></script>
+    <script src="resources/plugins/bootstrap-table-1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="resources/plugins/waves-0.7.5/waves.min.js"></script>
+    <script src="resources/plugins/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="resources/plugins/select2/js/select2.min.js"></script>
+    <script src="resources/js/common.js"></script>
+    <script src="resources/plugins/device.min.js"></script>
+    <!-- yourself js-->
+    <script src="resources/js/admin.js"></script>
+
+    <!--echarts-->
+    <script src="resources/js/echarts.min.js"></script>
+</head>
+<body>
+
+<div class="jk_main">
+    <div class="main" style="width: 97%;margin-left: 20px;height: 90%">
+        <table id="table" style="text-align: center;height: 80%"></table>
+    </div>
+    <!-- 
+<ul class="visualization" style="display: inline">
+    <li style="float: left;display: inline"><div id="container1" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container2" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container3" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container4" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+    <li style="float: left;display: inline"><div id="container5" style="width: 230px;height: 200px;" class="wenduyibiaopan"></div></li>
+</ul>
+-->
+    <div class="modal fade" id="cons" tabindex="－1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="z-index: 9999;width: 80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">可视化</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pie" id="pie" style="width: 900px;height: 500px;"></div>
+                    <div class="bar" id="bar" style="width: 900px;height: 600px;"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<!--数据曲线图可视化-->
+<div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style=" width:680px; height: 60% ;z-index: 9999">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">数据可视化</h4>
+            </div>
+            <div class="modal-body" style="width:680px; height: 440px ;overflow:auto">
+                <div id="qcontainer" style="height: 450px;width: 600px;"></div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                <button class="btn btn-primary" id="submit2" type="button">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<script src="resources/js/common.js"></script>
+<script>
+var objectdata;
+// 创建Base64对象
+var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+
+    /*
+     对应操作说明: 除了抽出模块外仅有的操作
+     OnlyRemove 仅有删除操作
+     UnwKnow 需求出现差错暂无制作
+     Out_In 出栏入栏等
+     OK_Remove 有确定和删除操作
+     Nothing 无操作
+     */
+    var actionFormatterList = {
+    		// equiMana
+   	        "EquipmentManageService": "OK_Remove",//设备控制
+   	        "sensMana": "OnlyRemove",
+   	        "enviContEquiMana": "OnlyRemove",
+   	        "deviExceInfoChec": "OnlyRemove",
+        // pigMana
+        "stanSett": "OnlyRemove",
+        "growStat": "UnwKnow",// 生长情况统计
+        "suspIllnStat": "OK_Remove",
+        "pigElimMana": "Out_In",
+        "formColl": "OnlyRemove",
+        "feedRegu": "UnwKnow",// 饲喂调控
+        "feedStat": "Nothing",
+        "pigInfoMana": "OnlyRemove",
+        "vaccSett": "Nothing",
+        "vaccMana": "Nothing",
+        "diseMana": "OK_Remove",
+        "destMana": "OnlyRemove",
+        "entrMana": "OnlyRemove",
+        "coluMana": "Nothing",
+        "hurdMana": "OnlyRemove",
+        "sowMana": "UnwKnow",
+        // user
+        "UserService": "OK_Remove",
+        "userCanc": "OnlyRemove",
+        "consSett" :"OnlyRemove",
+        // algo
+        "AlgorithmService": "Combination_DownLoad",
+        //日志管理
+        "LogManage":"Nothing",
+        "SowPeiService":"OnlyRemove",
+        "SowFenService":"OnlyRemove",
+        "SowDuanService":"OnlyRemove",
+        "EquipmentRecordService":"OnlyRemove",
+        "FeedRecordService":"OnlyRemove",
+        "DrugRecordServcie":"OnlyRemove",
+        "PaymentService" : "OnlyRemove",
+        "GetService":"OnlyRemove",
+        "GrowthStatisticsService" : "OK_Remove"
+    }
+function ajaxAction (url){
+	console(url);
+	$.ajax({
+        type: "GET",
+        url: url,
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        json: 'callback',
+        success: function (json) {
+        	alert(json);
+        },
+        error: function () {
+            alert("操作失败!");
+        }
+    });
+ }
+    //不同 jsonUrl 表格操作不同
+    function actionFormatter(value, row, index) {
+    	var option = objectdata[index]["pigStandardID"];
+        var actionFormatterUrl = jsonUrl.substring(jsonUrl.lastIndexOf("/")+1);
+		var decodedString = Base64.decode(actionFormatterUrl);
+		var modelName = decodedString.substring(0,decodedString.lastIndexOf(":"));
+
+        var returnActionFormatterStr = actionFormatterList[modelName];
+        var returnActionFormatter = [];
+        var remove = Base64.encode(modelName + ":" + "onlyRemove"); 
+
+        if (returnActionFormatterStr.trim() === "OK_Remove")
+        {
+            returnActionFormatter =
+                [//OK_Remove
+                '<a class="like" href="javascript:void(0)" data-toggle="tooltip" title="OK"><i class="glyphicon glyphicon-ok"></i></a>　',
+                '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                ]
+        }
+        else if (returnActionFormatterStr.trim() === "OperRemove")
+        {
+            returnActionFormatter =
+                [
+                    //operate_remove
+                    '<a class="operate" href="javascript:void(0)" data-toggle="tooltip" title="是否自动处理异常"><i class="fa fa-circle-o"></i></a>　',
+                    '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                ]
+        }
+        else if (returnActionFormatterStr.trim() === "Out_In")
+        {
+            returnActionFormatter =
+                [//Out_In
+                    '<a class="like" href="javascript:void(0)" data-toggle="tooltip" title="OK"><i class="glyphicon glyphicon-log-out"></i></a>　',
+                    '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-log-in"></i></a>']
+        }
+        else if (returnActionFormatterStr.trim() === "OnlyRemove")
+        {
+        	 //OnlyRemove
+        	var requestURL = '/IntelligentSystem/api/'+ remove + '?pigStandardID=' + option;
+        	console.log(requestURL);     	
+            returnActionFormatter =
+                [             	
+                    //OnlyRemove
+                    '<a class="remove ml10" href="javascript:ActionAJAX('+requestURL+')" data-toggle="tooltip" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>'
+                ]
+        }
+        else if (returnActionFormatterStr.trim() === "Combination_DownLoad")
+        {
+        	returnActionFormatter =
+        		[
+        			//Combination_DownLoad
+                    '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="Combination"><i class="glyphicon glyphicon-piggy-bank"></i></a>',
+                    '<a class="remove ml10" href="javascript:void(0)" data-toggle="tooltip" title="DownLoad"><i class="glyphicon glyphicon-download-alt"></i></a>'
+                ]
+        }
+        else if (actionFormatterUrl.trim() === "Nothing" ||actionFormatterUrl.trim() === "UnwKnow")
+        {
+            returnActionFormatter =
+                [
+                ]
+        }
+        return returnActionFormatter.join('');
+    }
+
+    // 操作click 事件
+    window.actionEvents = {
+        'click .like': function (e, value, row, index) {
+        	var BaseUrl = jsonUrl.split('/');
+        	BaseUrl = BaseUrl[3];
+        	var decodedString = Base64.decode(BaseUrl);
+        	decodedString = decodedString.split(':');
+        	decodedString = decodedString[0];
+        	var temp = decodedString.replace('Service', '');
+        	temp = temp.charAt(0).toLowerCase() + temp.slice(1);
+        	var temp1 = "pigNo";
+        	var ID = row[temp1];
+        	decodedString = decodedString + ':'+ temp + 'Show';
+        	var encodedString = Base64.encode(decodedString);
+            var urlPath = '/IntelligentSystem/api/'+ encodedString;
+            $.ajax({
+		         type : "post",
+		         async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+		         url: urlPath,
+		         data : {  
+		        	 ID : ID
+		         },
+		         dataType : "json",        //返回数据形式为json
+		         success : function(result) {
+		        	 $("#myModa2").modal('show');
+		             loadQView(result);
+		        	 
+		        },
+		         error : function(errorMsg) {
+		             //请求失败时执行该函数
+		             alert("删除数据失败!");
+		         }
+		    });
+        },
+        'click .remove': function (e, value, row, index) {
+            //objectdata = objectdata.splice(index,1);
+            //console.log(objectdata);
+            //console.log(value, row, index);
+            
+            $('#table').bootstrapTable('remove', {
+            	field: 'sowNo',
+            	values: [row.sowNo]
+            });
+        },
+        'click .operate':function (e, value, row, index) {
+            var r = confirm("是否自动调控");
+            if (r == true){
+                    alert("进入自动调控");
+            }
+            else if(r == false){
+                    alert("取消自动调控");
+            }
+        }
+    };
+//生成表格
+    function dynamicGeneratedTables (json) {
+        //console.log(jsonUrl);
+        objectdata = json[1];
+        var columnsArray = [];
+        columnsArray.push({field: "cloumn_state", checkbox: true});
+        //columnsArray.push({halign: "center"});
+        //console.log(json[1][0])
+        // console.log(Object.keys(json[1]))
+        for (var i = 0; i < (Object.keys(json[0][0])).length; i++) {//Object.keys(obj) 获取key名称
+            var property = (Object.keys(json[0][0]))[i];// 数据表名
+            var CN_property = (json[0][0][property]);// 标题
+            //console.log(CN_property);
+            columnsArray.push({
+                "title": CN_property,
+                "field": property,
+                halign: "center",
+                switchable: true,
+                sortable: true
+            });
+        }
+
+        columnsArray.push({field: 'action', title: '操作',
+            halign: 'center', align: 'center', formatter: 'actionFormatter',
+            events: 'actionEvents', clickToSelect: false});
+
+        // 处理date 无法显示
+        var arr = json[1];
+        for (var i = 0;i < arr.length;i++){
+            // 遍历其所有属性
+            for (var item in arr[i]){
+                if(typeof(arr[i][item])== "function")
+                      continue;
+                  var to = arr[i][item];
+                  if (Object.prototype.toString.call(to) === '[object Object]'){
+                      if (to.hasOwnProperty('time')){
+                          var myDate = new Date(arr[i][item].time);
+                          arr[i][item] = myDate.Format("yyyy-MM-dd HH:mm:ss").toString();
+                      }
+
+                  }
+                
+            }
+        }
+
+        //console.log(columnsArray);
+        $('#table').bootstrapTable('destroy').bootstrapTable({
+            data: json[1],
+            height: getHeight(),
+            striped: true,
+            searchOnEnterKey: true,
+            buttonToolbar: '#buttons-toolbar',
+            showRefresh: true,
+            showToggle: true,
+            showColumns: true,
+            minimumCountColumns: 2,
+            showPaginationSwitch: true,
+            clickToSelect: true,
+            detailView: true,
+            detailFormatter: 'detailFormatter',
+            pagination: true,
+            paginationLoop: false,
+            classes: 'table table-hover table-no-bordered',
+            //sidePagination: 'server',
+            //silentSort: false,
+            smartDisplay: false,
+            sortName: 'id',
+            sortOrder: 'desc',
+            escape: true,
+            idField: 'systemId',
+            maintainSelected: true,
+            toolbar: '#toolbar',
+            columns: columnsArray,
+        });
+    }
+//录入
+    function dynamicGeneratedMessageInput (json) {
+        var createsettingDialogInHtml = '';
+        for (var i = 0; i < (Object.keys(json[0][0])).length; i++) {//Object.keys(obj) 获取key名称
+            var property = (Object.keys(json[0][0]))[i];// 数据表名
+            var CN_property = (json[0][0][property]);// 标题么
+            createsettingDialogInHtml=createsettingDialogInHtml+ '<div class="input-control" >'+
+                '<input type="text" class="form-control rl_data" ' +
+                'placeholder='+CN_property+ ' name='+property+' >'
+                +'</div>'
+        }
+        $('#createimportDialog',parent.document).html(createsettingDialogInHtml);
+    }
+    function dynamicGeneratedImportExport (json) {
+        var createsettingDialogInHtml = '';
+        createsettingDialogInHtml += createsettingDialogInHtml +'<form id="myform"  enctype="multipart/form-data" method="post"><input type="file" id="file" name="file" /></form>';
+        $('#createexportDialog',parent.document).html(createsettingDialogInHtml);
+    }
+
+//设置
+    function dynamicGeneratedMessageSetting (json) {
+        // console.log($('#createsettingDialog',parent.document).html());
+        var createsettingDialogInHtml = '';
+        for (var i = 0; i < (Object.keys(json[0][0])).length; i++) {//Object.keys(obj) 获取key名称
+            var property = (Object.keys(json[0][0]))[i];// 数据表名
+            var CN_property = (json[0][0][property]);// 标题
+            createsettingDialogInHtml=createsettingDialogInHtml+ '<div class="input-control" >'+
+                '<input type="text" class="form-control sz_data" ' +
+                'placeholder='+CN_property+ ' name='+property+' >'
+            +'</div>'
+        }
+        $('#createsettingDialog',parent.document).html(createsettingDialogInHtml);
+    }
+
+
+    var jsonUrl=window.parent.document.getElementById("jsonUrl").value;
+    $("#table").bootstrapTable({
+        ajax: function (request) {
+            $.ajax({
+                type: "GET",
+                url: jsonUrl,
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                json: 'callback',
+                success: function (json) {
+                    // 动态生成表格
+                    dynamicGeneratedTables(json);
+                    //  动态生成信息录入
+                    dynamicGeneratedMessageInput(json);
+                    //  动态生成信息设置
+                    dynamicGeneratedMessageSetting(json);
+                    dynamicGeneratedImportExport (json);
+                },
+                error: function () {
+                    alert("请求数据失败,请检查网络状况");
+                }
+            });
+        }
+    });
+
+    if(jsonUrl == "resources/data/equiOperCont.json" || jsonUrl == "resources/data/userCanc.json"
+    || jsonUrl == "resources/data/userAudiActiDiag.json" || jsonUrl == "resources/data/formColl1.json" ||jsonUrl == "resources/data/formColl2.json"
+        || jsonUrl == "resources/data/formColl3.json" || jsonUrl == "resources/data/stanSett.json" || jsonUrl == "resources/data/equiOperCont.json" ||
+        jsonUrl == "resources/data/feedMana.json" || jsonUrl == "resources/data/formColl.json"|| jsonUrl == "resources/data/feedRegu.json"
+        || jsonUrl == "resources/data/feedStat.json"|| jsonUrl == "resources/data/pigInfoMana.json"|| jsonUrl == "resources/data/pigSafeMana.json"||
+        jsonUrl == "resources/data/vaccSett.json" || jsonUrl == "resources/data/vaccMana.json"|| jsonUrl == "resources/data/diseMana.json"|| jsonUrl == "resources/data/destMana.json" ||
+    jsonUrl == "resources/data/suspIllnStat.json" || jsonUrl == "resources/data/pigElimMana.json"|| jsonUrl == "resources/data/migrMana.json"|| jsonUrl == "resources/data/entrMana.json"||
+        jsonUrl == "resources/data/coluMana.json"|| jsonUrl == "resources/data/hurdMana.json"|| jsonUrl == "resources/data/sowBree.json"|| jsonUrl == "resources/data/weanCont.json"|| jsonUrl == "resources/data/sowsDeli.json"
+    ||jsonUrl == "resources/data/logMana.json" || jsonUrl == "resources/data/rightMana.json" || jsonUrl == "resources/data/dataBase.json") {
+        $('.visualization').attr("style", "display:none;");
+        $('.fixed-table-body').attr("style", "height:500px");
+    }else if (jsonUrl == "resources/data/consSett.json"){
+        $('.jk_main').prepend("<button class='btn btn-primary btn-lg btn-watch' style='border-radius: 5px; border: none; box-shadow: 3px 3px 2px #b1b1b1; margin-left: 20px;margin-top: 10px;background-color:rgba(41,161,118,0.74);' data-toggle='modal' data-target='#cons'>点击查看可视化</button>");
+        $('.visualization').attr("style", "display:none;");
+        $('.fixed-table-body').attr("style", "height:500px");
+    }
+</script>
+<!-- 
+<script>
+    // 仪表盘数据demo
+    var seriesDate = [
+        {
+            name: '设备ID',
+            type: 'gauge',
+            min: 0,
+            max: 45,
+            detail: {formatter: '{value}°C',fontSize:14},
+            title : {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 12,
+                fontcolor:"#d7fcf7",
+                offsetCenter: [0, '120%']
+            },
+            axisTickLabel:{
+                fontSize:8
+            },
+            data: [
+                {value: 28, name: '温度传感器 \n 0001 ',center: ['55%', '60%']}]
+        },
+        {
+            name: '设备ID',
+            type: 'gauge',
+            min: 0,
+            max: 45,
+            detail: {formatter: '{value}°C',fontSize:14},
+            title : {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 12,
+                fontcolor:"#d7fcf7",
+                offsetCenter: [0, '120%']
+            },
+            axisTickLabel:{
+                fontSize:8
+            },
+            data: [
+                {value: 27, name: '红外线体温计 \n 0002 ',center: ['55%', '60%']}]
+        },
+        {
+            name: '设备ID',
+            type: 'gauge',
+            min: 0,
+            max: 100,
+            detail: {formatter: '{value}°%',fontSize:14},
+            title : {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 12,
+                fontcolor:"#d7fcf7",
+                offsetCenter: [0, '120%']
+            },
+            axisTickLabel:{
+                fontSize:8
+            },
+            data: [
+                {value: 30, name: '湿度传感器 \n 0003 ',center: ['55%', '60%']}]
+        },
+        {
+            name: '设备ID',
+            type: 'gauge',
+            min: 0,
+            max: 200,
+            detail: {formatter: '{value}°LUX',fontSize:14},
+            title : {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 12,
+                fontcolor:"#d7fcf7",
+                offsetCenter: [0, '120%']
+            },
+            axisTickLabel:{
+                fontSize:8
+            },
+            data: [
+                {value: 80, name: '光照度检测仪 \n 0004 ',center: ['55%', '60%']}]
+        },
+        {
+            name: '设备ID',
+            type: 'gauge',
+            // title:'声音传感器',
+            min: 0,
+            max: 100,
+            detail: {formatter: '{value}dB',fontSize:14},
+            title : {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 12,
+                fontcolor:"#d7fcf7",
+                offsetCenter: [0, '120%']
+            },
+            axisTickLabel:{
+                fontSize:8
+            },
+            data: [
+                {value: 30, name: '声音传感器 \n 0005 ',center: ['55%', '60%']}]
+        }
+    ];
+
+    // 仪表盘
+        var loadStringS = ["container1", "container2", "container3", "container4", "container5"];
+        var myCharts = [];
+        var options = [];
+        for (var i = 0; i < loadStringS.length; i++) {
+            option = null;
+            //console.log(loadStringS[i]);
+            var dom = document.getElementById(loadStringS[i]);
+            var myChart = echarts.init(dom);
+            myCharts[i] = myChart;
+            option = {
+                tooltip: {
+                    formatter: "{a} <br/>{b} : {c}°C"
+                },
+                toolbox: {
+                    feature: {
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                pointer:{
+                  length:"60%",
+                    width:"3"
+                },
+                axisTickLabel:{
+                  color:"yellow"
+                },
+                itemStyle:{
+                    opacity:"0.3"
+                },
+                series: seriesDate[i]
+
+            };
+            options[i] = option;
+            myChart.setOption(option);
+        }
+        for (var j = 0; j < 5; j++) {
+            setInterval(function () {
+                seriesDate[j].data[0].value = (random(20, 30)).toFixed(2) - 0;
+                myCharts[j].setOption(options[j], true);
+
+                console.log(j + " " + seriesDate[j].data[0].value);
+            }, 2000);
+        }
+</script>
+-->
+<!--折线图-->
+<script>
+    $(".wenduyibiaopan").click(function () {
+        $("#myModa2").modal('show');
+        loadQView(result)
+    });
+    // 加载曲线图
+    function loadQView(result) {
+    	var dom = document.getElementById("qcontainer");
+        var myChart = echarts.init(dom);
+        myChart.setOption({
+        	    title : {
+        	        text: '猪体增重变化'
+        	    },
+        	    tooltip : {
+        	        trigger: 'axis'
+        	    },
+        	    legend: {
+        	        data:['最高增重','最低增重']
+        	    },
+        	    toolbox: {
+        	        show : true,
+        	        feature : {
+        	            mark : {show: true},
+        	            dataView : {show: true, readOnly: false},
+        	            magicType : {show: true, type: ['line', 'bar']},
+        	            restore : {show: true},
+        	            saveAsImage : {show: true}
+        	        }
+        	    },
+        	    calculable : true,
+        	    xAxis : [
+        	        {
+        	            type : 'category',
+        	            boundaryGap : false,
+        	            data :[]
+        	        }
+        	    ],
+        	    yAxis : [
+        	        {
+        	            type : 'value',
+        	            axisLabel : {
+        	                formatter: '{value}'
+        	            }
+        	        }
+        	    ],
+        	    series : [
+        	        {
+        	            name:'最高增加体重',
+        	            type:'line',
+        	            data:[],
+        	            markPoint : {
+        	                data : [
+        	                    {type : 'max', name: '最大值'},
+        	                    {type : 'min', name: '最小值'}
+        	                ]
+        	            },
+        	            markLine : {
+        	                data : [
+        	                    {type : 'average', name: '平均值'}
+        	                ]
+        	            }
+        	        }
+        	    ]
+        	});      
+        var date=[];    //类别数组（实际用来盛放X轴坐标值）
+        var weight=[];    //销量数组（实际用来盛放Y坐标值）
+   	    var json = result[0].categorys;
+        for(var i=0;i<json.length;i++){       
+           date.push(json[i].date);    //挨个取出类别并填入类别数组
+         }
+        for(var i=0;i<json.length;i++){       
+            weight.push(json[i].weight);    //挨个取出销量并填入销量数组
+          }
+        myChart.setOption({        //加载数据图表
+            xAxis: {
+                data: date
+            },
+            series: [{
+                // 根据名字对应到相应的系列
+                name: '重量',
+                data: weight
+            }]
+        });
+    }
+</script>
+
+
+<!--pie图-->
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var mypie = echarts.init(document.getElementById('pie'));
+    pieoption = {
+        title : {
+            text: '详情',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient : 'vertical',
+            x : 'left',
+            data:[ '购买药', '疫苗', '饲料', '设备', '猪种', '员工工资', '水电费用',"投资"]
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'left',
+                            max: 1548
+                        }
+                    }
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:335, name:'购买药'},
+                    {value:310, name:'疫苗'},
+                    {value:234, name:'饲料'},
+                    {value:135, name:'设备'},
+                    {value:1548, name:'猪种'},
+                    {value:135, name:'员工工资'},
+                    {value:1548, name:'水电费用'},
+                    {value:1548, name:'投资'},
+
+                ]
+            }
+        ]
+    };
+
+
+    mypie.setOption(pieoption);
+</script>
+
+<!--柱状图-->
+<script>
+    var mybar = echarts.init(document.getElementById('bar'));
+    baroption = {
+        title : {
+            text: '一个季度支出的情况'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['支付宝','微信','现金']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'支付宝',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'现金',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'微信',
+                type:'bar',
+                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                markPoint : {
+                    data : [
+                        {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                        {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+
+    mybar.setOption(baroption);
+</script>
+</body>
+</html>

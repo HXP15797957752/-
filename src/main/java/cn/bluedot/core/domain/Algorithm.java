@@ -125,8 +125,12 @@ public class Algorithm {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Algorithm [algorithmID=" + algorithmID + ", name=" + name + ", type=" + type + ", description="
+				+ description + ", dateTime=" + dateTime + ", state=" + state + ", savePath=" + savePath
+				+ ", uploadUserNo=" + uploadUserNo + ", downloadCount=" + downloadCount + "]";
+	}
 	
 }

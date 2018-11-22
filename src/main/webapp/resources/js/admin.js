@@ -279,22 +279,51 @@ function MessageImport() {
                     var relect = classService +':'+classMethod;
                     var encodedString = Base64.encode(relect);
                     var urlPath = '/IntelligentSystem/api/'+ encodedString;
-                    $.ajax({
-                        url : urlPath ,
-                        type:"POST",
-                        data : {
-                            formVal : formVal,
-                        	formName : formName,
-                        	className : className
-                        },
-                        dataType : "json", 
-                        success : function(result) {
-                            alert(result[0].data);
-                        },
-                        error:function () {
-                        	alert("插入失败");
-                        }
-                    });
+                    console.log(formName);
+                    console.log(formVal);
+                    if (classService === "AlgorithmService")
+                    	{
+                    		var formdata=new FormData();
+                    		for (var j = document.getElementsByClassName('rl_data').length/2 ;j<document.getElementsByClassName('rl_data').length;j++){
+                    			formdata.append(document.getElementsByClassName('rl_data')[j].name,document.getElementsByClassName('rl_data')[j].value);
+                    			
+                            }
+                    		formdata.append("file",document.getElementsByClassName('fl_data')[0].value);
+                    		console.log(document.getElementsByClassName('fl_data')[0].value);
+                    		$.ajax({
+                            url : urlPath ,
+                            type:"POST",
+                            cache: false, 
+                            processData: false, 
+                            contentType: false,
+                            data : formdata,
+                            dataType : "json", 
+                            success : function(result) {
+                                alert(result);
+                            },
+                            error:function (result) {
+                            	alert(result);
+                            }
+                        });
+                    	}else {
+                    		$.ajax({
+                                url : urlPath ,
+                                type:"POST",
+                                data : {
+                                    formVal : formVal,
+                                	formName : formName,
+                                	className : className
+                                },
+                                dataType : "json", 
+                                success : function(result) {
+                                    alert(result[0].data);
+                                },
+                                error:function () {
+                                	alert("插入失败");
+                                }
+                            });
+                    	}
+                    
                 }
             },
             cancel: {
@@ -367,6 +396,7 @@ $(function () {
         var relect = classService +':'+classMethod;
         var encodedString = Base64.encode(relect);
         var urlPath = '/IntelligentSystem/api/'+ encodedString;
+        console.log(urlPath);
         $.ajax({
             url : urlPath ,
             type:"POST",

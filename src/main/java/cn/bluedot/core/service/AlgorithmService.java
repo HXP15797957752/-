@@ -44,8 +44,7 @@ public class AlgorithmService extends RequestWare implements Service {
 
 		// 用通用工具栏解析 is是文件流 params解析后就是普通字段的参数
 		InputStream is = ParseUpload.parseUpload(request, params);
-		System.out.println(is);
-		//System.out.println(params);
+		System.out.println("is: >>>>>>>>> "+is);
 
 		// 根据普通字段参数生成Algorithm对象
 		Algorithm algorithm = MyBeanUtils.toBean(params, Algorithm.class);
@@ -69,9 +68,9 @@ public class AlgorithmService extends RequestWare implements Service {
 					e.printStackTrace();
 				}
 			}
-			 System.out.println(path);
+			System.out.println("path: >>>>>>>>> "+path);
 			algorithm.setSavePath(path);
-			System.out.println(algorithm);
+			System.out.println("algorithm: >>>>>>>>> "+algorithm);
 			// dao增加
 			superDao.save(algorithm);
 

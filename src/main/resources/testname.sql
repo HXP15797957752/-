@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server         : demo
+Source Server Version : 50545
+Source Host           : 127.0.0.1:3306
 Source Database       : testname
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50545
 File Encoding         : 65001
 
-Date: 2018-11-21 16:11:40
+Date: 2018-11-24 17:09:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,11 +49,11 @@ CREATE TABLE `algorithm` (
   `name` varchar(30) NOT NULL COMMENT '算法名称',
   `type` int(11) NOT NULL COMMENT '0:预处理算法  1:分析算法',
   `description` varchar(120) NOT NULL COMMENT '系统管理员对此算法的描述',
-  `uploadTime` datetime NOT NULL COMMENT '上传时间,以****-**-** **:**:** 此种格式为标准存入，精确到秒',
+  `dateTime` varchar(120) NOT NULL COMMENT '上传时间,以****-**-** **:**:** 此种格式为标准存入，精确到秒',
   `state` int(11) NOT NULL,
   `savePath` varchar(120) NOT NULL DEFAULT '' COMMENT '算法存储路径',
   `uploadUserNo` varchar(32) NOT NULL COMMENT '上传算法的用户',
-  `downloadCount` bigint(20) NOT NULL COMMENT '用户下载次数',
+  `downloadCount` int(20) NOT NULL COMMENT '用户下载次数',
   PRIMARY KEY (`algorithmID`),
   KEY `algorithm_fk_01_idx` (`uploadUserNo`),
   CONSTRAINT `algorithm_fk_01` FOREIGN KEY (`uploadUserNo`) REFERENCES `user` (`userNo`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -62,6 +62,11 @@ CREATE TABLE `algorithm` (
 -- ----------------------------
 -- Records of algorithm
 -- ----------------------------
+INSERT INTO `algorithm` VALUES ('0', '333333333333', '0', '333333333333', '333333333333', '0', 'D:\\TomCat\\apache-tomcat-9.0.4\\webapps\\IntelligentSystem\\algorithm\\0.algo', '111111', '0');
+INSERT INTO `algorithm` VALUES ('1', '空数据清洗算法', '1', '清洗空数据', '2018-11-14 19:57:00', '1', '/abc', '111111', '123');
+INSERT INTO `algorithm` VALUES ('2', '数据分析', '2', '数据挖掘', '2018-11-14 19:57:00', '1', '/abc', '111111', '1233');
+INSERT INTO `algorithm` VALUES ('111111', '111111', '111111', '111111', '111111', '111111', 'D:\\TomCat\\apache-tomcat-9.0.4\\webapps\\IntelligentSystem\\algorithm\\111111.algo', '111111', '111111');
+INSERT INTO `algorithm` VALUES ('213123', '213123', '213123', '213123', '213123', '213123', 'D:\\TomCat\\apache-tomcat-9.0.4\\webapps\\IntelligentSystem\\algorithm\\213123.algo', '111111', '213123');
 
 -- ----------------------------
 -- Table structure for backup
@@ -722,7 +727,7 @@ CREATE TABLE `log` (
   `operationName` varchar(50) NOT NULL,
   `ipAddress` varchar(20) NOT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=614 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of log
@@ -1083,6 +1088,249 @@ INSERT INTO `log` VALUES ('367', '2018-11-21 15:59:32', 'mmmm', 'finalize', '0:0
 INSERT INTO `log` VALUES ('368', '2018-11-21 16:01:09', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
 INSERT INTO `log` VALUES ('369', '2018-11-21 16:01:09', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
 INSERT INTO `log` VALUES ('370', '2018-11-21 16:01:11', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('371', '2018-11-22 19:41:12', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('372', '2018-11-22 19:41:13', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('373', '2018-11-22 19:41:31', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('374', '2018-11-22 19:41:31', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('375', '2018-11-22 19:41:33', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('376', '2018-11-22 19:41:33', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('377', '2018-11-22 19:41:34', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('378', '2018-11-22 19:41:34', 'mmmm', 'querySensorData', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('379', '2018-11-22 19:41:36', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('380', '2018-11-22 19:41:36', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('381', '2018-11-22 19:41:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('382', '2018-11-22 19:41:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('383', '2018-11-22 19:41:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('384', '2018-11-22 19:41:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('385', '2018-11-22 19:41:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('386', '2018-11-22 19:49:41', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('387', '2018-11-22 19:49:41', 'mmmm', 'pigInformation', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('388', '2018-11-22 19:49:41', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('389', '2018-11-22 19:50:02', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('390', '2018-11-22 19:53:04', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('391', '2018-11-22 19:53:04', 'mmmm', 'pigInformation', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('392', '2018-11-22 19:53:04', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('393', '2018-11-22 19:53:29', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('394', '2018-11-22 19:53:29', 'mmmm', 'pigInformation', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('395', '2018-11-22 19:53:29', 'mmmm', 'comment', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('396', '2018-11-22 19:53:33', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('397', '2018-11-22 19:53:33', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('398', '2018-11-22 20:01:14', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('399', '2018-11-22 20:01:14', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('400', '2018-11-22 20:01:45', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('401', '2018-11-22 20:07:28', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('402', '2018-11-22 20:07:28', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('403', '2018-11-22 20:07:54', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('404', '2018-11-22 20:07:54', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('405', '2018-11-22 20:08:34', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('406', '2018-11-22 20:08:34', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('407', '2018-11-22 20:10:15', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('408', '2018-11-22 20:10:15', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('409', '2018-11-22 20:10:51', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('410', '2018-11-22 20:11:34', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('411', '2018-11-22 20:11:34', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('412', '2018-11-22 20:12:06', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('413', '2018-11-22 20:12:36', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('414', '2018-11-22 20:12:36', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('415', '2018-11-22 20:13:10', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('416', '2018-11-22 20:13:57', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('417', '2018-11-22 20:13:57', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('418', '2018-11-22 20:13:59', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('419', '2018-11-22 20:13:59', 'mmmm', 'querySensorData', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('420', '2018-11-22 20:14:00', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('421', '2018-11-22 20:14:00', 'mmmm', 'querySensorData', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('422', '2018-11-22 20:14:01', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('423', '2018-11-22 20:14:01', 'mmmm', 'queryThreshold', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('424', '2018-11-22 20:14:02', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('425', '2018-11-22 20:14:02', 'mmmm', 'queryException', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('426', '2018-11-22 20:14:04', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('427', '2018-11-22 20:14:04', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('428', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('429', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('430', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('431', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('432', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('433', '2018-11-22 20:14:14', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('434', '2018-11-22 20:14:32', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('435', '2018-11-22 20:14:33', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('436', '2018-11-22 20:15:08', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('437', '2018-11-22 20:16:06', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('438', '2018-11-22 20:16:06', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('439', '2018-11-22 20:16:11', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('440', '2018-11-22 20:16:19', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('441', '2018-11-22 20:16:19', 'mmmm', 'queryEquipmentState', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('442', '2018-11-22 20:17:04', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('443', '2018-11-22 20:17:05', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('444', '2018-11-22 20:17:05', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('445', '2018-11-22 20:18:11', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('446', '2018-11-22 20:21:47', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('447', '2018-11-22 20:21:47', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('448', '2018-11-22 20:22:28', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('449', '2018-11-22 20:27:23', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('450', '2018-11-22 20:27:23', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('451', '2018-11-22 20:27:24', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('452', '2018-11-22 20:27:54', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('453', '2018-11-22 20:27:54', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('454', '2018-11-22 20:28:03', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('455', '2018-11-22 20:33:16', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('456', '2018-11-22 20:33:16', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('457', '2018-11-22 20:33:32', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('458', '2018-11-22 20:35:29', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('459', '2018-11-22 20:35:29', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('460', '2018-11-22 20:35:33', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('461', '2018-11-22 20:35:33', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('462', '2018-11-22 20:35:53', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('463', '2018-11-22 20:35:53', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('464', '2018-11-22 20:37:50', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('465', '2018-11-22 20:37:50', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('466', '2018-11-22 20:37:57', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('467', '2018-11-22 20:40:03', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('468', '2018-11-22 20:40:04', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('469', '2018-11-22 20:40:35', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('470', '2018-11-22 20:41:39', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('471', '2018-11-22 20:41:39', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('472', '2018-11-22 20:41:52', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('473', '2018-11-22 20:47:15', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('474', '2018-11-22 20:47:15', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('475', '2018-11-22 20:47:35', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('476', '2018-11-22 20:49:44', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('477', '2018-11-22 20:49:44', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('478', '2018-11-22 20:50:13', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('479', '2018-11-22 20:59:02', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('480', '2018-11-22 20:59:02', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('481', '2018-11-22 20:59:25', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('482', '2018-11-22 21:00:29', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('483', '2018-11-22 21:00:29', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('484', '2018-11-22 21:00:43', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('485', '2018-11-22 21:00:43', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('486', '2018-11-22 21:01:00', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('487', '2018-11-22 21:01:00', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('488', '2018-11-22 21:01:28', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('489', '2018-11-22 21:01:28', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('490', '2018-11-22 21:02:04', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('491', '2018-11-22 21:03:42', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('492', '2018-11-22 21:03:43', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('493', '2018-11-22 21:03:54', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('494', '2018-11-22 21:03:54', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('495', '2018-11-22 21:04:03', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('496', '2018-11-22 21:04:03', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('497', '2018-11-22 21:06:22', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('498', '2018-11-22 21:06:22', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('499', '2018-11-22 21:06:37', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('500', '2018-11-22 21:06:37', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('501', '2018-11-22 21:06:41', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('502', '2018-11-22 21:06:41', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('503', '2018-11-22 21:13:40', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('504', '2018-11-22 21:13:40', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('505', '2018-11-22 21:14:04', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('506', '2018-11-22 21:14:19', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('507', '2018-11-22 21:14:19', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('508', '2018-11-22 21:14:42', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('509', '2018-11-22 21:19:12', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('510', '2018-11-22 21:19:12', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('511', '2018-11-22 21:19:20', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('512', '2018-11-22 21:19:27', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('513', '2018-11-22 21:19:27', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('514', '2018-11-22 21:19:55', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('515', '2018-11-22 21:21:43', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('516', '2018-11-22 21:21:43', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('517', '2018-11-22 21:21:50', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('518', '2018-11-22 21:26:41', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('519', '2018-11-22 21:26:41', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('520', '2018-11-22 21:26:52', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('521', '2018-11-22 21:27:11', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('522', '2018-11-22 21:27:11', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('523', '2018-11-22 21:27:17', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('524', '2018-11-22 21:29:18', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('525', '2018-11-22 21:29:18', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('526', '2018-11-22 21:29:24', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('527', '2018-11-22 21:29:56', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('528', '2018-11-22 21:29:56', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('529', '2018-11-22 21:30:01', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('530', '2018-11-22 21:33:10', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('531', '2018-11-22 21:33:10', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('532', '2018-11-22 21:33:22', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('533', '2018-11-22 21:34:50', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('534', '2018-11-22 21:34:50', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('535', '2018-11-22 21:35:01', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('536', '2018-11-22 21:35:27', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('537', '2018-11-22 21:35:27', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('538', '2018-11-22 21:35:28', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('539', '2018-11-22 21:36:39', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('540', '2018-11-22 21:36:39', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('541', '2018-11-22 21:36:45', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('542', '2018-11-22 21:36:58', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('543', '2018-11-22 21:36:58', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('544', '2018-11-22 21:37:10', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('545', '2018-11-22 21:38:30', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('546', '2018-11-22 21:38:30', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('547', '2018-11-22 21:38:39', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('548', '2018-11-22 21:43:41', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('549', '2018-11-22 21:43:41', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('550', '2018-11-22 21:43:42', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('551', '2018-11-22 21:43:44', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('552', '2018-11-22 21:43:44', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('553', '2018-11-22 21:43:51', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('554', '2018-11-22 21:44:44', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('555', '2018-11-22 21:44:44', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('556', '2018-11-22 21:44:53', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('557', '2018-11-22 22:41:59', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('558', '2018-11-22 22:41:59', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('559', '2018-11-22 22:42:13', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('560', '2018-11-22 22:42:16', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('561', '2018-11-22 22:42:16', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('562', '2018-11-22 22:43:30', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('563', '2018-11-22 22:43:41', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('564', '2018-11-22 22:43:41', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('565', '2018-11-22 22:44:49', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('566', '2018-11-22 22:50:42', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('567', '2018-11-22 22:50:42', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('568', '2018-11-22 22:50:56', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('569', '2018-11-22 22:50:56', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('570', '2018-11-22 22:52:17', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('571', '2018-11-22 22:52:17', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('572', '2018-11-22 22:52:59', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('573', '2018-11-22 22:52:59', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('574', '2018-11-22 22:53:53', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('575', '2018-11-22 22:54:49', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('576', '2018-11-22 22:54:49', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('577', '2018-11-22 22:55:11', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('578', '2018-11-22 22:55:11', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('579', '2018-11-22 22:55:34', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('580', '2018-11-22 22:55:34', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('581', '2018-11-22 22:57:36', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('582', '2018-11-22 22:57:36', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('583', '2018-11-22 22:58:19', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('584', '2018-11-22 22:58:19', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('585', '2018-11-22 22:58:33', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('586', '2018-11-22 22:58:33', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('587', '2018-11-22 22:59:54', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('588', '2018-11-22 22:59:54', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('589', '2018-11-22 23:00:01', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('590', '2018-11-22 23:00:25', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('591', '2018-11-22 23:00:25', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('592', '2018-11-22 23:00:32', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('593', '2018-11-22 23:00:33', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('594', '2018-11-22 23:01:29', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('595', '2018-11-22 23:01:29', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('596', '2018-11-22 23:04:17', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('597', '2018-11-22 23:04:17', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('598', '2018-11-22 23:05:17', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('599', '2018-11-22 23:07:08', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('600', '2018-11-22 23:07:08', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('601', '2018-11-22 23:07:34', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('602', '2018-11-22 23:07:34', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('603', '2018-11-22 23:07:36', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('604', '2018-11-22 23:07:36', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('605', '2018-11-24 17:03:03', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('606', '2018-11-24 17:03:03', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('607', '2018-11-24 17:03:28', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('608', '2018-11-24 17:03:33', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('609', '2018-11-24 17:03:33', 'mmmm', 'AlgorithmInsert', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('610', '2018-11-24 17:03:37', 'mmmm', 'setReq_rep', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('611', '2018-11-24 17:03:37', 'mmmm', 'viewAlgorithmfiles', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('612', '2018-11-24 17:04:06', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES ('613', '2018-11-24 17:04:06', 'mmmm', 'finalize', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for menu
@@ -1094,7 +1342,7 @@ CREATE TABLE `menu` (
   `menuName` varchar(50) NOT NULL,
   `label` varchar(30) NOT NULL,
   PRIMARY KEY (`menuID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -1107,6 +1355,7 @@ INSERT INTO `menu` VALUES ('5', '111111', '母猪管理', 'fa fa-child');
 INSERT INTO `menu` VALUES ('6', '123456', '算法管理', 'glyphicon glyphicon-book');
 INSERT INTO `menu` VALUES ('7', '123456', '用户管理', 'glyphicon glyphicon-user');
 INSERT INTO `menu` VALUES ('8', '123456', '维护与安全管理', 'zmdi zmdi-lock-outline');
+INSERT INTO `menu` VALUES ('9', '111111', '算法管理', 'glyphicon glyphicon-book');
 
 -- ----------------------------
 -- Table structure for menuitem
@@ -1121,7 +1370,7 @@ CREATE TABLE `menuitem` (
   `targetPage` varchar(30) NOT NULL,
   `serviceURL` varchar(900) NOT NULL,
   PRIMARY KEY (`menuItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menuitem
@@ -1150,7 +1399,7 @@ INSERT INTO `menuitem` VALUES ('24', '111111', '3', '药品记录', 'formColl3',
 INSERT INTO `menuitem` VALUES ('26', '111111', '5', '母猪配种管理', 'sowBree', 'dataList.html', '/IntelligentSystem/api/U293UGVpU2VydmljZTpzZXRTb3dQZWk=');
 INSERT INTO `menuitem` VALUES ('27', '111111', '5', '母猪断奶管理', 'weanCont', 'dataList.html', '/IntelligentSystem/api/U293RHVhblNlcnZpY2U6c2V0U293RHVhbg==');
 INSERT INTO `menuitem` VALUES ('28', '111111', '5', '母猪分娩管理', 'sowsDeli', 'dataList.html', '/IntelligentSystem/api/U293RmVuU2VydmljZTpzZXRTb3dGZW4=');
-INSERT INTO `menuitem` VALUES ('29', '123456', '6', '算法管理', 'algoMana', 'dataList.html', 'resources/data/deviExceInfoChec.json');
+INSERT INTO `menuitem` VALUES ('29', '123456', '6', '算法管理', 'Algorithm', 'dataList.html', 'resources/data/deviExceInfoChec.json');
 INSERT INTO `menuitem` VALUES ('30', '123456', '7', '用户审核', 'userAudiActiDiag', 'dataList.html', '/IntelligentSystem/api/VXNlclNlcnZpY2U6bG9hZFVzZXJzQXVkaXQ=');
 INSERT INTO `menuitem` VALUES ('31', '123456', '7', '用户注销', 'userCanc', 'dataList.html', 'resources/data/deviExceInfoChec.json');
 INSERT INTO `menuitem` VALUES ('32', '123456', '8', '日志管理', 'rzgl', 'dataList.html', '/IntelligentSystem/api/TG9nTWFuYWdlOnF1ZXJ5TGlzdA==');
@@ -1158,6 +1407,7 @@ INSERT INTO `menuitem` VALUES ('33', '123456', '8', '权限管理', 'qxgl', 'dat
 INSERT INTO `menuitem` VALUES ('34', '123456', '8', '数据库备份与恢复', 'sjk', 'dataList.html', 'resources/data/deviExceInfoChec.json');
 INSERT INTO `menuitem` VALUES ('36', '111111', '4', '收款', 'consSett2', 'dataList.html', '/IntelligentSystem/api/R2V0U2VydmljZTpzZWFyY2hHZXRJbmZvcm1hdGlvbg==');
 INSERT INTO `menuitem` VALUES ('37', '111111', '4', '利润', 'consSett', 'echarts.html', '');
+INSERT INTO `menuitem` VALUES ('38', '111111', '9', '算法管理', 'Algorithm', 'algoList.html', '/IntelligentSystem/api/QWxnb3JpdGhtU2VydmljZTpzaG93QWxnb3JpdGhtZmlsZXM=');
 
 -- ----------------------------
 -- Table structure for payment
